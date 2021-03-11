@@ -3,10 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { IndexComponent } from './index/index.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { CodeclientComponent } from './codeclient/codeclient.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    IndexComponent,
+    RegisterComponent,
+    LoginComponent,
+    RecoveryComponent,
+    CodeclientComponent
   ],
   imports: [
     BrowserModule,
