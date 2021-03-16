@@ -1,1 +1,74 @@
-<p>register works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-5 text-center">Sing In</h3>
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="validationCustom01" value="" autocomplete="off" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom02" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" id="validationCustom02" autocomplete="off" value="" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                        </div>
+                        <div class="col-md-15">
+                          <label for="validationCustomUsername" class="form-label" >Correo</label>
+                          <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" class="form-control" id="validationCustomUsername" autocomplete="off" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback">
+                              Please choose a username.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom03" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" id="validationCustom03" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid city.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom05" class="form-label">Repita contraseña</label>
+                          <input type="text" class="form-control" id="validationCustom05" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid zip.
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                              <a href="register">Acepto terminos y condiciones</a>
+                            </label>
+                            <div class="invalid-feedback">
+                              You must agree before submitting.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <button class="btn btn-primary" type="submit">Registarme</button>
+                        </div>
+                    </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<app-footer></app-footer>
