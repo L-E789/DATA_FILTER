@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { CodeclientComponent } from './codeclient/codeclient.component';
+import { WorkEnvironmentsComponent } from './work-environments/work-environments.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CodeclientComponent } from './codeclient/codeclient.component';
     RegisterComponent,
     LoginComponent,
     RecoveryComponent,
-    CodeclientComponent
+    CodeclientComponent,
+    WorkEnvironmentsComponent
   ],
   imports: [
     BrowserModule,

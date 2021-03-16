@@ -1,1 +1,35 @@
-<p>codeclient works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-3 text-center">Consulta</h3>
+                <p class="login-heading mb-5 text-center" >Señor usuario, ingrese el codigo que se encuentra en su factura, con el consultara el estado de su dispositivo</p>
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-15">
+                          <label for="validationCustom03" class="form-label">Codigo</label>
+                          <input type="text" class="form-control" id="validationCustom03" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid city.
+                          </div>
+                        </div>
+
+                        <div class="col-12 text-center">
+                          <button class="btn btn-primary" type="submit">Consultar</button>
+                        </div>
+                    </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<app-footer></app-footer>
