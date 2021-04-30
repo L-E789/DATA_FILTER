@@ -1,31 +1,35 @@
-<nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+
+  <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background: rgb(52,58,64);">
     <div class="container">
-      <a href="#" class="navbar-brand">
-        <img src="shttps://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt="" class="d-inline-block align-middle mr-2">
-
-        <span class="text-uppercase font-weight-bold">DATA FILTER</span>
-      </a>
-  
-      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="">Contactenos</a>
-            </li>
-            <li   class="nav-item">
-              <a class="nav-link" href="register">Registro</a>
-            </li>
-            <li  class="nav-item">
-              <a class="nav-link active" href="login">Login</a>
-            </li>
-          </ul>
-
+      <ng-container *ngIf="auth.isLoggedIn() | async; else elseTemplate">
+        <a class="navbar-brand" href="/environments" style="color: rgb(255,255,255);">DATA FILTER</a>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <a class="navbar-brand" href="" style="color: rgb(255,255,255);">DATA FILTER</a>
+      </ng-template>
+      
+      <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="border-radius: 21px;">
+        <span class="sr-only" >Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div
+            class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item"></li>
+                <li class="nav-item"></li>
+            </ul><span class="navbar-text actions">
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="/about-us" style="color: rgb(255,255,255);">¿Quiénes Somos?</a>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="#" style="color: rgb(255,255,255);">Contáctenos</a>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="/register" style="color: rgb(255,255,255);">Registro</a>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="/login" style="color: rgb(255,255,255);">Login</a></span>
+              <div  *ngIf="auth.isLoggedIn() | async" class="login" style="color: rgb(255,255,255); margin-right: 15px;">
+                <a> {{auth.getNameUser()}} {{auth.getSurnameUser()}}</a>
+              </div>
+            <div *ngIf="auth.isLoggedIn() | async" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(255,255,255);"><img class="rounded-circle" style="width: 30px;height: 30px;" src="https://cdn.pixabay.com/photo/2021/04/03/02/21/fashion-6146328_960_720.jpg"></a>
+                <div
+                    class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Editar perfil</a>
+                    <a class="dropdown-item" href="#">Second Item</a>
+                    <a class="dropdown-item" [routerLink]="['/']" (click)="auth.logout()">Salir</a></div>
+                </div>
+            </div>
         </div>
-
-      </div>
-    </div>
-  </nav>
+</nav>

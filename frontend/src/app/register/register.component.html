@@ -1,1 +1,35 @@
-<p>register works!</p>
+<app-navbar></app-navbar>
+
+  <div class="container-fluid">
+    <div class="row mh-100vh">
+        <div class="col-lg-6 d-flex align-items-end" id="bg-block" style="background: url('https://image.freepik.com/foto-gratis/marketing-digital-empresario-tableta-digital-documentos-sobre-fondo-escritorio-oficina_2034-1650.jpg') center center / cover;">
+            <p class="ml-auto small text-dark mb-2"><br></p>
+        </div>
+        <div class="col-10 col-sm-8 col-md-6 col-lg-6 offset-1 offset-sm-2 offset-md-3 offset-lg-0 align-self-center d-lg-flex align-items-lg-center align-self-lg-stretch bg-white p-5 rounded rounded-lg-0 my-5 my-lg-0" id="login-block">
+            <header></header>
+            <div class="m-auto w-lg-75 w-xl-50">
+                <h2 class="text-info font-weight-light mb-5" style="text-align: center;">&nbsp;Registro</h2>
+                <form style="text-align: left;" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group"><label class="text-secondary">Nombre</label><input formControlName="name" class="form-control" type="text" style="border-radius: 26px;"></div>
+                    <div class="form-group"><label class="text-secondary">Apellido</label><input formControlName="surname" class="form-control" type="text" style="border-radius: 26px;"></div>
+                    <div class="form-group"><label class="text-secondary">Email</label><input formControlName="email" class="form-control" type="text" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email" style="border-radius: 26px;"></div>
+                    <div class="form-group" style="border-style: none;"><label class="text-secondary">Contraseña</label><input formControlName="password" class="form-control" type="password" required="" style="border-radius: 26px;"></div>
+                    <div class="form-group"><label class="text-secondary">Confirmar contraseña</label><input formControlName="validatepassword" class="form-control" type="password" required="" style="border-radius: 26px;"></div>
+                    <div class="form-group">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1"><a href="#">Acepto términos y condiciones&nbsp;</a></label></div>
+                    </div>
+                    <div></div>
+                    <button *ngIf="spinner" class="btn btn-info mt-2" type="submit" style="text-align: right;">Registrarse</button>
+                    <div *ngIf="!spinner"  class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </form>
+                <p class="mt-3 mb-0" style="text-align: left;"></p>
+            </div>
+            <div></div>
+            <header></header>
+        </div>
+    </div>
+</div>
+  
+<app-footer></app-footer>
