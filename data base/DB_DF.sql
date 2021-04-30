@@ -1,28 +1,51 @@
-create table DB_DataFilter;
-use DB_DataFilter;
-
-create table rango
-(
-	id int primary key not null auto_increment,
-	tipo int(1)
-);
+create database db_datafilter;
+use db_datafilter;
 
 create table users
 (
 	id int primary key not null auto_increment,
-	nombre char(100),
-    email char(150),
+	name char(100),
+    surname char(100),
+    email char(150) unique,
     password char(150),
-    rango int,
-	FOREIGN KEY (rango) REFERENCES rango(id)
+    img text,
+    activated boolean,
+    code char(15),
+    recovery_date datetime
 );
 
+create table environments
+(
+	id int primary key not null auto_increment,
+    img text,
+    name char(120),
+    key_code char(10),
+    creation_date date,
+    created_by int,
+    foreign key (created_by) references users(id)
+);
+
+create table bridge
+(
+	id int primary key not null auto_increment,
+    id_user int,
+    id_environments int,
+    v_admin boolean,
+    linking_date date,
+    state boolean,
+    foreign key (id_user) references users(id),
+    foreign key (id_environments) references environments(id)
+);
+
+
+
+/* ------------------------------------------------- */
 create table estado
 (
 	id int primary key not null auto_increment,
     estado int(1)
 );
-
+select * from users;
 Create Table dispositivos
 (
 	id int primary key not null auto_increment,
@@ -59,27 +82,21 @@ create table informe
 
 create table entorno 
 (
-	id int primary key not null auto_increment,
+    codigo char(5) primary key not null,
     usuario int,
     FOREIGN KEY (usuario) REFERENCES users(id),
-    fecha date
-);
-
-create table colaborador
-(
-	id int primary key not null auto_increment,
-    usuario int,
-    FOREIGN KEY (usuario) REFERENCES users(id)
+    fecha datetime
+    
 );
 
 
 create table entorno_trabajo
 (
 	id int primary key not null auto_increment,
-    entorno int,
-    FOREIGN KEY (entorno) REFERENCES entorno(id),
+    entorno char(5),
+    FOREIGN KEY (entorno) REFERENCES entorno(codigo),
     colaborador int, 
-    FOREIGN KEY (colaborador) REFERENCES colaborador(id)
+    FOREIGN KEY (colaborador) REFERENCES users(id)
 )
 
 
