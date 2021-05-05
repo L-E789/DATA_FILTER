@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +15,29 @@ import { LoginComponent } from './login/login.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { CodeclientComponent } from './codeclient/codeclient.component';
 import { WorkEnvironmentsComponent } from './work-environments/work-environments.component';
+import { ActivatedEmailComponent } from './activated-email/activated-email.component';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
+
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ProfileComponent } from './profile/profile.component';
+import { AddUsersEnvironmentComponent } from './add-users-environment/add-users-environment.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+
+
+const config = {
+  apiKey: "AIzaSyB8uT6XO_IKVtKBXWoj_oEvhCyvdiev-RY",
+  authDomain: "datafilter-32b92.firebaseapp.com",
+  projectId: "datafilter-32b92",
+  storageBucket: "datafilter-32b92.appspot.com",
+  messagingSenderId: "383352454103",
+  appId: "1:383352454103:web:3fc646fbf2c15ee948e992",
+  measurementId: "G-DGW1G23Y81"
+};
+
 
 @NgModule({
   declarations: [
@@ -22,11 +49,26 @@ import { WorkEnvironmentsComponent } from './work-environments/work-environments
     LoginComponent,
     RecoveryComponent,
     CodeclientComponent,
-    WorkEnvironmentsComponent
+    WorkEnvironmentsComponent,
+    ActivatedEmailComponent,
+    RecoverPasswordComponent,
+    ProfileComponent,
+    AddUsersEnvironmentComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
