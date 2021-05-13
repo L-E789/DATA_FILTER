@@ -12,6 +12,9 @@ import {RecoverPasswordComponent} from './recover-password/recover-password.comp
 import { ProfileComponent }  from './profile/profile.component'
 import {AddUsersEnvironmentComponent} from './add-users-environment/add-users-environment.component'
 import {AboutUsComponent} from './about-us/about-us.component'
+import {EnvironmentsComponent} from './environments/environments.component'
+import {AddDevicesComponent} from './add-devices/add-devices.component'
+import {JoinEnvironmentComponent} from './join-environment/join-environment.component'
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -25,6 +28,10 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'environments/users/:id', component: AddUsersEnvironmentComponent},
   {path: 'about-us', component: AboutUsComponent},
+  {path: 'environment', component: EnvironmentsComponent},
+  {path: 'environment/invoice', component: AddDevicesComponent},
+  {path: 'environment/join/:code',component:JoinEnvironmentComponent}
+
 ];
 
 @NgModule({

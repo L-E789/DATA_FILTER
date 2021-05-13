@@ -1,6 +1,6 @@
-from Controllers.UsersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword
+from Controllers.UsersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword, profileedis, ChangePassword, ModifyImg, ModifyName
 
-from Controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators
+from Controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators, ChangeStatus
 
 from Controllers.DispositivosController import add_dis
 
@@ -15,6 +15,10 @@ users = {
     "recover_password_user":"/api/v01/recover/pass/<id>","recover_password": RecoverPasssword.as_view("Recover_pass_api"),
     "modification_password_user":"/api/v01/recover/modification","modification_password": ModificationPassword.as_view("modification_pass_api"),
     "authorization_user":"/api/v01/authorization","authorization_user_controller": AuthorizationControllers.as_view("authorization_api"),
+    "editProfile_user":"/api/v01/editprofile/<id>","editprofile_user_controller": profileedis.as_view("editprofile_api"),
+    "profile_img":"/api/v01/edit_img","profile_img_controller": ModifyImg.as_view("Modify_img_api"),
+    "profile_name":"/api/v01/edit_name","profile_name_controller": ModifyName.as_view("Modify_name_api"),
+    "profile_change_password":"/api/v01/change_password","profile_change_password_controller": ChangePassword.as_view("profile_password_api"),
 }
 
 environment = {
@@ -27,6 +31,7 @@ environment = {
     "manage_join_by_code_environment":"/api/v01/environment/code","manage_join_by_code_controller": JoinByCode.as_view("manage_join_by_code_api"),
     "manage_search_environment":"/api/v01/environment/manage/search","manage_search_controller": SearchManage.as_view("manage_search_api"),
     "manage_send_email_environment":"/api/v01/environment/manage/send","manage_send_email_controller": SendMailCollaborators.as_view("manage_send_email_api"),
+    "manage_change_status_environment":"/api/v01/environment/manage/status","manage_change_status_controller": ChangeStatus.as_view("manage_change_status_api"),
 }
 
 

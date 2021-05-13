@@ -18,6 +18,12 @@ app.add_url_rule(users["recover_password_user"], view_func=users["recover_passwo
 app.add_url_rule(users["modification_password_user"], view_func=users["modification_password"])
 app.add_url_rule(users["authorization_user"], view_func=users["authorization_user_controller"])
 
+    #-profile
+app.add_url_rule(users["editProfile_user"], view_func=users["editprofile_user_controller"])
+app.add_url_rule(users["profile_img"], view_func=users["profile_img_controller"])
+app.add_url_rule(users["profile_name"], view_func=users["profile_name_controller"])
+app.add_url_rule(users["profile_change_password"], view_func=users["profile_change_password_controller"])
+
 # work_environment
 app.add_url_rule(environment["create_environment"], view_func=environment["create_environment_controller"])
 app.add_url_rule(environment["show_environment"], view_func=environment["show_environment_controller"])
@@ -29,6 +35,7 @@ app.add_url_rule(environment["manage_users_remove_environment"], view_func=envir
 app.add_url_rule(environment["manage_join_by_code_environment"], view_func=environment["manage_join_by_code_controller"])
 app.add_url_rule(environment["manage_search_environment"], view_func=environment["manage_search_controller"])
 app.add_url_rule(environment["manage_send_email_environment"], view_func=environment["manage_send_email_controller"])
+app.add_url_rule(environment["manage_change_status_environment"], view_func=environment["manage_change_status_controller"])
 
 #divice
 """app.add_url_rule(device["device_add"], view_func=device["device_add_controllers"])"""

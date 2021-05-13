@@ -97,10 +97,7 @@ def RecuperarContrasena(email,code):
     msg['Subject'] = 'Prueba'
     servidor.sendmail(msg['From'] , msg['To'], msg.as_string())
 
-def SendMailToCollaborators(email):
-    nombre = "Luis"
-    apellido = "Eduardo"
-
+def SendMailToCollaborators(email,env,owner):
     ccs = random.randint(1000000,9999999)
     proveedor_correo = 'smtp.gmail.com: 587'
     remitente = 'codegroup787@gmail.com'
@@ -142,9 +139,9 @@ def SendMailToCollaborators(email):
                 <tr>
                     <td style="padding: 0px 0px 30px 0px; background-color: #FFF;">
                         <div>
-                            <p style="padding-bottom: 10px; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Roboto', sans-serif;">Bienvenido a nuestro aplicativo web señor(a) <span style="color: red;">(nombre)</span>, solo hace falta 1 paso más para completar su registro, ese único paso es oprimir el botón que se encuentra en la parte inferior, el cual lo redireccionará a nuestro aplicativo para que usted pueda ingresar exitosamente y hacer uso de él.</p>
+                            <p style="padding-bottom: 10px; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Roboto', sans-serif;">Hola, un usuario de nuestro aplicativo web lo invitó a formar parte de un equipo de trabajo llamado {env[0][0]} para que ejecute una labor de colaborador, si desea aceptar solo tiene que oprimir el botón "ingresar".</p>
                             <br>
-                            <a href="https://www.youtube.com/" style="text-decoration: none; border-radius: 5px; box-shadow: 3px 3px rgb(0, 0, 0); font-size: 23px; font-weight: 600; padding: 10px 20px; color: #FFF; background-color: rgb(31, 31, 31); color: #FFF; font-family: 'Chivo', sans-serif;">Verificar</a>
+                            <a href="http://localhost:4200/environment/join/{env[0][1]}" style="text-decoration: none; border-radius: 5px; box-shadow: 3px 3px rgb(0, 0, 0); font-size: 23px; font-weight: 600; padding: 10px 20px; color: #FFF; background-color: rgb(31, 31, 31); color: #FFF; font-family: 'Chivo', sans-serif;">Ingresar</a>
                         </div>
                     </td>
                 </tr>

@@ -1,0 +1,317 @@
+<app-navbar></app-navbar>
+
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Mi tablero</span></a>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Historial</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Administrador
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                    aria-expanded="true" aria-controls="collapseTwo2">
+                    <span>Factura</span>
+                </a>
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="#">Editar</a>
+                        <a class="collapse-item" href="#">Ver plantilla</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Nose</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Nose</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <h4>Code Group Company S.A.S</h4>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - User Information 
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Opciones</span>
+                                
+                            </a>
+             
+                            
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    -->
+                        
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+                
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+                        <h1 class="h3 mb-0 text-gray-800">Agregar Dispositivo</h1>
+                        <div class="row">
+                            <div class="col-xl-4 col-md-4 mb-2">
+                                <button type="button" class="btn btn-warning">
+                                    Pendientes <span class="badge badge-light">9</span>
+                                    <span class="sr-only">unread messages</span>
+                                  </button>
+                            </div>
+                            <div class="col-xl-3 col-md-4 mb-2">
+                                <button type="button" class="btn btn-primary">
+                                    En_Curso <span class="badge badge-light">9</span>
+                                    <span class="sr-only">unread messages</span>
+                                  </button>
+                            </div>
+                            <div class="col-xl-1 col-md-3 mb-2">
+                                <button type="button" class="btn btn-success">
+                                    Finalizados <span class="badge badge-light">9</span>
+                                    <span class="sr-only">unread messages</span>
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- AQUI -->
+                      <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="accordion" class="checkout">
+                                    <div class="panel checkout-step">
+                                        <div> <span class="checkout-step-number">1</span>
+                                            <h4 class="checkout-step-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > Consultar cliente </a></h4>
+                                        </div>
+                                        <div id="collapseOne" class="collapse in">
+                                            <div class="checkout-step-body">
+                                                <p>Ingrese el documento de identidad del cliente para verificar si se encuentra registrado en el sistema</p>
+                                                <div class="row">
+                                                    <div class="col-lg-8">
+                                                        <div class="checkout-login">
+                                                            <form>
+                                                                <div>
+                                                                    <input type="text" class="form-control" placeholder="Documento de identidad">
+                                                                </div>
+                                                                <br>
+                                                                <button type="button" class="btn btn-primary">Consultar</button>
+                                                                <button type="button" class="btn btn-info" style="margin-left: 10px;">Registar Cliente</button>
+                                                                <a class="btn btn-default " role="button" data-toggle="collapse" href="#otp-verifaction">Next</a>
+                                                                <!-- add class disabled to inactive button -->
+                                                            </form>
+                                                        </div>
+                                                        <!-- /input-group -->
+                                                    </div>
+                                                    <!-- /.col-lg-6 -->
+                                                </div>
+                                                <div class="collapse" id="otp-verifaction">
+                                                    <div class="otp-verifaction">
+                                                        <div class="row">
+                                                            <div class="col-lg-8">
+                                                                <div class="row">
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-12 control-label sr-only" for="Phone">Phone</label>
+                                                                        <div class="col-md-3">
+                                                                            <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                                                        </div>
+                                                                        <div class="col-md-3 ">
+                                                                            <input id="number" name="number" type="text" placeholder="0" class="form-control input-md" required="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Button -->
+                                                                    <div class="form-group">
+                                                                        <label class="control-label sr-only" for="next">next</label>
+                                                                        <div class="col-md-12">
+                                                                            <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Next</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel checkout-step">
+                                        <div role="tab" id="headingTwo"> <span class="checkout-step-number">2</span>
+                                            <h4 class="checkout-step-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > Registar cliente </a> </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="checkout-step-body">
+                                                <div class="checout-address-step">
+                                                    <div class="row">
+                                                        <form class="">
+                                                            
+                                                            <!-- Text input-->
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    <label class="control-label" for="name">Nombre completo</label>
+                                                                    <input id="name" name="name" type="text" placeholder="Nombre" class="form-control input-md" required="">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Text input-->
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label" for="flat">Documento de identidad</label>
+                                                                <div class="col-md-12">
+                                                                    <input id="flat" name="flat" type="text" placeholder="CC" class="form-control input-md" required="">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Text input-->
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label" for="street">Telefono</label>
+                                                                <div class="col-md-12">
+                                                                    <input id="street" name="street" type="text" placeholder="Telefono" class="form-control input-md">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Text input-->
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label" for="Locality">Correo Electronico</label>
+                                                                <div class="col-md-12">
+                                                                    <input id="Locality" name="Locality" type="text" placeholder="Correo" class="form-control input-md" required="">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Button -->
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Registar</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <a class="collapsed btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Next </a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+            <!-- Footer 
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+<app-footer></app-footer>

@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
             this.auth.login(response.token);
             this.auth.setNameUser(response.name);
             this.auth.setSurnameUser(response.surname);
+            this.auth.setImg(response.img);
             this.spinner = true;
             this.route.navigate( ['/environments']);
           }else{

@@ -26,6 +26,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ProfileComponent } from './profile/profile.component';
 import { AddUsersEnvironmentComponent } from './add-users-environment/add-users-environment.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { EnvironmentsComponent } from './environments/environments.component';
+import { AddDevicesComponent } from './add-devices/add-devices.component';
+import { JoinEnvironmentComponent } from './join-environment/join-environment.component';
 
 
 const config = {
@@ -55,6 +58,9 @@ const config = {
     ProfileComponent,
     AddUsersEnvironmentComponent,
     AboutUsComponent,
+    EnvironmentsComponent,
+    AddDevicesComponent,
+    JoinEnvironmentComponent,
   ],
   imports: [
     BrowserModule,

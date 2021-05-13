@@ -1,3 +1,4 @@
+from MySQLdb import connections
 from models import Conexion
 from datetime import datetime
 import random
@@ -9,6 +10,7 @@ class Environment:
         self.img = ''
         self.key_code = ''
         self.created_by = ''
+        self.state = 0
     
     def create(self):
         now = datetime.now()
@@ -47,10 +49,10 @@ class Environment:
     def manega_users_show(self):
         data = {}
         data['manage'] = []
-        consult = Conexion.search("select u.name,b.* from users u, environments e, bridge b where  b.id_user = u.id and e.id = b.id_environments and e.id = %s",[self.id])
+        consult = Conexion.search("select u.name, u.img, b.* from users u, environments e, bridge b where  b.id_user = u.id and e.id = b.id_environments and e.id = %s",[self.id])
         if(consult):
             for i in consult:
-                data['manage'].append({'name':i[0],'id':i[1],'v_admin':i[4],'linking_date':format(i[5]),'state':i[6]})
+                data['manage'].append({'name':i[0],"img":i[1] ,'id':i[2],'v_admin':i[5],'linking_date':format(i[6]),'state':i[7]})
             return data['manage']
         else:
             return None
@@ -95,4 +97,14 @@ class Environment:
                         break
         return data['manage']
 
-
+    def manage_consult_environments(self,env):
+        consult = Conexion.search("select name, key_code from environments where id = %s",[env])
+        return consult
+    
+    def manage_consult_owner(self,own):
+        consult = Conexion.search("select name from users where id = %s",[own])
+        return consult[0][0]
+    
+    def manage_change_status(self):
+        update = Conexion.Add("update bridge set state = %s where id = %s",[self.state,self.id])
+        return None
