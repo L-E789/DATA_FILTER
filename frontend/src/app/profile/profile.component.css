@@ -49,14 +49,31 @@ div.container.profile {
     max-width: 200px;
   }
   
-  div.avatar-bg {
-    background: url(https://www.gravatar.com/avatar/1234566?size=200&d=mm);
-    background-position: 50% 50%;
-    height: 200px;
-    width: 200px;
-    background-size: cover;
-    border-radius: 50%;
-    margin-left: calc(50% - 100px);
-  }
   
-  
+h2{
+  font-size: 40px;
+}
+
+#save {
+  margin-top: -25px;
+}
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #000000;
+}
+
+.svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}

@@ -23,6 +23,9 @@ export class AuthService {
 
   logout() : void {
     localStorage.removeItem('token');
+    localStorage.removeItem('NameUser');
+    localStorage.removeItem('SurnameUser');
+    localStorage.removeItem('Img');
     this.isLogin.next(false);
   }
 
@@ -40,6 +43,14 @@ export class AuthService {
 
   getSurnameUser() : string {
     return localStorage.getItem('SurnameUser');
+  }
+
+  setImg(user:string) : void {
+    localStorage.setItem('Img', user);
+  }
+
+  getImg(): string{
+    return localStorage.getItem('Img');
   }
 
   constructor() { }

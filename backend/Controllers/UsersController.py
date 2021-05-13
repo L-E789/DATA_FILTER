@@ -97,8 +97,56 @@ class Login(MethodView):
             nombres = respuesta[0][1]
             if bcrypt.checkpw(password, password_db):
                 encoded_jwt = jwt.encode({'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=10000), 'id':respuesta[0][0] ,'email': respuesta[0][3]}, KEY_TOKEN_AUTH , algorithm='HS256')
-                return jsonify({"Status": "Login exitoso", "token": str(encoded_jwt),'name': respuesta[0][1], 'surname': respuesta[0][2], 'activated': respuesta[0][6]})  
+                return jsonify({"Status": "Login exitoso", "token": str(encoded_jwt),'name': respuesta[0][1], 'img': respuesta[0][5] ,'surname': respuesta[0][2], 'activated': respuesta[0][6]})  
             return jsonify({"Status": "Login incorrecto 22"}), 400
         else:
             return jsonify({"Status": "Login incorrecto 11"}), 500
+
+
+#--------------------------profile--------------------------------------------------------------------------------
+
+class profileedis(MethodView):
+    def get(self, id):
+        profile = users()
+        profile.id = int(id)
+        answer = profile.bring_profile()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(),400
+
+class ModifyImg(MethodView):
+    def post(self):
+        profile = users()
+        content = request.get_json()
+        profile.id = int(content.get("user"))
+        profile.img = content.get("img")
+        answer = profile.save_picture()
+        return jsonify({'img':profile.img}), 200
+
+class ModifyName(MethodView):
+    def post(self):
+        profile = users()
+        content = request.get_json()
+        profile.id = int(content.get("id"))
+        profile.name = content.get("name")
+        profile.surname = content.get("surname")
+        answer = profile.edit_name()
+        return jsonify({'name':profile.name,'surname':profile.surname}), 200
+
+class ChangePassword(MethodView):
+    def post(self):
+        profile = users()
+        content = request.get_json()
+        password = content.get('password')
+        validatepassword = content.get('validatepassword')
+        if(password == validatepassword):
+            salt = bcrypt.gensalt()
+            profile.password = bcrypt.hashpw(bytes(str(password), encoding= 'utf-8'), salt)
+            profile.id = content.get('id')
+            answer = profile.change_password()
+            return jsonify(), 200
+        else:
+            return jsonify(), 400
+        
+
     

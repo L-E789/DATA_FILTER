@@ -101,13 +101,25 @@ class SendMailCollaborators(MethodView):
         content = request.get_json()
         users = content.get('users')
         environment = content.get('environment')
+        owner = content.get("owner")
         if(users != ['','','']):
             answer = environ.manage_search_email(users)
             if(answer):
+                env = environ.manage_consult_environments(environment)
+                own = environ.manage_consult_owner(owner)
                 for i in answer:
-                    SendMailToCollaborators(i)
+                    SendMailToCollaborators(i,env,own)
                 return jsonify(answer), 200
             else:
                 return jsonify({"status":100}), 200
         else:
             return jsonify(), 400
+
+class ChangeStatus(MethodView):
+    def post(self):
+        environ = Environment()
+        content = request.get_json()
+        environ.id = int(content.get("id"))
+        environ.state = int(content.get("state"))
+        answer = environ.manage_change_status()
+        return jsonify(), 200

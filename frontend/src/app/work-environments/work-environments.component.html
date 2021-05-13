@@ -14,6 +14,7 @@
                         <div class="form-group mt-3 pt-3 mb-5">
                             <input type="text" class="form-control" formControlName='name' autocomplete="off" id="formGroupExampleInput2" placeholder="Nombre del entorno">
                             <br>
+                            <p><small class="para">Imagen del entorno</small></p>
                             <input type="file"  accept=".png, .jpg"  (change)='onUpload($event)' class="form-control" id="exampleFormControlFile1">
                             <br>
                             <ng-container *ngIf="urlImage | async; else btnDisable">
@@ -41,7 +42,7 @@
                           <div class="col-12">
                               <div class="row no-gutters">
                                   <div class="col-lg-11 col-md-4 col-sm-12 p-0">
-                                      <input type="text" placeholder="Buscar..." class="form-control" formControlName='search' id="search" autocomplete="off" name="search">
+                                      <input type="text" placeholder="Buscar por nombre..." class="form-control" formControlName='search' id="search" autocomplete="off" name="search">
                                   </div>
                                   <div class="col-lg-1 col-md-3 col-sm-12 p-0">
                                       <button type="submit" class="btn btn-base">

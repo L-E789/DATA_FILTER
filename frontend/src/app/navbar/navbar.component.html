@@ -23,10 +23,10 @@
               <div  *ngIf="auth.isLoggedIn() | async" class="login" style="color: rgb(255,255,255); margin-right: 15px;">
                 <a> {{auth.getNameUser()}} {{auth.getSurnameUser()}}</a>
               </div>
-            <div *ngIf="auth.isLoggedIn() | async" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(255,255,255);"><img class="rounded-circle" style="width: 30px;height: 30px;" src="https://cdn.pixabay.com/photo/2021/04/03/02/21/fashion-6146328_960_720.jpg"></a>
+            <div *ngIf="auth.isLoggedIn() | async" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(255,255,255);"><img class="rounded-circle" style="width: 30px;height: 30px;" src={{auth.getImg()}}></a>
                 <div
                     class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Editar perfil</a>
+                    <a class="dropdown-item" href="/profile">Perfil</a>
                     <a class="dropdown-item" href="#">Second Item</a>
                     <a class="dropdown-item" [routerLink]="['/']" (click)="auth.logout()">Salir</a></div>
                 </div>
