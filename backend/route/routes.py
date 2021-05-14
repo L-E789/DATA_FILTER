@@ -1,8 +1,6 @@
 from Controllers.UsersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword, profileedis, ChangePassword, ModifyImg, ModifyName
 
-from Controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators, ChangeStatus
-
-from Controllers.DispositivosController import add_dis
+from Controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators, ChangeStatus, Main_bringEnvironmentData, Main_RegisterClient, Main_ConsultClient
 
 from Controllers.authenticationController import AuthorizationControllers
 
@@ -34,8 +32,12 @@ environment = {
     "manage_change_status_environment":"/api/v01/environment/manage/status","manage_change_status_controller": ChangeStatus.as_view("manage_change_status_api"),
 }
 
+main = {
+    "environment_main":"/api/v01/environment/main/<id>","environment_main_controller": Main_bringEnvironmentData.as_view("main_api"),
+    "register_client_main":"/api/v01/environment/main/registerclient","main_register_client_controller": Main_RegisterClient.as_view("main_register_client_api"),
+    "consult_client_main":"/api/v01/environment/main/consultclient","main_consult_client_controller": Main_ConsultClient.as_view("main_consult_client_api"),
 
-
-device = {
-    "device_add":"/api/v01/create","device_add_controllers": add_dis.as_view("device_api")
 }
+
+
+

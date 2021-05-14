@@ -30,6 +30,7 @@ class Environment:
             return None
 
     def remove(self):
+        deleteClient = Conexion.Add("delete from clients where enviroment = %s",[self.id])
         delete = Conexion.Add("delete from bridge where id_environments = %s",[self.id])
         deleteEnv = Conexion.Add("delete from environments where id = %s",[self.id])
     
@@ -107,4 +108,29 @@ class Environment:
     
     def manage_change_status(self):
         update = Conexion.Add("update bridge set state = %s where id = %s",[self.state,self.id])
+        return None
+
+    # ----------------------------------- main ----------------------------------
+
+    def main_bring_data(self):
+        data = {}
+        data['main'] = []
+        consult = Conexion.search("select name from environments where id = %s",[self.id])
+        if(consult):
+            for i in consult:
+                data['main'].append({'name':i[0]})
+        return data['main']
+    
+    def main_register_client(self,identification,env,name,surname,email,phone,address):
+        create = Conexion.Add('insert into clients (identification,enviroment,name,surname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s)',[identification,env,name,surname,email,phone,address])
+        return None
+
+    def main_client_consult(self,consult,id_user,env):
+        data = {}
+        data['main'] = []
+        consult = Conexion.search('select identification,name,surname from clients where identification = %s and enviroment =%s',[consult,env])
+        if(consult):
+            for i in consult:
+                 data['main'].append({'consult':i[0],'name':i[1],'surname':i[2]})
+            return data['main']
         return None

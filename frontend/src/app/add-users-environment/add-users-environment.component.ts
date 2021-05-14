@@ -119,9 +119,10 @@ export class AddUsersEnvironmentComponent implements OnInit {
       }
       this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/manage/send`, data).subscribe(
         (Response : any) => {
-          console.log(Response);
           if(Response.status == 100){
             this.toastr.error("El correo ingresado no se encuentra registrado")
+          }else{
+            this.toastr.success(Response.users,"Correos enviados a:");
           }
         },(error) => {
           this.toastr.warning("Ingrese un correo")

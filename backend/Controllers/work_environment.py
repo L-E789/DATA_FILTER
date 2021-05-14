@@ -109,7 +109,7 @@ class SendMailCollaborators(MethodView):
                 own = environ.manage_consult_owner(owner)
                 for i in answer:
                     SendMailToCollaborators(i,env,own)
-                return jsonify(answer), 200
+                return jsonify({"status":200,'users':answer}), 200
             else:
                 return jsonify({"status":100}), 200
         else:
@@ -123,3 +123,38 @@ class ChangeStatus(MethodView):
         environ.state = int(content.get("state"))
         answer = environ.manage_change_status()
         return jsonify(), 200
+
+# --------------------------- main ---------------------------------------
+
+class Main_bringEnvironmentData(MethodView):
+    def get(self,id):
+        main = Environment()
+        main.id = int(id)
+        answer = main.main_bring_data()
+        return jsonify(answer), 200
+
+class Main_RegisterClient(MethodView):
+    def post(self):
+        main = Environment()
+        content = request.get_json()
+        name = content.get('name')
+        surname = content.get('surname')
+        identification = content.get('identification')
+        phone = content.get('phone')
+        email = content.get('email')
+        address = content.get('address')
+        env = content.get('environment')
+        answer = main.main_register_client(identification,env,name,surname,email,phone,address)
+        return jsonify(), 200
+
+class Main_ConsultClient(MethodView):
+    def post(self):
+        main = Environment()
+        content = request.get_json()
+        consult = content.get("consult")
+        id_user = content.get("id_user")
+        env = int(content.get("environment"))
+        answer = main.main_client_consult(consult,id_user,env)
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400

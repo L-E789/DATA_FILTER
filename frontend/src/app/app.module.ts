@@ -29,6 +29,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { EnvironmentsComponent } from './environments/environments.component';
 import { AddDevicesComponent } from './add-devices/add-devices.component';
 import { JoinEnvironmentComponent } from './join-environment/join-environment.component';
+import { RegisterClientsComponent } from './register-clients/register-clients.component';
 
 
 const config = {
@@ -61,6 +62,7 @@ const config = {
     EnvironmentsComponent,
     AddDevicesComponent,
     JoinEnvironmentComponent,
+    RegisterClientsComponent,
   ],
   imports: [
     BrowserModule,

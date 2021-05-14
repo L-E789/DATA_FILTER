@@ -37,8 +37,10 @@ app.add_url_rule(environment["manage_search_environment"], view_func=environment
 app.add_url_rule(environment["manage_send_email_environment"], view_func=environment["manage_send_email_controller"])
 app.add_url_rule(environment["manage_change_status_environment"], view_func=environment["manage_change_status_controller"])
 
-#divice
-"""app.add_url_rule(device["device_add"], view_func=device["device_add_controllers"])"""
+# Main_environment
+app.add_url_rule(main["environment_main"], view_func=main["environment_main_controller"])
+app.add_url_rule(main["register_client_main"], view_func=main["main_register_client_controller"])
+app.add_url_rule(main["consult_client_main"], view_func=main["main_consult_client_controller"])
 
 
 if __name__ == "__main__":
