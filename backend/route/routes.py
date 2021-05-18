@@ -1,8 +1,8 @@
-from Controllers.UsersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword, profileedis, ChangePassword, ModifyImg, ModifyName
+from controllers.UsersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword, profileedis, ChangePassword, ModifyImg, ModifyName
 
-from Controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators, ChangeStatus, Main_bringEnvironmentData, Main_RegisterClient, Main_ConsultClient
+from controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators, ChangeStatus, Main_bringEnvironmentData, Main_RegisterClient, Main_ConsultClient
 
-from Controllers.authenticationController import AuthorizationControllers
+from controllers.authenticationController import AuthorizationControllers
 
 from Controllers.deviceController import createdevice,editdevice,changestatus,deletedevice
 

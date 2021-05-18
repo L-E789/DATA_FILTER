@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-from models.Conexion import *
+from models.conexion import *
 
 from route.routes import *
 

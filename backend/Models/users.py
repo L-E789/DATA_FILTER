@@ -1,4 +1,4 @@
-from models import Conexion
+from models import conexion
 from datetime import timedelta, date, datetime
 
 class users:
@@ -14,31 +14,31 @@ class users:
         self.code = ''
 
     def create_user(self):
-        respuesta = Conexion.Add("insert into users (name,surname,email,password,img,activated,code) values (%s,%s,%s,%s,%s,%s,%s);",[self.name,self.surname,self.email,self.password,"https://firebasestorage.googleapis.com/v0/b/datafilter-32b92.appspot.com/o/profile%2Fpngegg.png?alt=media&token=3f31a154-ef66-487c-abfd-962b3c349e88",0,self.code])
+        respuesta = conexion.Add("insert into users (name,surname,email,password,img,activated,code) values (%s,%s,%s,%s,%s,%s,%s);",[self.name,self.surname,self.email,self.password,"https://firebasestorage.googleapis.com/v0/b/datafilter-32b92.appspot.com/o/profile%2Fpngegg.png?alt=media&token=3f31a154-ef66-487c-abfd-962b3c349e88",0,self.code])
 
     def get_user(self):
-        respuesta = Conexion.search("select * from users where email = %s ",[self.email])
+        respuesta = conexion.search("select * from users where email = %s ",[self.email])
         if(respuesta):
             return respuesta
         else:
             return None
     
     def activated_account(self):
-        respuesta = Conexion.Add('update users set activated = %s where code = %s',[self.activated, self.code])
+        respuesta = conexion.Add('update users set activated = %s where code = %s',[self.activated, self.code])
     
 
     def send_email_recover(self):
-        respuesta = Conexion.search('select name,email from users where email = %s',[self.email])
+        respuesta = conexion.search('select name,email from users where email = %s',[self.email])
         if respuesta:
             for i in respuesta:
                 now = datetime.now() + timedelta(hours=24)
-                resp = Conexion.Add('update users set code=%s, recovery_date= %s where email = %s',[self.code,now,self.email])
+                resp = conexion.Add('update users set code=%s, recovery_date= %s where email = %s',[self.code,now,self.email])
                 return i[0]
         else:
             return None
     
     def check_code(self):
-        respuesta = Conexion.search('select code, recovery_date from users where code = %s',[self.code])
+        respuesta = conexion.search('select code, recovery_date from users where code = %s',[self.code])
         if respuesta:
             for i in respuesta:
                 now = datetime.now()
@@ -51,7 +51,7 @@ class users:
     
     def modification_pass(self):
         now = datetime.now()
-        respuesta = Conexion.Add('update users set password = %s, recovery_date = %s where code = %s',[self.password,now,self.code])
+        respuesta = conexion.Add('update users set password = %s, recovery_date = %s where code = %s',[self.password,now,self.code])
         if respuesta:
             return 'Ok'
 
@@ -59,7 +59,7 @@ class users:
     def bring_profile(self):
         data = {}
         data['profile'] = []
-        consult = Conexion.search('select name, surname, email, img from users where id = %s',[self.id])
+        consult = conexion.search('select name, surname, email, img from users where id = %s',[self.id])
         if(consult):
             for i in consult:
                 data['profile'].append({'name':i[0],'surname':i[1],'email':i[2], 'img':i[3]})
@@ -68,16 +68,16 @@ class users:
             return None
 
     def save_picture(self):
-        update = Conexion.Add("update users set img = %s where id = %s",[self.img,self.id])
+        update = conexion.Add("update users set img = %s where id = %s",[self.img,self.id])
         return 'Ok'
 
 
     def edit_name(self):
-        update = Conexion.Add('update users set name = %s, surname = %s where id = %s',[self.name,self.surname,self.id])
+        update = conexion.Add('update users set name = %s, surname = %s where id = %s',[self.name,self.surname,self.id])
         if update:
             return 'Ok'
 
     def change_password(self):
-        update = Conexion.Add('update users set password = %s where id = %s',[self.password,self.id])
+        update = conexion.Add('update users set password = %s where id = %s',[self.password,self.id])
         if update:
             return 'Ok'
