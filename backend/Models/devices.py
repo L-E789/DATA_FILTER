@@ -49,3 +49,16 @@ class device:
         cmm = conexion.Add("delete from Devices where id = %s",[self.id])
         if cmm:
             return 'Ok'
+
+
+    def show_pending(self):
+        data = {}
+        data['device'] = []
+        cmm = conexion.Add("select id,gear,standard,serial,Purchase_Date,props,status from Devices where enviroment = %s and status = 1",[self.enviroment])
+        if(cmm):
+            for i in cmm:
+                data['device'].append({'id':i[0],'gear':i[1],'standard':i[2],'serial':i[3],'Purchase_Date':format(i[4]),'props':i[5],'status':i[6]})
+            return data['device']
+        else:
+            return None
+
