@@ -1,4 +1,4 @@
-from models.Usuarios import *
+from models.users import *
 from flask.views import MethodView
 from flask import jsonify, request
 from config import KEY_TOKEN_AUTH
