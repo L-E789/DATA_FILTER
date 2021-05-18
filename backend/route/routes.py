@@ -4,7 +4,12 @@ from controllers.work_environment import CreateEnvironment, ShowEnvironment, Rem
 
 from controllers.authenticationController import AuthorizationControllers
 
-from Controllers.deviceController import createdevice,editdevice,changestatus,deletedevice
+from controllers.deviceController import createdevice,editdevice,changestatus,deletedevice
+
+from controllers.clientController import createclient,editclient,searchclient,deleteclient
+
+
+
 
 
 users = {
@@ -48,3 +53,9 @@ device = {
 }
 
 
+client = {
+    "client_add":"/api/v01/create/client","client_add_controllers": createclient.as_view("client_add_api"),
+    "client_edit":"/api/v01/client","client_controllers": editclient.as_view("client_api"),
+    "client_delete":"/api/v01/delete/client","client_delete_controllers": deleteclient.as_view("client_delete_api"),
+    "client_search":"/api/v01/search/client","client_search_controllers": searchclient.as_view("client_search_api"),
+}
