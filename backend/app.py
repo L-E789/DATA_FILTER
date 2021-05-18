@@ -42,6 +42,11 @@ app.add_url_rule(main["environment_main"], view_func=main["environment_main_cont
 app.add_url_rule(main["register_client_main"], view_func=main["main_register_client_controller"])
 app.add_url_rule(main["consult_client_main"], view_func=main["main_consult_client_controller"])
 
+#divice
+app.add_url_rule(device["device_add"], view_func=device["device_add_controllers"])
+app.add_url_rule(device["device_edit"], view_func=device["device_edit_controllers"])
+app.add_url_rule(device["device_delete"], view_func=device["device_delete_controllers"])
+app.add_url_rule(device["device_status"], view_func=device["device_status_controllers"])
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
