@@ -4,6 +4,8 @@ from controllers.work_environment import CreateEnvironment, ShowEnvironment, Rem
 
 from controllers.authenticationController import AuthorizationControllers
 
+from Controllers.deviceController import createdevice,editdevice,changestatus,deletedevice
+
 
 users = {
     "create_user":"/api/v01/register","create_user_controllers": Register.as_view("create_api"),
@@ -36,8 +38,13 @@ main = {
     "environment_main":"/api/v01/environment/main/<id>","environment_main_controller": Main_bringEnvironmentData.as_view("main_api"),
     "register_client_main":"/api/v01/environment/main/registerclient","main_register_client_controller": Main_RegisterClient.as_view("main_register_client_api"),
     "consult_client_main":"/api/v01/environment/main/consultclient","main_consult_client_controller": Main_ConsultClient.as_view("main_consult_client_api"),
-
 }
 
+device = {
+    "device_add":"/api/v01/create/device","device_add_controllers": createdevice.as_view("device_add_api"),
+    "device_edit":"/api/v01/edit/device","device_edit_controllers": editdevice.as_view("device_edit_api"),
+    "device_delete":"/api/v01/delete/device","device_delete_controllers": deletedevice.as_view("device_delete_api"),
+    "device_status":"/api/v01/status/device","device_status_controllers": changestatus.as_view("device_staus_api"),
+}
 
 
