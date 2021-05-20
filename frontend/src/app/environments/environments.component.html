@@ -38,17 +38,22 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <span>Factura</span>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Informe</span></a>
+
+                <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <span>Factura</span>
                 </a>
                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="#">Editar</a>
-                        <a class="collapse-item" href="#">Ver plantilla</a>
-                    </div>
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Opciones:</h6>
+                    <a class="collapse-item" href="#">Editar</a>
+                    <a class="collapse-item" href="#">Ver plantilla</a>
                 </div>
+            </div>
+
             </li>
 
             <!-- Nav Item - Charts 
@@ -147,13 +152,13 @@
                                   </button>
                             </div>
                             <div class="col-xl-3 col-md-4 mb-2">
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary" (click)="progressDevices()">
                                     En_Curso <span class="badge badge-light">9</span>
                                     <span class="sr-only">unread messages</span>
                                   </button>
                             </div>
                             <div class="col-xl-1 col-md-3 mb-2">
-                                <button type="button" class="btn btn-success">
+                                <button type="button" class="btn btn-success" (click)="finishedDivices()">
                                     Finalizados <span class="badge badge-light">9</span>
                                     <span class="sr-only">unread messages</span>
                                   </button>
@@ -178,6 +183,9 @@
                     <app-add-devices *ngIf="btnregisterdevice"></app-add-devices>
                     <app-register-clients *ngIf="btnregisterclient"></app-register-clients>
                     <app-pending-devices *ngIf="btnpending"></app-pending-devices>
+                    <app-devices-in-progress *ngIf="btnprogress"></app-devices-in-progress>
+                    <app-finished-divices *ngIf="btnfinished" ></app-finished-divices>
+                    <app-customer-history></app-customer-history>
                       <!-- AQUI -->
 
             <!-- Footer 

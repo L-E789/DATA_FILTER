@@ -21,6 +21,9 @@ export class EnvironmentsComponent implements OnInit {
   btnregisterclient : boolean = false;
   mydashboard : boolean = false;
   btnpending : boolean = false;
+  btnprogress : boolean = false;
+  btnfinished : boolean = false;
+
   date_environment;
 
   constructor(
@@ -34,6 +37,7 @@ export class EnvironmentsComponent implements OnInit {
 
 
   mydashboardv(){
+    this.btnfinished = false;
     this.btnpending = false;
     this.mydashboard = false;
     this.btnregisterclient = false;
@@ -42,6 +46,8 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   registerdevice(){
+    this.btnfinished = false;
+    this.btnprogress = false;
     this.btnpending = false;
     this.mydashboard = false;
     this.btnregisterclient = false;
@@ -49,6 +55,8 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   registerclient(){
+    this.btnfinished = false;
+    this.btnprogress = false;
     this.btnpending = false;
     this.mydashboard = false;
     this.btnregisterdevice = false;
@@ -56,10 +64,30 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   pendingDevices(){
+    this.btnfinished = false;
+    this.btnprogress = false;
     this.mydashboard = false;
     this.btnregisterdevice = false;
     this.btnregisterclient = false;
     this.btnpending = true
+  }
+
+  progressDevices(){
+    this.btnfinished = false;
+    this.mydashboard = false;
+    this.btnpending = false;
+    this.btnregisterdevice = false;
+    this.btnregisterclient = false;
+    this.btnprogress = true;
+  }
+
+  finishedDivices(){
+    this.btnprogress = false;
+    this.mydashboard = false;
+    this.btnpending = false;
+    this.btnregisterdevice = false;
+    this.btnregisterclient = false;
+    this.btnfinished = true;
   }
   
   

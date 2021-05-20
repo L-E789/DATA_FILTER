@@ -32,6 +32,9 @@ import { JoinEnvironmentComponent } from './join-environment/join-environment.co
 import { RegisterClientsComponent } from './register-clients/register-clients.component';
 import { PendingDevicesComponent } from './pending-devices/pending-devices.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { CustomerHistoryComponent } from './customer-history/customer-history.component';
+import { FinishedDivicesComponent } from './finished-divices/finished-divices.component';
+import { DevicesInProgressComponent } from './devices-in-progress/devices-in-progress.component';
 
 
 const config = {
@@ -67,6 +70,9 @@ const config = {
     RegisterClientsComponent,
     PendingDevicesComponent,
     InvoiceComponent,
+    CustomerHistoryComponent,
+    FinishedDivicesComponent,
+    DevicesInProgressComponent,
   ],
   imports: [
     BrowserModule,
