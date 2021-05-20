@@ -31,6 +31,7 @@ import { AddDevicesComponent } from './add-devices/add-devices.component';
 import { JoinEnvironmentComponent } from './join-environment/join-environment.component';
 import { RegisterClientsComponent } from './register-clients/register-clients.component';
 import { PendingDevicesComponent } from './pending-devices/pending-devices.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 const config = {
@@ -65,6 +66,7 @@ const config = {
     JoinEnvironmentComponent,
     RegisterClientsComponent,
     PendingDevicesComponent,
+    InvoiceComponent,
   ],
   imports: [
     BrowserModule,
