@@ -52,7 +52,7 @@ export class RegisterClientsComponent implements OnInit {
           this.toastr.success('se agrego el cliente con exito');
           this.form.reset();
         },(error) => {
-          console.log(error);
+          console.warn(error);
         }
       )
     }

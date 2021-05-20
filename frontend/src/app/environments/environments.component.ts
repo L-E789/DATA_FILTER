@@ -15,11 +15,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EnvironmentsComponent implements OnInit {
 
-  
+
   id_environment;
   btnregisterdevice : boolean = false;
   btnregisterclient : boolean = false;
   mydashboard : boolean = false;
+  btnpending : boolean = false;
   date_environment;
 
   constructor(
@@ -33,24 +34,35 @@ export class EnvironmentsComponent implements OnInit {
 
 
   mydashboardv(){
+    this.btnpending = false;
+    this.mydashboard = false;
+    this.btnregisterclient = false;
+    this.btnregisterdevice = false;
     this.mydashboard = true;
   }
 
   registerdevice(){
+    this.btnpending = false;
     this.mydashboard = false;
     this.btnregisterclient = false;
     this.btnregisterdevice = true;
   }
 
   registerclient(){
+    this.btnpending = false;
     this.mydashboard = false;
     this.btnregisterdevice = false;
     this.btnregisterclient = true;
   }
 
-
-
-
+  pendingDevices(){
+    this.mydashboard = false;
+    this.btnregisterdevice = false;
+    this.btnregisterclient = false;
+    this.btnpending = true
+  }
+  
+  
 
   ngOnInit(): void {
     this.routes.paramMap

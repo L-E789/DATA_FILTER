@@ -30,6 +30,7 @@ import { EnvironmentsComponent } from './environments/environments.component';
 import { AddDevicesComponent } from './add-devices/add-devices.component';
 import { JoinEnvironmentComponent } from './join-environment/join-environment.component';
 import { RegisterClientsComponent } from './register-clients/register-clients.component';
+import { PendingDevicesComponent } from './pending-devices/pending-devices.component';
 
 
 const config = {
@@ -63,6 +64,7 @@ const config = {
     AddDevicesComponent,
     JoinEnvironmentComponent,
     RegisterClientsComponent,
+    PendingDevicesComponent,
   ],
   imports: [
     BrowserModule,

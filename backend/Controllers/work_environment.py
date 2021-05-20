@@ -137,13 +137,14 @@ class Main_RegisterClient(MethodView):
     def post(self):
         main = Environment()
         content = request.get_json()
+        print(content)
         name = content.get('name')
         surname = content.get('surname')
         identification = content.get('identification')
         phone = content.get('phone')
         email = content.get('email')
         address = content.get('address')
-        env = content.get('environment')
+        env = int(content.get('environment'))
         answer = main.main_register_client(identification,env,name,surname,email,phone,address)
         return jsonify(), 200
 

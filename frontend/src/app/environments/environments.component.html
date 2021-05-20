@@ -15,7 +15,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/environment/2">
+                <a class="btn nav-link" (click)="mydashboardv()">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Mi tablero</span></a>
             </li>
@@ -141,7 +141,7 @@
                         <h1 class="h3 mb-0 text-gray-800"></h1>
                         <div class="row">
                             <div class="col-xl-4 col-md-4 mb-2">
-                                <button type="button" class="btn btn-warning">
+                                <button type="button" class="btn btn-warning" (click)="pendingDevices()">
                                     Pendientes <span class="badge badge-light">9</span>
                                     <span class="sr-only">unread messages</span>
                                   </button>
@@ -177,7 +177,7 @@
 
                     <app-add-devices *ngIf="btnregisterdevice"></app-add-devices>
                     <app-register-clients *ngIf="btnregisterclient"></app-register-clients>
-                    
+                    <app-pending-devices *ngIf="btnpending"></app-pending-devices>
                       <!-- AQUI -->
 
             <!-- Footer 

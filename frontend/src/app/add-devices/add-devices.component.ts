@@ -31,6 +31,12 @@ export class AddDevicesComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
+  btnCancel(){
+    this.clientdata = '';
+    this.btnnext = false;
+    this.formConsult.reset();
+  }
+
   ngOnInit(): void {
     this.token = jwt_decode(localStorage.getItem('token'));
 
