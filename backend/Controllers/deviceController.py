@@ -62,3 +62,15 @@ class deletedevice(MethodView):
         Dev.id = content.get('id')
         answer = Dev.delete()
         return jsonify(answer), 200
+
+class showpending(MethodView):
+    def get(self):
+        Dev = device()
+        content = request.get_json()
+        Dev.enviroment = content.get('enviroment')
+        answer = Dev.show_pending()
+        if(answer):
+            return jsonify(answer),200
+        else:
+            return jsonify(),400 
+        

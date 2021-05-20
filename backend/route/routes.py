@@ -4,8 +4,9 @@ from controllers.work_environment import CreateEnvironment, ShowEnvironment, Rem
 
 from controllers.authenticationController import AuthorizationControllers
 
-from controllers.deviceController import createdevice,editdevice,changestatus,deletedevice
+from controllers.deviceController import createdevice,editdevice,changestatus,deletedevice, showpending
 
+from controllers.clientController import createclient,searchclient,editclient,deleteclient
 
 users = {
     "create_user":"/api/v01/register","create_user_controllers": Register.as_view("create_api"),
@@ -45,6 +46,13 @@ device = {
     "device_edit":"/api/v01/edit/device","device_edit_controllers": editdevice.as_view("device_edit_api"),
     "device_delete":"/api/v01/delete/device","device_delete_controllers": deletedevice.as_view("device_delete_api"),
     "device_status":"/api/v01/status/device","device_status_controllers": changestatus.as_view("device_staus_api"),
+    "device_pending":"/api/v01/device/pending","device_pending_controllers": showpending.as_view("device_pending_api"),
 }
 
 
+client = {
+    "client_add":"/api/v01/create/client","client_add_controllers": createclient.as_view("client_add_api"),
+    "client_edit":"/api/v01/client","client_controllers": editclient.as_view("client_api"),
+    "client_delete":"/api/v01/delete/client","client_delete_controllers": deleteclient.as_view("client_delete_api"),
+    "client_search":"/api/v01/search/client","client_search_controllers": searchclient.as_view("client_search_api"),
+}

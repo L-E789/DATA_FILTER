@@ -47,6 +47,13 @@ app.add_url_rule(device["device_add"], view_func=device["device_add_controllers"
 app.add_url_rule(device["device_edit"], view_func=device["device_edit_controllers"])
 app.add_url_rule(device["device_delete"], view_func=device["device_delete_controllers"])
 app.add_url_rule(device["device_status"], view_func=device["device_status_controllers"])
+app.add_url_rule(device["device_pending"], view_func=device["device_pending_controllers"])
+
+#client
+app.add_url_rule(client["client_add"], view_func=client["client_add_controllers"])
+app.add_url_rule(client["client_edit"], view_func=client["client_controllers"])
+app.add_url_rule(client["client_delete"], view_func=client["client_delete_controllers"])
+app.add_url_rule(client["client_search"], view_func=client["client_search_controllers"])
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
