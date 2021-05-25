@@ -7,6 +7,8 @@ import {AuthService} from '../service/auth.service';
 import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import jwt_decode from 'jwt-decode'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-environments',
@@ -23,8 +25,12 @@ export class EnvironmentsComponent implements OnInit {
   btnpending : boolean = false;
   btnprogress : boolean = false;
   btnfinished : boolean = false;
+  btnhistory : boolean = false;
+  count;
+  token;
 
   date_environment;
+
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +43,7 @@ export class EnvironmentsComponent implements OnInit {
 
 
   mydashboardv(){
+    this.btnhistory = false;
     this.btnfinished = false;
     this.btnpending = false;
     this.mydashboard = false;
@@ -46,6 +53,7 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   registerdevice(){
+    this.btnhistory = false;
     this.btnfinished = false;
     this.btnprogress = false;
     this.btnpending = false;
@@ -55,6 +63,7 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   registerclient(){
+    this.btnhistory = false;
     this.btnfinished = false;
     this.btnprogress = false;
     this.btnpending = false;
@@ -63,7 +72,9 @@ export class EnvironmentsComponent implements OnInit {
     this.btnregisterclient = true;
   }
 
-  pendingDevices(){
+  public pendingDevices(){
+    this.countDevices();
+    this.btnhistory = false;
     this.btnfinished = false;
     this.btnprogress = false;
     this.mydashboard = false;
@@ -73,6 +84,7 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   progressDevices(){
+    this.btnhistory = false;
     this.btnfinished = false;
     this.mydashboard = false;
     this.btnpending = false;
@@ -82,6 +94,7 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   finishedDivices(){
+    this.btnhistory = false;
     this.btnprogress = false;
     this.mydashboard = false;
     this.btnpending = false;
@@ -89,10 +102,33 @@ export class EnvironmentsComponent implements OnInit {
     this.btnregisterclient = false;
     this.btnfinished = true;
   }
+
   
+ customerHistory(){
+  this.btnprogress = false;
+  this.mydashboard = false;
+  this.btnpending = false;
+  this.btnregisterdevice = false;
+  this.btnregisterclient = false;
+  this.btnhistory = true;
+ }
+
+ countDevices(){
+   let data = {
+     environment :this.id_environment
+   }
+   this.client.postRequest(`${environment.BASE_API_REGISTER}/device/count`, data).subscribe(
+     (Response : any) => {
+       this.count = Response;
+     },(error) => {
+       console.log(error);
+     }
+   )
+ }
   
 
   ngOnInit(): void {
+    this.token = jwt_decode(localStorage.getItem('token'));
     this.routes.paramMap
     .subscribe((params : ParamMap) => {
     let id = + params.get('id');
@@ -102,10 +138,25 @@ export class EnvironmentsComponent implements OnInit {
     if(localStorage.getItem("token")){
       this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
         (response: any) => {
-          this.client.getRequestId(`${environment.BASE_API_REGISTER}/environment/main/` + this.id_environment).subscribe(
+          let data = ({
+            environment : this.id_environment,
+            id_user : this.token.id
+          });
+          this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/main`, data).subscribe(
             (Response : any) => {
-              this.date_environment = Response;
-              this.mydashboardv();
+              console.log(Response);
+              if(Response[0].state == 1){
+                this.date_environment = Response;
+                this.countDevices();
+                this.mydashboardv();
+              }else{
+                Swal.fire({
+                  icon: 'warning',
+                  title: 'Oops...',
+                  text: 'Estás suspendido de este entorno!',
+                })
+                this.route.navigate(['/environments']);
+              }
               localStorage.setItem('environment',this.id_environment);
             },(error) => {
               console.log(error);

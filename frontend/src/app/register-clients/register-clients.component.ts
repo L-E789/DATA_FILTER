@@ -26,17 +26,17 @@ export class RegisterClientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name:[''],
-      surname:[''],
-      identification:[''],
-      phone: [''],
+      name:[ '', Validators.compose([Validators.pattern('^[A-Za-z-ñÑáéíóúÁÉÍÓÚ ]+$'), Validators.required])],
+      surname:['', Validators.compose([Validators.pattern('^[A-Za-z-ñÑáéíóúÁÉÍÓÚ ]+$'),Validators.required])],
+      identification:['', Validators.compose([Validators.pattern('^[0-9]+$'),Validators.required])],
+      phone: ['', Validators.compose([Validators.pattern('^[0-9]+$'),Validators.required, Validators.maxLength(10),])],
       email: ['', Validators.email],
       address: ['']
     });
   }
 
   onSubmit(){
-    if(this.form.valid){
+    if(this.name.valid && this.surname.valid && this.identification.valid){
       let data = ({
         name : this.form.value.name,
         surname : this.form.value.surname,
@@ -46,16 +46,26 @@ export class RegisterClientsComponent implements OnInit {
         address: this.form.value.address,
         environment : localStorage.getItem('environment')
       });
+      
       this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/main/registerclient`, data).subscribe(
         (Response : any) => {
           console.log(Response);
-          this.toastr.success('se agrego el cliente con exito');
+          this.toastr.success('Se agrego el cliente con éxito');
           this.form.reset();
         },(error) => {
           console.warn(error);
         }
       )
+    }else{
+      this.toastr.warning('Verifique que los campos obligatorios contengan información');
     }
   }
+
+  get name(){return this.form.get('name')};
+  get surname(){return this.form.get('surname')};
+  get identification(){return this.form.get('identification')};
+  get email(){return this.form.get('email')}
+  get phone(){return this.form.get('phone')};
+  get address(){return this.form.get('address')};
 
 }

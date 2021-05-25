@@ -24,7 +24,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="btn nav-link" (click)="customerHistory()">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Historial</span></a>
             </li>
@@ -42,7 +42,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Informe</span></a>
 
-                <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                 aria-expanded="true" aria-controls="collapseTwo">
                 <span>Factura</span>
                 </a>
@@ -145,21 +145,39 @@
 
                         <h1 class="h3 mb-0 text-gray-800"></h1>
                         <div class="row">
-                            <div class="col-xl-4 col-md-4 mb-2">
+                            <div class="col-xl-4 col-md-4 mb-2" >
                                 <button type="button" class="btn btn-warning" (click)="pendingDevices()">
-                                    Pendientes <span class="badge badge-light">9</span>
+                                    Pendientes <span class="badge badge-light" *ngIf="count != 0">
+                                        <div *ngFor="let i of count">
+                                            <div *ngIf="i.status == 1">
+                                                {{i.amount}}
+                                            </div>
+                                        </div>
+                                    </span>
                                     <span class="sr-only">unread messages</span>
                                   </button>
                             </div>
                             <div class="col-xl-3 col-md-4 mb-2">
                                 <button type="button" class="btn btn-primary" (click)="progressDevices()">
-                                    En_Curso <span class="badge badge-light">9</span>
+                                    En_Curso <span class="badge badge-light"  *ngIf="count != 0">      
+                                        <div *ngFor="let i of count">
+                                            <div *ngIf="i.status == 2">
+                                                {{i.amount}}
+                                            </div>
+                                        </div>
+                                    </span>
                                     <span class="sr-only">unread messages</span>
                                   </button>
                             </div>
                             <div class="col-xl-1 col-md-3 mb-2">
                                 <button type="button" class="btn btn-success" (click)="finishedDivices()">
-                                    Finalizados <span class="badge badge-light">9</span>
+                                    Finalizados <span class="badge badge-light" *ngIf="count != 0">
+                                        <div *ngFor="let i of count">
+                                            <div *ngIf="i.status == 3">
+                                                {{i.amount}}
+                                            </div>
+                                        </div>
+                                    </span>
                                     <span class="sr-only">unread messages</span>
                                   </button>
                             </div>
@@ -167,17 +185,11 @@
                     </div>
 
                     <div *ngIf="mydashboard">
-                        <div>
+                        <!-- <div>
                             <h4 class="h3 mb-0 text-gray-800">Mi tablero</h4>
                         </div>
-                        <br>
-
-                        <div class="alert alert-success" role="alert">
-                            <h4 class="alert-heading">Hola!</h4>
-                            <p>señor usuario, diríjase a la parte superior derecha, allí va a encontrar un botón que dice "pendientes" al oprimirlo podrá visualizar aquellos dispositivos que se encuentren recibiendo un mantenimiento, estos dispositivos se encontrarán ordenados en una tabla según su fecha de ingreso.</p>
-                            <hr>
-                            <p class="mb-0"></p>
-                        </div>
+                        <br> -->
+                        <app-my-dashboard></app-my-dashboard>
                     </div>
 
                     <app-add-devices *ngIf="btnregisterdevice"></app-add-devices>
@@ -185,7 +197,13 @@
                     <app-pending-devices *ngIf="btnpending"></app-pending-devices>
                     <app-devices-in-progress *ngIf="btnprogress"></app-devices-in-progress>
                     <app-finished-divices *ngIf="btnfinished" ></app-finished-divices>
-                    <app-customer-history></app-customer-history>
+                    <div *ngIf="btnhistory">
+                        <div>
+                            <h4 class="h3 mb-0 text-gray-800">Historial</h4>
+                        </div>
+                        <br>
+                        <app-customer-history ></app-customer-history>
+                    </div>
                       <!-- AQUI -->
 
             <!-- Footer 

@@ -10,13 +10,42 @@
             <div class="m-auto w-lg-75 w-xl-50">
                 <h2 class="text-info font-weight-light mb-5" style="text-align: center;">&nbsp;Registro</h2>
                 <form style="text-align: left;" [formGroup]="form" (ngSubmit)="onSubmit()">
-                    <div class="form-group"><label class="text-secondary">Nombre</label><input formControlName="name" class="form-control" type="text" style="border-radius: 26px;"></div>
-                    <div class="form-group"><label class="text-secondary">Apellido</label><input formControlName="surname" class="form-control" type="text" style="border-radius: 26px;"></div>
-                    <div class="form-group"><label class="text-secondary">Email</label><input formControlName="email" class="form-control" type="text" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email" style="border-radius: 26px;"></div>
-                    <div class="form-group" style="border-style: none;"><label class="text-secondary">Contraseña</label><input formControlName="password" class="form-control" type="password" required="" style="border-radius: 26px;"></div>
-                    <div class="form-group"><label class="text-secondary">Confirmar contraseña</label><input formControlName="validatepassword" class="form-control" type="password" required="" style="border-radius: 26px;"></div>
                     <div class="form-group">
-                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1"><a href="#">Acepto términos y condiciones&nbsp;</a></label></div>
+                        <label class="text-secondary">Nombre</label>
+                        <input formControlName="name" class="form-control" type="text" style="border-radius: 26px;">
+                        <small *ngIf="name.invalid && (name.dirty || name.touched)" style="color: red;">No cumple con los requisitos</small>
+                        <small *ngIf="name.valid && (name.dirty || name.touched)" style="color: green;">Cumple con los requisitos</small>
+                    </div>
+                    <div class="form-group"><label class="text-secondary">Apellido</label>
+                        <input formControlName="surname" class="form-control" type="text" style="border-radius: 26px;">
+                        <small *ngIf="surname.invalid && (surname.dirty || surname.touched)" style="color: red;">No cumple con los requisitos</small>
+                        <small *ngIf="surname.valid && (surname.dirty || surname.touched)" style="color: green;">Cumple con los requisitos</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-secondary">Email</label>
+                        <input formControlName="email" class="form-control" type="text"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email" style="border-radius: 26px;">
+                        <small *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red;">No cumple con los requisitos</small>
+                        <small *ngIf="email.valid && (email.dirty || email.touched)" style="color: green;">Cumple con los requisitos</small>
+                    </div>
+                    <div class="form-group" style="border-style: none;">
+                        <label class="text-secondary">Contraseña</label>
+                        <input formControlName="password" class="form-control" type="password"  style="border-radius: 26px;">
+                        <small *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red;">Debe tener mínimo 8 caracteres</small>
+                        <small *ngIf="password.valid && (password.dirty || password.touched)" style="color: green;">Cumple con los requisitos</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-secondary">Confirmar contraseña</label>
+                        <input formControlName="validatepassword" class="form-control" type="password"  style="border-radius: 26px;">
+                        <!-- <small *ngIf="validatepassword != password" style="color: red;">No cumple con los requisitos</small> -->
+                        <small *ngIf="validatepassword.invalid && (validatepassword.dirty || validatepassword.touched)" style="color: red;">Debe tener mínimo 8 caracteres</small>
+                        <small *ngIf="validatepassword.valid && (validatepassword.dirty || validatepassword.touched)" style="color: green;">Cumple con los requisitos</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input"  type="checkbox" formControlName="checkbox" id="formCheck-1">
+                            <label class="form-check-label" for="formCheck-1">
+                                <a href="#">Acepto términos y condiciones&nbsp;</a>
+                            </label></div>
                     </div>
                     <div></div>
                     <button *ngIf="spinner" class="btn btn-info mt-2" type="submit" style="text-align: right;">Registrarse</button>

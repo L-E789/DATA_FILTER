@@ -1,15 +1,15 @@
 <br>
-<nav class="navbar navbar-light bg-light">
+<!-- <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand"></a>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar cliente" aria-label="Search">
     <button class="btn btn-outline-success mr-sm-2 my-2 my-sm-0" type="submit">Buscar</button>
-    <!-- <button class="btn btn-primary my-2 my-sm-0" type="submit">Filtrar</button> -->
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Filtrar</button>
   </form>
-</nav>
+</nav> -->
 
 <div class="container">
-<div class="col-md-14 col-14 col-sm-14">
+<div class="col-md-20 col-20 col-sm-20">
     <div class="card">
       <div class="card-header">
         <h4>Dispositivos pendientes</h4>
@@ -17,50 +17,54 @@
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-striped">
-            <tbody><tr>
+            <tbody>
+              <tr>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Tipo</th>
-                <th>nombre del cliente</th>
                 <th>Fecha de ingreso</th>
                 <th>Ingresado por</th>
                 <th>Opciones</th>
                 <th></th>
-            </tr>
-            <tr>
-              <td>Asus</td>
-              <td>XU700</td>
-              <td>Laptop</td>
-              <td>Luis Eduardo</td>
-              <td>18-05-2021</td>
-              <td style="color: red;">@Luis Eduardo</td>
-              <td>
-                <a class="btn btn-light btn-action mr-1 btn-modal" class="btn btn-primary" data-toggle="modal" data-target="#fsModal">
-                    <svg class="svg-icon" viewBox="0 0 20 20">
-                        <path d="M10,6.978c-1.666,0-3.022,1.356-3.022,3.022S8.334,13.022,10,13.022s3.022-1.356,3.022-3.022S11.666,6.978,10,6.978M10,12.267c-1.25,0-2.267-1.017-2.267-2.267c0-1.25,1.016-2.267,2.267-2.267c1.251,0,2.267,1.016,2.267,2.267C12.267,11.25,11.251,12.267,10,12.267 M18.391,9.733l-1.624-1.639C14.966,6.279,12.563,5.278,10,5.278S5.034,6.279,3.234,8.094L1.609,9.733c-0.146,0.147-0.146,0.386,0,0.533l1.625,1.639c1.8,1.815,4.203,2.816,6.766,2.816s4.966-1.001,6.767-2.816l1.624-1.639C18.536,10.119,18.536,9.881,18.391,9.733 M16.229,11.373c-1.656,1.672-3.868,2.594-6.229,2.594s-4.573-0.922-6.23-2.594L2.41,10l1.36-1.374C5.427,6.955,7.639,6.033,10,6.033s4.573,0.922,6.229,2.593L17.59,10L16.229,11.373z"></path>
-                    </svg>
-                </a>
-                
-                <!-- <a class="btn btn-danger btn-action mr-1">
-                    <svg class="svg-icon" viewBox="0 0 20 20">
-                        <path fill="none" d="M16.471,5.962c-0.365-0.066-0.709,0.176-0.774,0.538l-1.843,10.217H6.096L4.255,6.5c-0.066-0.362-0.42-0.603-0.775-0.538C3.117,6.027,2.876,6.375,2.942,6.737l1.94,10.765c0.058,0.318,0.334,0.549,0.657,0.549h8.872c0.323,0,0.6-0.23,0.656-0.549l1.941-10.765C17.074,6.375,16.833,6.027,16.471,5.962z"></path>
-                        <path fill="none" d="M16.594,3.804H3.406c-0.369,0-0.667,0.298-0.667,0.667s0.299,0.667,0.667,0.667h13.188c0.369,0,0.667-0.298,0.667-0.667S16.963,3.804,16.594,3.804z"></path>
-                        <path fill="none" d="M9.25,3.284h1.501c0.368,0,0.667-0.298,0.667-0.667c0-0.369-0.299-0.667-0.667-0.667H9.25c-0.369,0-0.667,0.298-0.667,0.667C8.583,2.985,8.882,3.284,9.25,3.284z"></path>
-                    </svg>
-                </a> -->
-                <!-- <a class="btn btn-danger btn-action">
-                    <svg class="svg-icon" viewBox="0 0 20 20">
-                        <path fill="none" d="M16.471,5.962c-0.365-0.066-0.709,0.176-0.774,0.538l-1.843,10.217H6.096L4.255,6.5c-0.066-0.362-0.42-0.603-0.775-0.538C3.117,6.027,2.876,6.375,2.942,6.737l1.94,10.765c0.058,0.318,0.334,0.549,0.657,0.549h8.872c0.323,0,0.6-0.23,0.656-0.549l1.941-10.765C17.074,6.375,16.833,6.027,16.471,5.962z"></path>
-                        <path fill="none" d="M16.594,3.804H3.406c-0.369,0-0.667,0.298-0.667,0.667s0.299,0.667,0.667,0.667h13.188c0.369,0,0.667-0.298,0.667-0.667S16.963,3.804,16.594,3.804z"></path>
-                        <path fill="none" d="M9.25,3.284h1.501c0.368,0,0.667-0.298,0.667-0.667c0-0.369-0.299-0.667-0.667-0.667H9.25c-0.369,0-0.667,0.298-0.667,0.667C8.583,2.985,8.882,3.284,9.25,3.284z"></path>
-                    </svg>
-                </a> -->
-              </td>
-              <td>
-                <button type="button" class="btn btn-warning">Iniciar proceso</button>
-              </td>
-            </tr>
-          </tbody></table>
+              </tr>
+              <ng-container *ngIf="data != 0">
+                <tr *ngFor="let i of data" >
+                  <td>{{i.brand}}</td>
+                  <td>{{i.model}}</td>
+                  <td>{{i.type}}</td>
+                  <td>{{i.admission_date}}</td>
+                  <td style="color: red;">@{{i.user}}</td>
+                  <td>
+                    <a class="btn btn-light btn-action btn-modal " class="btn btn btn-sm" (click)="moreInfo(i.id)" data-toggle="modal" data-target="#fsModal">
+                        <svg class="svg-icon" viewBox="0 0 20 20">
+                            <path d="M10,6.978c-1.666,0-3.022,1.356-3.022,3.022S8.334,13.022,10,13.022s3.022-1.356,3.022-3.022S11.666,6.978,10,6.978M10,12.267c-1.25,0-2.267-1.017-2.267-2.267c0-1.25,1.016-2.267,2.267-2.267c1.251,0,2.267,1.016,2.267,2.267C12.267,11.25,11.251,12.267,10,12.267 M18.391,9.733l-1.624-1.639C14.966,6.279,12.563,5.278,10,5.278S5.034,6.279,3.234,8.094L1.609,9.733c-0.146,0.147-0.146,0.386,0,0.533l1.625,1.639c1.8,1.815,4.203,2.816,6.766,2.816s4.966-1.001,6.767-2.816l1.624-1.639C18.536,10.119,18.536,9.881,18.391,9.733 M16.229,11.373c-1.656,1.672-3.868,2.594-6.229,2.594s-4.573-0.922-6.23-2.594L2.41,10l1.36-1.374C5.427,6.955,7.639,6.033,10,6.033s4.573,0.922,6.229,2.593L17.59,10L16.229,11.373z"></path>
+                        </svg>
+                    </a>
+                    <a class="btn btn btn-action btn-sm" style="margin-left: 2px;" data-toggle="modal" (click)="getDataEdit(i.id)" data-target="#staticBackdrop">
+                      <svg class="svg-icon" viewBox="0 0 20 20">
+                        <path d="M8.627,7.885C8.499,8.388,7.873,8.101,8.13,8.177L4.12,7.143c-0.218-0.057-0.351-0.28-0.293-0.498c0.057-0.218,0.279-0.351,0.497-0.294l4.011,1.037C8.552,7.444,8.685,7.667,8.627,7.885 M8.334,10.123L4.323,9.086C4.105,9.031,3.883,9.162,3.826,9.38C3.769,9.598,3.901,9.82,4.12,9.877l4.01,1.037c-0.262-0.062,0.373,0.192,0.497-0.294C8.685,10.401,8.552,10.18,8.334,10.123 M7.131,12.507L4.323,11.78c-0.218-0.057-0.44,0.076-0.497,0.295c-0.057,0.218,0.075,0.439,0.293,0.495l2.809,0.726c-0.265-0.062,0.37,0.193,0.495-0.293C7.48,12.784,7.35,12.562,7.131,12.507M18.159,3.677v10.701c0,0.186-0.126,0.348-0.306,0.393l-7.755,1.948c-0.07,0.016-0.134,0.016-0.204,0l-7.748-1.948c-0.179-0.045-0.306-0.207-0.306-0.393V3.677c0-0.267,0.249-0.461,0.509-0.396l7.646,1.921l7.654-1.921C17.91,3.216,18.159,3.41,18.159,3.677 M9.589,5.939L2.656,4.203v9.857l6.933,1.737V5.939z M17.344,4.203l-6.939,1.736v9.859l6.939-1.737V4.203z M16.168,6.645c-0.058-0.218-0.279-0.351-0.498-0.294l-4.011,1.037c-0.218,0.057-0.351,0.28-0.293,0.498c0.128,0.503,0.755,0.216,0.498,0.292l4.009-1.034C16.092,7.085,16.225,6.863,16.168,6.645 M16.168,9.38c-0.058-0.218-0.279-0.349-0.498-0.294l-4.011,1.036c-0.218,0.057-0.351,0.279-0.293,0.498c0.124,0.486,0.759,0.232,0.498,0.294l4.009-1.037C16.092,9.82,16.225,9.598,16.168,9.38 M14.963,12.385c-0.055-0.219-0.276-0.35-0.495-0.294l-2.809,0.726c-0.218,0.056-0.351,0.279-0.293,0.496c0.127,0.506,0.755,0.218,0.498,0.293l2.807-0.723C14.89,12.825,15.021,12.603,14.963,12.385"></path>
+                      </svg>
+                    </a>
+                    <a class="btn btn btn-action btn-sm" style="margin-left: 2px;" (click)="delete(i.id)">
+                      <svg class="svg-icon" viewBox="0 0 20 20">
+                          <path fill="none" d="M16.471,5.962c-0.365-0.066-0.709,0.176-0.774,0.538l-1.843,10.217H6.096L4.255,6.5c-0.066-0.362-0.42-0.603-0.775-0.538C3.117,6.027,2.876,6.375,2.942,6.737l1.94,10.765c0.058,0.318,0.334,0.549,0.657,0.549h8.872c0.323,0,0.6-0.23,0.656-0.549l1.941-10.765C17.074,6.375,16.833,6.027,16.471,5.962z"></path>
+                          <path fill="none" d="M16.594,3.804H3.406c-0.369,0-0.667,0.298-0.667,0.667s0.299,0.667,0.667,0.667h13.188c0.369,0,0.667-0.298,0.667-0.667S16.963,3.804,16.594,3.804z"></path>
+                          <path fill="none" d="M9.25,3.284h1.501c0.368,0,0.667-0.298,0.667-0.667c0-0.369-0.299-0.667-0.667-0.667H9.25c-0.369,0-0.667,0.298-0.667,0.667C8.583,2.985,8.882,3.284,9.25,3.284z"></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="start_process()" ><svg class="svg-icon" viewBox="0 0 20 20">
+                      <path d="M12.522,10.4l-3.559,3.562c-0.172,0.173-0.451,0.176-0.625,0c-0.173-0.173-0.173-0.451,0-0.624l3.248-3.25L8.161,6.662c-0.173-0.173-0.173-0.452,0-0.624c0.172-0.175,0.451-0.175,0.624,0l3.738,3.736C12.695,9.947,12.695,10.228,12.522,10.4 M18.406,10c0,4.644-3.764,8.406-8.406,8.406c-4.644,0-8.406-3.763-8.406-8.406S5.356,1.594,10,1.594C14.643,1.594,18.406,5.356,18.406,10M17.521,10c0-4.148-3.374-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.147,17.521,17.521,14.147,17.521,10"></path>
+                    </svg></button>
+                  </td>
+                </tr>
+              </ng-container> 
+          </tbody>
+          </table>
+          <div *ngIf="data == 0" class="alert alert-primary text-center" role="alert">
+            No hay dispositivos pendientes
+          </div>
         </div>
       </div>
     </div>
@@ -86,11 +90,12 @@
       <div class="modal-body">
         
         <div class="card">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><b>Marca:</b> Asus</li>
-            <li class="list-group-item"><b>Modelo:</b> X2003</li>
-            <li class="list-group-item"><b>Propietario:</b> Luis Eduardo</li>
+          <ul class="list-group list-group-flush" *ngFor="let i of more">
+            <li class="list-group-item"><b>Marca:</b> {{i.brand}}</li>
+            <li class="list-group-item"><b>Modelo:</b> {{i.model}}</li>
+            <li class="list-group-item"><b>Propietario:</b> {{i.customer_name}}</li>
             <li class="list-group-item"><b>Motivo:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. A architecto, debitis sapiente provident nobis nesciunt soluta ab consectetur aperiam voluptas dolore necessitatibus repellendus ea vel eligendi, sint eum aliquam officiis.</li>
+            <li class="list-group-item"><b>Accesorios:</b> {{i.accessories}} </li>
           </ul>
         </div>
 
@@ -115,4 +120,49 @@
 
   </div>
 
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        
+        <form [formGroup]='form' (ngSubmit)='edit()'>
+          <div class="form-group">
+            <label for="equipo">Equipo</label>
+            <input type="text" formControlName='device' class="form-control" id="equipo" aria-describedby="emailHelp">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div class="form-group">
+            <label for="modelo">Modelo</label>
+            <input type="text" formControlName='model'  class="form-control" id="modelo">
+          </div>
+          <div class="form-group">
+            <label for="marca">Marca</label>
+            <input type="text" class="form-control" formControlName='brand' id="marca">
+          </div>
+          <div class="form-group">
+            <label for="serie">Serie</label>
+            <input type="text" class="form-control" formControlName='serial' id="serie">
+          </div>
+          <div class="form-group">
+            <label for="accesorios">Accesorios</label>
+            <textarea type="text" class="form-control" formControlName='accessories' id="accesorios"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado del producto</label>
+            <textarea type="text" class="form-control" formControlName='condition' id="estado"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="otros">Trabajo a realizar</label>
+            <textarea type="text" class="form-control" formControlName='work_to_do' id="otros"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Cambiar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
 </div>

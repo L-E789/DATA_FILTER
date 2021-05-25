@@ -3,15 +3,15 @@ use db_datafilter;
 
 create table users
 (
-	id int primary key not null auto_increment,
+	id int primary key auto_increment,
 	name char(100),
-    surname char(100),
-    email char(150) unique,
-    password char(150),
-    img text,
-    activated boolean,
-    code char(15),
-    recovery_date datetime
+	surname char(100),
+	email char(150) unique,
+	password text,
+	url_img text,
+	activated boolean,
+	code char(15),
+	recovery_date datetime
 );
 
 create table environments
@@ -37,68 +37,37 @@ create table bridge
     foreign key (id_environments) references environments(id)
 );
 
-
-
-/* ------------------------------------------------- */
-create table estado
+create table clients
 (
-	id int primary key not null auto_increment,
-    estado int(1)
-);
-select * from users;
-Create Table dispositivos
-(
-	id int primary key not null auto_increment,
-    User int,
-    FOREIGN KEY (User) REFERENCES users(id),
-    Cliente Char(150),
-    telefono char(13),
-    Direccion Char(100),
-    FechaIngreso date,
-    Equipo Char(100),
-    Modelo Char(100),
-    serial Char(20),
-    Marca Char(100),
-    FCompra Date,
-    Accesorios Text,
-    EstadoProduc Text,
-    Falla Text,
-    Diagnostico Text,
-    Solucion Text,
-    abono int,
-    valor int,
-    estado int,
-    FOREIGN KEY (estado) REFERENCES estado(id)
+	identification char(30) primary key not null,
+    enviroment int,
+    name Char(150),
+    surname Char(150),
+    email char(200),
+    phone char(13),
+    address Char(100),
+    FOREIGN KEY (enviroment) REFERENCES environments(id)
 );
 
-create table informe
+create table devices
 (
 	id int primary key not null auto_increment,
-    usuario int,
-    FOREIGN KEY (usuario) REFERENCES users(id),
-    dispositivo int,
-    FOREIGN KEY (dispositivo) REFERENCES dispositivos(id)
+    client char(20),
+    environment int,
+    user int,
+    type char(60),
+    model char(60),
+    brand char(30),
+    serial varchar(300),
+    accessories text,
+    conditions text,
+    work_to_do Text,
+    status int,
+    admission_date date,
+    start_process int,
+    departure_date date,
+    foreign key (client) references clients(identification),
+    foreign key (environment) references environments(id),
+    foreign key (user) references users(id),
+    foreign key (start_process) references users(id)
 );
-
-create table entorno 
-(
-    codigo char(5) primary key not null,
-    usuario int,
-    FOREIGN KEY (usuario) REFERENCES users(id),
-    fecha datetime
-    
-);
-
-
-create table entorno_trabajo
-(
-	id int primary key not null auto_increment,
-    entorno char(5),
-    FOREIGN KEY (entorno) REFERENCES entorno(codigo),
-    colaborador int, 
-    FOREIGN KEY (colaborador) REFERENCES users(id)
-)
-
-
-
-

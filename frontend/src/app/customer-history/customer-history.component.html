@@ -1,0 +1,17 @@
+<br>
+<table  datatable [dtOptions]="dtOptions">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let group of data">
+      <td>{{group.name}}</td>
+      <td>{{group.email}}</td>
+      <td>{{group.website}}</td>
+    </tr>
+  </tbody>
+</table>

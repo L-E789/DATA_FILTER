@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {DataTablesModule} from 'angular-datatables';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { CustomerHistoryComponent } from './customer-history/customer-history.component';
 import { FinishedDivicesComponent } from './finished-divices/finished-divices.component';
 import { DevicesInProgressComponent } from './devices-in-progress/devices-in-progress.component';
+import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 
 
 const config = {
@@ -73,6 +75,7 @@ const config = {
     CustomerHistoryComponent,
     FinishedDivicesComponent,
     DevicesInProgressComponent,
+    MyDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +90,7 @@ const config = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    DataTablesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
