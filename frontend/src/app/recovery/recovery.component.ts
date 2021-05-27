@@ -38,7 +38,11 @@ export class RecoveryComponent implements OnInit {
       }
       this.client.postRequest(`${environment.BASE_API_REGISTER}/recover`, data).subscribe(
         (response : any ) => {
-          Swal.fire('Revise el correo')
+          Swal.fire(
+            'Recuperación exitosa!',
+            'Le hemos enviado un correo para que pueda realizar la recuperación de su contraseña, si no ve el correo en la bandeja principal por favor revise la capeta de SPAM Gracias',
+            'success'
+          )
           this.spinner = true;
         },(error) => {
           this.toastr.warning("El correo que intenta recuperar, no esta registrado")

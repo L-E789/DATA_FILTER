@@ -4,7 +4,7 @@ from controllers.work_environment import CreateEnvironment, ShowEnvironment, Rem
 
 from controllers.authenticationController import AuthorizationControllers
 
-from controllers.deviceController import createdevice,getdevice,changestatus,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice
+from controllers.deviceController import createdevice,getdevice,changestatusPending,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice, showDevicesInProgress, moreInfoDeviceProgress, myDashboardGet
 
 from controllers.clientController import createclient,searchclient,editclient,deleteclient
 
@@ -43,13 +43,16 @@ main = {
 
 device = {
     "count_device":"/api/v01/device/count","count_device_controllers": CountDevice.as_view("count_device_api"),
-    "device_pending":"/api/v01/device/pending/<id>","device_pending_controllers": showpending.as_view("device_pending_api"),
+    "device_pending":"/api/v01/device/pending","device_pending_controllers": showpending.as_view("device_pending_api"),
     "device_add":"/api/v01/create/device","device_add_controllers": createdevice.as_view("device_add_api"),
     "device_delete":"/api/v01/delete/device","device_delete_controllers": deletedevice.as_view("device_delete_api"),
     "device_more_info":"/api/v01/device/info","device_more_info_controllers": moreInfoDevice.as_view("device_more_info_api"),
     "get_device":"/api/v01/device/edit/<id>","get_device_controllers": getdevice.as_view("get_device_api"),
     "device_edit":"/api/v01/device/edit","device_edit_controllers": editDevice.as_view("device_edit_api"),
-    "device_status":"/api/v01/status/device","device_status_controllers": changestatus.as_view("device_staus_api"),
+    "device_status":"/api/v01/status/device","device_status_controllers": changestatusPending.as_view("device_status_api"),
+    "device_show_progress":"/api/v01/show/device/progress","device_show_progress_controllers": showDevicesInProgress.as_view("device_in_progress_api"),
+    "device_more_info_progress":"/api/v01/show/device/progress/moreinfo","device_more_info_progress_controllers": moreInfoDeviceProgress.as_view("device_more_info_progress_api"),
+    "device_my_dashboard_progress":"/api/v01/show/device/progress/my_dashboard","device_my_dashboard_controllers": myDashboardGet.as_view("device_my_dashboard_progress_api"),
 }
 
 

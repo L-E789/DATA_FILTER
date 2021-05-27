@@ -1,13 +1,12 @@
 <br>
 
-<nav class="navbar navbar-light bg-light">
+<!-- <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand"></a>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar cliente" aria-label="Search">
     <button class="btn btn-outline-success mr-sm-2 my-2 my-sm-0" type="submit">Buscar</button>
-    <!-- <button class="btn btn-primary my-2 my-sm-0" type="submit">Filtrar</button> -->
   </form>
-</nav>
+</nav> -->
 
 <div class="container">
 <div class="col-md-14 col-14 col-sm-14">
@@ -19,51 +18,52 @@
         <div class="table-responsive">
           <table class="table table-striped">
             <tbody><tr>
-              <th>Ingresado por</th>
                 <th>Marca</th>
+                <th>Modelo</th>
                 <th>Tipo</th>
-                <th>nombre del cliente</th>
-                <th>Fecha inicio de proceso</th>
-                <th>Inicio el proceso</th>
+                <th>Fecha de inicio</th>
+                <th></th>
                 <th></th>
             </tr>
-            <tr>
-              <td style="color: red;">@Luis Eduardo</td>
-              <td>Asus</td>
-              <td>Laptop</td>
-              <td>Luis Eduardo</td>
-              <td>18-05-2021</td>
-              <td style="color: red;">@Luis Eduardo</td>
+            <ng-container *ngIf="data != 0">
+            <tr *ngFor="let i of data">
+              <td>{{i.brand}}</td>
+              <td>{{i.model}}</td>
+              <td>{{i.type}}</td>
+              <td>{{i.process_start_date | date : 'short'}}</td>
               <td>
-                <a class="btn btn-light btn-action mr-1 btn-modal" class="btn btn-primary" data-toggle="modal" data-target="#fsModal">
-                    <svg class="svg-icon" viewBox="0 0 20 20">
-                        <path d="M10,6.978c-1.666,0-3.022,1.356-3.022,3.022S8.334,13.022,10,13.022s3.022-1.356,3.022-3.022S11.666,6.978,10,6.978M10,12.267c-1.25,0-2.267-1.017-2.267-2.267c0-1.25,1.016-2.267,2.267-2.267c1.251,0,2.267,1.016,2.267,2.267C12.267,11.25,11.251,12.267,10,12.267 M18.391,9.733l-1.624-1.639C14.966,6.279,12.563,5.278,10,5.278S5.034,6.279,3.234,8.094L1.609,9.733c-0.146,0.147-0.146,0.386,0,0.533l1.625,1.639c1.8,1.815,4.203,2.816,6.766,2.816s4.966-1.001,6.767-2.816l1.624-1.639C18.536,10.119,18.536,9.881,18.391,9.733 M16.229,11.373c-1.656,1.672-3.868,2.594-6.229,2.594s-4.573-0.922-6.23-2.594L2.41,10l1.36-1.374C5.427,6.955,7.639,6.033,10,6.033s4.573,0.922,6.229,2.593L17.59,10L16.229,11.373z"></path>
-                    </svg>
-                </a>
-                
-                <!-- <a class="btn btn-danger btn-action mr-1">
-                    <svg class="svg-icon" viewBox="0 0 20 20">
-                        <path fill="none" d="M16.471,5.962c-0.365-0.066-0.709,0.176-0.774,0.538l-1.843,10.217H6.096L4.255,6.5c-0.066-0.362-0.42-0.603-0.775-0.538C3.117,6.027,2.876,6.375,2.942,6.737l1.94,10.765c0.058,0.318,0.334,0.549,0.657,0.549h8.872c0.323,0,0.6-0.23,0.656-0.549l1.941-10.765C17.074,6.375,16.833,6.027,16.471,5.962z"></path>
-                        <path fill="none" d="M16.594,3.804H3.406c-0.369,0-0.667,0.298-0.667,0.667s0.299,0.667,0.667,0.667h13.188c0.369,0,0.667-0.298,0.667-0.667S16.963,3.804,16.594,3.804z"></path>
-                        <path fill="none" d="M9.25,3.284h1.501c0.368,0,0.667-0.298,0.667-0.667c0-0.369-0.299-0.667-0.667-0.667H9.25c-0.369,0-0.667,0.298-0.667,0.667C8.583,2.985,8.882,3.284,9.25,3.284z"></path>
-                    </svg>
-                </a> -->
-                <!-- <a class="btn btn-danger btn-action">
-                    <svg class="svg-icon" viewBox="0 0 20 20">
-                        <path fill="none" d="M16.471,5.962c-0.365-0.066-0.709,0.176-0.774,0.538l-1.843,10.217H6.096L4.255,6.5c-0.066-0.362-0.42-0.603-0.775-0.538C3.117,6.027,2.876,6.375,2.942,6.737l1.94,10.765c0.058,0.318,0.334,0.549,0.657,0.549h8.872c0.323,0,0.6-0.23,0.656-0.549l1.941-10.765C17.074,6.375,16.833,6.027,16.471,5.962z"></path>
-                        <path fill="none" d="M16.594,3.804H3.406c-0.369,0-0.667,0.298-0.667,0.667s0.299,0.667,0.667,0.667h13.188c0.369,0,0.667-0.298,0.667-0.667S16.963,3.804,16.594,3.804z"></path>
-                        <path fill="none" d="M9.25,3.284h1.501c0.368,0,0.667-0.298,0.667-0.667c0-0.369-0.299-0.667-0.667-0.667H9.25c-0.369,0-0.667,0.298-0.667,0.667C8.583,2.985,8.882,3.284,9.25,3.284z"></path>
-                    </svg>
-                </a> -->
+              <a class="btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                </svg>
+              </a>
+              <a class="btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+              </a>
+              
               </td>
-              <!-- <td>
-                <button type="button" class="btn btn-warning">Iniciar proceso</button>
-              </td> -->
+               <td>
+                <div class="dropdown">
+                  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Opciones
+                  </a>
+                
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </td> 
             </tr>
+          </ng-container>
           </tbody></table>
         </div>
-        <div class="alert alert-primary text-center" role="alert">
-            No has iniciado ningún proceso
+        <div *ngIf="data == 0" class="alert alert-primary text-center" role="alert">
+          No has colocado en curso ningún dispositivo
           </div>
       </div>
     </div>

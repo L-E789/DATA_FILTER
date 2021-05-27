@@ -51,6 +51,11 @@ app.add_url_rule(device["device_more_info"], view_func=device["device_more_info_
 app.add_url_rule(device["get_device"], view_func=device["get_device_controllers"])
 app.add_url_rule(device["device_edit"], view_func=device["device_edit_controllers"])
 app.add_url_rule(device["device_status"], view_func=device["device_status_controllers"])
+    #device show current devices 
+app.add_url_rule(device["device_show_progress"], view_func=device["device_show_progress_controllers"])
+app.add_url_rule(device["device_more_info_progress"], view_func=device["device_more_info_progress_controllers"])
+app.add_url_rule(device["device_my_dashboard_progress"], view_func=device["device_my_dashboard_controllers"])
+
 
 
 #client
