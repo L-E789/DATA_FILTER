@@ -43,10 +43,10 @@ export class EnvironmentsComponent implements OnInit {
 
 
   mydashboardv(){
+    this.btnprogress = false;
     this.btnhistory = false;
     this.btnfinished = false;
     this.btnpending = false;
-    this.mydashboard = false;
     this.btnregisterclient = false;
     this.btnregisterdevice = false;
     this.mydashboard = true;
@@ -84,6 +84,7 @@ export class EnvironmentsComponent implements OnInit {
   }
 
   progressDevices(){
+    this.countDevices();
     this.btnhistory = false;
     this.btnfinished = false;
     this.mydashboard = false;
@@ -105,6 +106,7 @@ export class EnvironmentsComponent implements OnInit {
 
   
  customerHistory(){
+  this.btnfinished = false;
   this.btnprogress = false;
   this.mydashboard = false;
   this.btnpending = false;

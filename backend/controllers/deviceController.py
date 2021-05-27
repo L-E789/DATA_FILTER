@@ -20,9 +20,11 @@ class CountDevice(MethodView):
 
 
 class showpending(MethodView):
-    def get(self,id):
+    def post(self):
         dev = device()
-        dev.enviroment = int(id)
+        content = request.get_json()
+        dev.status = content.get('status')
+        dev.enviroment = content.get('environment')
         answer = dev.show_device()
         if(answer):
             return jsonify(answer),200
@@ -93,16 +95,52 @@ class editDevice(MethodView):
         anwer = dev.edit_device()
         return jsonify(), 200
 
-class changestatus(MethodView):
+class changestatusPending(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        print(content)
+        dev.id = content.get('id')
+        dev.user = content.get('id_user')
+        dev.enviroment = content.get('environment')
+        dev.status = content.get('status')
+        answer = dev.change_status()
+        return jsonify(), 200
+
+class showDevicesInProgress(MethodView):
     def post(self):
         dev = device()
         content = request.get_json()
         dev.status = content.get('status')
-        dev.id = content.get('id')
-        answer = dev.change_status()
-        return jsonify(answer), 200
+        dev.enviroment = content.get('environment')
+        answer = dev.device_show_progress()
+        if(answer):
+            return jsonify(answer), 200
+        else:
+            return jsonify(), 400
+
+class moreInfoDeviceProgress(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.id = content.get('id_device')
+        dev.enviroment = content.get('environment')
+        answer = dev.more_info_in_progress()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 200
 
 
-
+class myDashboardGet(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.user = content.get('user')
+        dev.status = content.get('status')
+        dev.enviroment = content.get('environment')
+        answer = dev.get_data_my_dashboard()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400
 
         

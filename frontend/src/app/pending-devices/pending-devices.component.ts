@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { EnvironmentsComponent } from '../environments/environments.component'
 
 import { ToastrService } from 'ngx-toastr';
+import jwt_decode from 'jwt-decode'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pending-devices',
@@ -21,6 +23,7 @@ export class PendingDevicesComponent implements OnInit {
   more : any;
   edit_device : number;
   form : FormGroup;
+  token;
 
   constructor(
     private fb: FormBuilder,
@@ -35,8 +38,41 @@ export class PendingDevicesComponent implements OnInit {
   
 
   
-  start_process(){
-    alert('Va a iniciar el proceso');
+  start_process(id : number){
+    let data = ({
+      id : id,
+      id_user: this.token.id,
+      environment : this.env.id_environment,
+      status : 2
+    });
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Estas apunto de iniciar el proceso con este dispositivo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Bien!',
+          'Ya puedes comenzar a trabajar con el dispositivo.',
+          'success'
+        )
+        this.client.postRequest(`${environment.BASE_API_REGISTER}/status/device`, data).subscribe(
+          (Response : any) => {
+            console.log(Response);
+            this.env.mydashboardv();
+            this.env.countDevices();
+          },(error) => {
+            console.log(error);
+          }
+        )
+      }
+    })
+ 
   }
 
   edit(){
@@ -66,7 +102,6 @@ export class PendingDevicesComponent implements OnInit {
     this.edit_device = id;
     this.client.getRequestId(`${environment.BASE_API_REGISTER}/device/edit/` + id).subscribe(
       (Response : any) => {
-        console.log(Response);
         this.form.setValue({
           device: Response[0].type,
           model : Response[0].model,
@@ -98,7 +133,11 @@ export class PendingDevicesComponent implements OnInit {
   }
 
   show(){
-    this.client.getRequestId(`${environment.BASE_API_REGISTER}/device/pending/`+ this.id_environment).subscribe(
+    let data = ({
+      status : 1,
+      environment : this.id_environment
+    })
+    this.client.postRequest(`${environment.BASE_API_REGISTER}/device/pending`,data).subscribe(
       (Response : any) => {
         if(Response){
           this.data = Response;
@@ -128,6 +167,7 @@ export class PendingDevicesComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.token = jwt_decode(localStorage.getItem('token'));
     this.routes.paramMap
     .subscribe((params : ParamMap) => {
     let id = + params.get('id');
