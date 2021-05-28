@@ -72,7 +72,7 @@ export class AddDevicesComponent implements OnInit {
           this.clientdata = Response;
           this.btnnext = true;
         },(error) => {
-          this.toastr.info('No se encuentra a ningun cliente con el documento ingresado');
+          this.toastr.info('No se encuentra a ningún cliente con el documento ingresado');
         }
       )
     }else{
@@ -104,7 +104,7 @@ export class AddDevicesComponent implements OnInit {
             }
           )
     }else{
-      console.error("NOOOOOOOOOO")
+      console.error("Error no deseado")
     }
   }
 

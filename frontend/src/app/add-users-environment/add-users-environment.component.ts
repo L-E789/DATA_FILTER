@@ -38,7 +38,7 @@ export class AddUsersEnvironmentComponent implements OnInit {
     this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/manage/status`,data).subscribe(
       (Response : any) => {
         this.showUsers(this.id);
-        this.toastr.success("Se actualizo el estado");
+        this.toastr.success("Se actualizó el estado");
       },(error) => {
         console.log(error);
         this.toastr.error("Error inesperado");

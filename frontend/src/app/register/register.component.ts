@@ -58,22 +58,23 @@ export class RegisterComponent implements OnInit {
           this.client.postRequest(`${environment.BASE_API_REGISTER}/register`, data).subscribe(
             (response: any) =>{
               console.log(response)
-              this.toastr.success('Valide el correo electronico para activar su cuenta');
+              this.toastr.success('Valide su correo electrónico para activar la cuenta');
               this.route.navigate(['/login'])
             },(error) =>{
-              console.log("Error")
+              this.spinner = true;
+              this.toastr.error('El usuario ya existe', 'Lo sentimos');
             }
           )
         }else{
           this.spinner = true;
-          this.toastr.error('Las contraseñas no coinciden. vuelve a intentarlo','Error');
+          this.toastr.error('Las contraseñas no coinciden, por favor inténtelo de nuevo','Error');
         }
       }else{
         this.spinner = true;
         this.toastr.error('Rellene todos los campos','Error');
       }
     }else{
-      this.toastr.error("Acepte los terminos y condiciones")
+      this.toastr.error("Para completar su registro debe de aceptar los términos y condiciones")
     }
   }
 

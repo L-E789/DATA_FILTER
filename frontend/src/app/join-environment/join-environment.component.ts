@@ -37,7 +37,7 @@ export class JoinEnvironmentComponent implements OnInit {
     this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/code`, data).subscribe(
       (Response : any) => {
         if(Response.status == 'stError'){
-          Swal.fire('Ya esta dentro de ese entorno de trabajo')
+          Swal.fire('Ya estás dentro de ese entorno de trabajo')
           this.route.navigate(['/environments'])
         }else{
           if(Response.status == 'stError101'){
@@ -50,7 +50,7 @@ export class JoinEnvironmentComponent implements OnInit {
             Swal.fire({
               position: 'top-end',
               icon: 'success',
-              title: 'Se unio correctamente al entorno de trabajo',
+              title: 'Se unió correctamente al entorno de trabajo',
               showConfirmButton: false,
               timer: 2500
             })
@@ -58,7 +58,7 @@ export class JoinEnvironmentComponent implements OnInit {
           }
         }
       },(error) => {
-        this.toastr.error('El codigo no es valido');
+        this.toastr.error('El código no es válido');
         this.joinEnvironment();
       });
     }
@@ -82,7 +82,7 @@ export class JoinEnvironmentComponent implements OnInit {
           this.route.navigate(['/login']);
         });
     }else{
-      Swal.fire('Para que se puede unir al entorno de trabajo, primero debe iniciar sesión')
+      Swal.fire('Para que se pueda unir al entorno de trabajo, primero debe de iniciar sesión')
       this.route.navigate(['/login']);
     }
   }

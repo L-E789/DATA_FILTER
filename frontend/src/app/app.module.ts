@@ -36,6 +36,7 @@ import { CustomerHistoryComponent } from './customer-history/customer-history.co
 import { FinishedDivicesComponent } from './finished-divices/finished-divices.component';
 import { DevicesInProgressComponent } from './devices-in-progress/devices-in-progress.component';
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
+import { ConsultClientComponent } from './consult-client/consult-client.component';
 
 
 const config = {
@@ -74,6 +75,7 @@ const config = {
     FinishedDivicesComponent,
     DevicesInProgressComponent,
     MyDashboardComponent,
+    ConsultClientComponent,
   ],
   imports: [
     BrowserModule,

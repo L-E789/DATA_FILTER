@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
             this.spinner = true;
             this.route.navigate( ['/environments']);
           }else{
-            this.toastr.warning('La cuenta no esta activa',)
+            this.toastr.warning('La cuenta no está activa',)
             this.spinner = true;
           }
         },(error) => {

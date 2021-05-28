@@ -58,16 +58,16 @@ export class ProfileComponent implements OnInit {
         console.log(data);
         this.client.postRequest(`${environment.BASE_API_REGISTER}/change_password`,data).subscribe(
           (Response : any) => {
-            this.toastr.success("Contraseña se cambio con exito");
+            this.toastr.success("La contraseña se cambió con éxito");
             this.auth.logout();
             window.location.reload();
           },(error) => {
-            this.toastr.error('error inesperado');
+            this.toastr.error('Error inesperado');
           }
         )
       }
     }else{
-      this.toastr.warning("Las contraseñas no coinciden. vuelve a intentarlo")
+      this.toastr.warning("Las contraseñas no coinciden, por favor inténtelo de nuevo")
     }
   }
 
@@ -86,7 +86,7 @@ export class ProfileComponent implements OnInit {
           this.auth.setNameUser(Response.name);
           this.auth.setSurnameUser(Response.surname);
           this.bringData();
-          this.toastr.success("El nombre se cambio con exito");
+          this.toastr.success("El nombre se cambió con éxito");
         },(error) =>{
           this.toastr.error("Error inesperado");
         }
@@ -111,7 +111,7 @@ export class ProfileComponent implements OnInit {
     this.client.postRequest(`${environment.BASE_API_REGISTER}/edit_img`,data).subscribe(
       (Response : any) => {
         this.auth.setImg(Response.img);
-        this.toastr.success("La foto del perfil se cambio con exito");
+        this.toastr.success("La foto del perfil se cambió con éxito");
         this.bringData();
         console.log(Response);
       },(error) => {
@@ -137,7 +137,7 @@ export class ProfileComponent implements OnInit {
       this.loadbutton = false;
       
     }else{
-      this.toastr.warning("Primero seleccione una imagen")
+      this.toastr.warning("Primero, seleccione una imagen")
     }
   }
 
