@@ -9,10 +9,11 @@
                 <div class="col-12 col-lg-5 ad p-0"> <img src="https://cdn.pixabay.com/photo/2021/01/28/14/44/facade-5958189_960_720.jpg" width="100%" height="100%" /> </div>
                 <div class="details col-12 col-lg-7">
                     <h2>CREAR ENTORNO</h2>
-                    <p><small class="para">Felicidades estas a unos cuantos pasos <br> de generar tu entorno de trabajo.</small></p>
+                    <p><small class="para">Felicidades, estás a unos cuantos pasos <br> de crear tu entorno de trabajo.</small></p>
                     <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="form-group mt-3 pt-3 mb-5">
-                            <input type="text" class="form-control" formControlName='name' autocomplete="off" id="formGroupExampleInput2" placeholder="Nombre del entorno">
+                            <p><small class="para">Nombre de la empresa o del entorno de trabajo</small></p>
+                            <input type="text" class="form-control" formControlName='name' autocomplete="off" id="formGroupExampleInput2" placeholder="Escriba aquí...">
                             <br>
                             <p><small class="para">Imagen del entorno</small></p>
                             <input type="file"  accept=".png, .jpg"  (change)='onUpload($event)' class="form-control" id="exampleFormControlFile1">
@@ -130,7 +131,7 @@
                                               <th scope="col"></th>
                                               <th scope="col">Nombre</th>
                                               <th scope="col">Clave</th>
-                                              <th scope="col">Fecha Creacion</th>
+                                              <th scope="col">Fecha de creación</th>
                                               <th scope="col">Creado por</th>
                                               <th scope="col"></th>
                                               <th scope="col"></th>
@@ -188,15 +189,15 @@
                                                   <th scope="col"></th>
                                                   <th scope="col">Nombre</th>
                                                   <th scope="col">Clave</th>
-                                                  <th scope="col">Fecha Creacion</th>
-                                                  <th scope="col">Creado por</th>
+                                                  <th scope="col">Fecha Creación</th>
+                                                  <th scope="col">Creado por:</th>
                                                 </tr>
                                             </table>
                                             <div  class="alert alert-success" role="alert">
-                                                <h4 class="alert-heading">Well done!</h4>
-                                                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                                                <h4 class="alert-heading">¡ Que bueno verte por aquí !</h4>
+                                                <p>Bienvenido a tu tablero de entornos, aquí podrás ver cada uno de los entornos de trabajo que has creado, también podrás ver a los colaboradores que se encuentren ayudándote en tu empresa o editar tu perfil.</p>
                                                 <hr>
-                                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                                                <p class="mb-0">¡ Qué estás esperando para crear o unirte a tu primer entorno de trabajo !</p>
                                              </div>
                                         </ng-template>
                                       </div>

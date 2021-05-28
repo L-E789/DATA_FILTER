@@ -46,8 +46,8 @@ export class PendingDevicesComponent implements OnInit {
       status : 2
     });
     Swal.fire({
-      title: 'Estas seguro?',
-      text: "Estas apunto de iniciar el proceso con este dispositivo!",
+      title: '¿Estás seguro?',
+      text: "¡Estás a punto de iniciar el proceso con este dispositivo!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

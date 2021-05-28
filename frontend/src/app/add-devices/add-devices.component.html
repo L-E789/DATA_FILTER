@@ -4,11 +4,11 @@
             <div id="accordion" class="checkout">
                 <div class="panel checkout-step">
                     <div> 
-                        <h4 class="checkout-step-title"> <a role="button"  data-parent="#accordion"  > Consultar Cliente</a></h4>
+                        <h4 class="checkout-step-title"> <a role="button"  data-parent="#accordion"  > Consultar cliente</a></h4>
                     </div>
                     <div id="collapseOne" >
                         <div class="checkout-step-body">
-                            <p *ngIf="!btnnext" >Consulta si el cliente ya se encuantra registrado.</p>
+                            <p *ngIf="!btnnext" >Consulta si el cliente ya se encuentra registrado.</p>
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="checkout-login" *ngIf="!btnnext">
@@ -29,7 +29,7 @@
                                 <div *ngFor="let i of clientdata">
                                     <p>Nombre: {{i.name}} </p>
                                     <p>Apellido: {{i.surname}} </p>
-                                    <p>Cedula: {{i.consult}} </p>
+                                    <p>Cédula: {{i.consult}} </p>
                                 </div>
                                 <a class="collapsed btn btn-default mr-1 btn btn-success" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Siguiente</a>
                                 <a class="btn btn-danger" (click)="btnCancel()" >Cancelar</a>
@@ -68,13 +68,13 @@
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label class="control-label" for="serial">Serial</label>
-                                                <input id="serial" type="text" placeholder="Serie del equipo" formControlName='serial' class="form-control input-md" required="" autocomplete="off">
+                                                <input id="serial" type="text" placeholder="Serial del equipo" formControlName='serial' class="form-control input-md" required="" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label class="control-label" for="accesorios">Accesorios</label>
-                                                <p style="color: rgb(252, 118, 118);">En este campo ingresara los accesorios, que viene conjuntamente con el dispositivo</p>
+                                                <p style="color: rgb(252, 118, 118);">En este campo ingresará los accesorios que vienen conjuntamente con el dispositivo</p>
                                                 <textarea id="accesorios"  type="text" placeholder="Accesorios del equipo" formControlName='accessories' class="form-control input-md" required="" autocomplete="off"></textarea>
                                             </div>
                                         </div>

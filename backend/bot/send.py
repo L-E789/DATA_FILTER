@@ -47,9 +47,9 @@ def ActivarCuenta(email,code):
                 <tr>
                     <td style="padding: 0px 0px 30px 0px; background-color: #FFF;">
                         <div>
-                            <p style="padding-bottom: 10px; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Roboto', sans-serif;"> aqui texto</p>
+                            <p style="padding-bottom: 10px; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Roboto', sans-serif;">Bienvenido <span style="color: rgb(255, 83, 83);">nombre</span>, muchas gracias por utilizar nuestro aplicativo web, antes de completar su registro debemos validar si su cuenta es verdadera, esto para evitar un exceso de registros por parte de nuestros usuarios y para otras funcionalidades, por favor oprima en el botón que se encuentra en la parte inferior "Verificar", el cual lo llevará a nuestro aplicativo para completar al 100% su registro.</p>
                             <br>
-                            <a href="http://localhost:4200/activated-account/{code}" style="text-decoration: none; border-radius: 5px; box-shadow: 3px 3px rgb(0, 0, 0); font-size: 23px; font-weight: 600; padding: 10px 20px; color: #FFF; background-color: rgb(31, 31, 31); color: #FFF; font-family: 'Chivo', sans-serif;">Recuperar</a>
+                            <a href="http://localhost:4200/activated-account/{code}" style="text-decoration: none; border-radius: 5px; box-shadow: 3px 3px rgb(0, 0, 0); font-size: 23px; font-weight: 600; padding: 10px 20px; color: #FFF; background-color: rgb(31, 31, 31); color: #FFF; font-family: 'Chivo', sans-serif;">Verificar</a>
                         </div>
                     </td>
                 </tr>
@@ -67,7 +67,7 @@ def ActivarCuenta(email,code):
     msg.attach(MIMEText(mensaje, 'html'))
     msg['From'] = remitente
     msg['To'] = email
-    msg['Subject'] = 'Prueba'
+    msg['Subject'] = 'Activación de la cuenta'
     servidor.sendmail(msg['From'] , msg['To'], msg.as_string())
 
 def RecuperarContrasena(email,code):
@@ -112,7 +112,7 @@ def RecuperarContrasena(email,code):
                 <tr>
                     <td style="padding: 0px 0px 30px 0px; background-color: #FFF;">
                         <div>
-                            <p style="padding-bottom: 10px; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Roboto', sans-serif;">Para que pueda crear recuperar tu contraseña solo presiona el botón de recuperar</p>
+                            <p style="padding-bottom: 10px; font-size: 18px; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Roboto', sans-serif;">Si deseas recuperar tu contraseña deberás crear una nueva, para ello debes oprimir en el botón "Recuperar", el cual te llevará a nuestro aplicativo web para que puedas crear una nueva contraseña.</p>
                             <br>
                             <a href="http://localhost:4200/recovery/{code}" style="text-decoration: none; border-radius: 5px; box-shadow: 3px 3px rgb(0, 0, 0); font-size: 23px; font-weight: 600; padding: 10px 20px; color: #FFF; background-color: rgb(31, 31, 31); color: #FFF; font-family: 'Chivo', sans-serif;">Recuperar</a>
                         </div>
@@ -132,7 +132,7 @@ def RecuperarContrasena(email,code):
     msg.attach(MIMEText(mensaje, 'html'))
     msg['From'] = remitente
     msg['To'] = email
-    msg['Subject'] = 'Prueba'
+    msg['Subject'] = 'Recuperación de contraseña'
     servidor.sendmail(msg['From'] , msg['To'], msg.as_string())
 
 def SendMailToCollaborators(email,env,owner):
@@ -197,5 +197,5 @@ def SendMailToCollaborators(email,env,owner):
     msg.attach(MIMEText(mensaje, 'html'))
     msg['From'] = remitente
     msg['To'] = email
-    msg['Subject'] = 'Prueba'
+    msg['Subject'] = 'Invitación a un entorno de trabajo'
     servidor.sendmail(msg['From'] , msg['To'], msg.as_string())

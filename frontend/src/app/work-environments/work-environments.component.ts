@@ -69,7 +69,7 @@ export class WorkEnvironmentsComponent implements OnInit {
 
   joinEnvironment(){
     Swal.fire({
-      title: 'Ingrese el codigo ',
+      title: 'Ingrese el código ',
       input: 'text',
       inputAttributes: {
         autocapitalize: 'off'
@@ -84,17 +84,17 @@ export class WorkEnvironmentsComponent implements OnInit {
         return this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/code`, data).subscribe(
           (Response : any) => {
             if(Response.status == 'stError'){
-              this.toastr.warning('Ya estan dentro de ese entorno de trabajo');
+              this.toastr.warning('Ya estás dentro de ese entorno de trabajo');
             }else{
               if(Response.status == 'stError101'){
-                this.toastr.error('El entono de trabajo no existe');
+                this.toastr.error('El entorno de trabajo no existe');
               }else{
-                this.toastr.success('Se unio correctamente al entorno de trabajo');
+                this.toastr.success('Se unió correctamente al entorno de trabajo');
                 this.showData();
               }
             }
           },(error) => {
-            this.toastr.error('El codigo no es valido');
+            this.toastr.error('El código no es válido');
             this.joinEnvironment();
           }
           
@@ -140,11 +140,11 @@ export class WorkEnvironmentsComponent implements OnInit {
         (Response : any) => {
           this.data = Response;
         },(error) => {
-          this.toastr.warning('No se encontraron datos relacionados a su busqueda')
+          this.toastr.warning('No se encontraron datos relacionados con su búsqueda')
         }
       )
     }else{
-      this.toastr.warning('Ingrese algún dato para realizar la busqueda')
+      this.toastr.warning('Ingrese algún dato para realizar la búsqueda')
     }
   }
 
@@ -182,7 +182,7 @@ export class WorkEnvironmentsComponent implements OnInit {
         (Response: any) => {
           console.log(Response);
           this.form.reset();
-          this.toastr.success('Entorno de trabajo creado con exito')
+          this.toastr.success('Entorno de trabajo creado con éxito')
           this.showData();
         },(error) => {
           console.log(error);
