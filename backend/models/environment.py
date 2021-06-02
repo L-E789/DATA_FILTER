@@ -121,7 +121,8 @@ class Environment:
         if(consult):
             for i in consult:
                 data['main'].append({'name':i[0],'state':i[1]})
-        return data['main']
+            return data['main']
+        return None
     
     def main_register_client(self,identification,env,name,surname,email,phone,address):
         create = conexion.Add('insert into clients (identification,enviroment,name,surname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s)',[identification,env,name,surname,email,phone,address])

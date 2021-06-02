@@ -143,4 +143,51 @@ class myDashboardGet(MethodView):
             return jsonify(answer), 200
         return jsonify(), 400
 
-        
+
+class getInfoRepair(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.id = content.get('id_device')
+        dev.enviroment = content.get('environment')
+        answer = dev.get_info_repair()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400
+
+
+class saveInfoRepair(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.id = content.get('id_device')
+        dev.enviroment = content.get('environment')
+        dev.failure = content.get('failure')
+        dev.diagnosis = content.get('diagnosis')
+        dev.solution = content.get('solution')
+        answer = dev.save_info_repair()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400
+
+
+class changeCheckStaus(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.id = content.get('id_device')
+        dev.enviroment = content.get('environment')
+        dev.status = content.get('status')
+        answer = dev.check_repair()
+        print(answer)
+        if(answer == 'success'):
+            return jsonify({'status': dev.status}), 200
+
+        elif(answer == "error3"):
+            return jsonify({'status': "error3"}), 200
+
+        elif(answer == "error4"):
+            return jsonify({'status': "error4"}), 200
+
+        else:
+            return jsonify(), 400

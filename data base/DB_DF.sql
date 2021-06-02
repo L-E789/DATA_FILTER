@@ -48,7 +48,11 @@ create table clients
     address Char(100),
     FOREIGN KEY (enviroment) REFERENCES environments(id)
 );
-
+create table estado
+(
+	id int primary key not null auto_increment,
+    estado int(1)
+);
 create table devices
 (
 	id int primary key not null auto_increment,
@@ -69,5 +73,6 @@ create table devices
     foreign key (client) references clients(identification),
     foreign key (environment) references environments(id),
     foreign key (user) references users(id),
-    foreign key (start_process) references users(id)
+    foreign key (start_process) references users(id),
+    FOREIGN KEY (status) REFERENCES estado(id)
 );

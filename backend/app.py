@@ -9,7 +9,7 @@ from route.routes import *
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# users
+# users 
 app.add_url_rule(users["create_user"], view_func=users["create_user_controllers"])
 app.add_url_rule(users["Login_user"], view_func=users["login_user_controllers"])
 app.add_url_rule(users["validate_account_user"], view_func=users["validate_account"])
@@ -55,8 +55,10 @@ app.add_url_rule(device["device_status"], view_func=device["device_status_contro
 app.add_url_rule(device["device_show_progress"], view_func=device["device_show_progress_controllers"])
 app.add_url_rule(device["device_more_info_progress"], view_func=device["device_more_info_progress_controllers"])
 app.add_url_rule(device["device_my_dashboard_progress"], view_func=device["device_my_dashboard_controllers"])
+app.add_url_rule(device["device_show_repair"], view_func=device["device_repair_controllers"])
+app.add_url_rule(device["device_save_repair"], view_func=device["device_add_repair_controllers"])
 
-
+app.add_url_rule(device["device_change_check"], view_func=device["device_staus_check_controllers"])
 
 #client
 app.add_url_rule(client["client_add"], view_func=client["client_add_controllers"])

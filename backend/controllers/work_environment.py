@@ -133,7 +133,10 @@ class Main_bringEnvironmentData(MethodView):
         main.id = content.get('id_user')
         main.id_environments = content.get('environment')
         answer = main.main_bring_data()
-        return jsonify(answer), 200
+        if(answer):
+            return jsonify(answer), 200
+        else:
+            return jsonify(), 400
 
 class Main_RegisterClient(MethodView):
     def post(self):

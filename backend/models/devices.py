@@ -16,6 +16,10 @@ class device:
         self.condition = ''
         self.work_to_do = ''
         self.status = 0     
+        self.failure =''
+        self.diagnosis =''
+        self.solution =''
+
 
     def count_device(self):
         data = {}
@@ -113,5 +117,41 @@ class device:
             return data['device']
         return None
 
+ #---------------------------------------
 
+    def get_info_repair(self):
+        data={}
+        data['repair'] = []
+        cmm = conexion.search("select id,environment,failure,diagnosis,solution from devices where (id = %s and environment = %s)", [self.id,self.enviroment])
+        if(cmm):
+            for i in cmm:
+                data['repair'].append({'id':i[0],'environment':i[1],'failure':i[2],'diagnosis':i[3],'solution':i[4]})
+            return data['repair']
+        return None
 
+    def save_info_repair(self):
+        cmm = conexion.Add("update devices set failure = %s, diagnosis = %s, solution = %s where (id = %s and environment = %s)",[self.failure,self.diagnosis,self.solution,self.id,self.enviroment])
+        if cmm:
+            return 'Ok'
+
+    def check_repair(self):
+        cmm = conexion.search("select failure,diagnosis,solution from devices where (id = %s and environment = %s)", [self.id,self.enviroment])
+        if(self.status == 3):
+            if(cmm[0][0] != None and cmm[0][1] != None and cmm[0][2] != None):
+                if((len(cmm[0][0]) != 0) and (len(cmm[0][1]) != 0) and (len(cmm[0][2]) != 0)):
+                    cod = conexion.Add("update devices set status = %s where (id = %s and environment = %s)", [self.status,self.id,self.enviroment])
+                    return "success"
+                else:
+                    return 'error3'
+            else:
+                return 'error3'
+                
+        elif(self.status == 4):
+            if(cmm[0][0] != None and cmm[0][1] != None):
+                if(len(cmm[0][0]) != 0 and len(cmm[0][1]) != 0):
+                    cod = conexion.Add("update devices set status = %s where (id = %s and environment = %s)", [self.status,self.id,self.enviroment])
+                    return "success"
+                else:
+                    return 'error4'
+            else:
+                return 'error4'
