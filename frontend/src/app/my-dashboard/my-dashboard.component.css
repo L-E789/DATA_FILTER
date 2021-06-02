@@ -3,6 +3,14 @@ body{
     margin-top:20px;
 }
 
+.dropdown > .dropdown-item:hover{
+    /*Modifica lo que quieras*/
+    background: #add7ff;
+    color:rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+
 .card {
     background-color: #fff;
     border-radius: 10px;

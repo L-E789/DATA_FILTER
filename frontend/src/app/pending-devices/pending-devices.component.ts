@@ -63,11 +63,10 @@ export class PendingDevicesComponent implements OnInit {
         )
         this.client.postRequest(`${environment.BASE_API_REGISTER}/status/device`, data).subscribe(
           (Response : any) => {
-            console.log(Response);
             this.env.mydashboardv();
             this.env.countDevices();
           },(error) => {
-            console.log(error);
+            console.error(error);
           }
         )
       }
@@ -92,7 +91,7 @@ export class PendingDevicesComponent implements OnInit {
           this.toastr.success('Datos actualizados');
           this.show();
         },(error) => {
-          console.log(error);
+          console.error(error);
         }
       )
     }
@@ -112,7 +111,7 @@ export class PendingDevicesComponent implements OnInit {
           work_to_do : Response[0].work_to_do
         });
       },(error) => {
-        console.log(error);
+        console.error(error);
       }
     )
   }
@@ -160,7 +159,7 @@ export class PendingDevicesComponent implements OnInit {
       (Response : any) => {
         this.more = Response;
       },(error) => {
-        console.log(error);
+        console.error(error);
       }
     )
   }

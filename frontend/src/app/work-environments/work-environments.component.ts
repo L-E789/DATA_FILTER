@@ -38,7 +38,7 @@ export class WorkEnvironmentsComponent implements OnInit {
   ) { }
 
   onUpload(e){
-    console.log('subir', e.target.files[0]);
+    // console.log('subir', e.target.files[0]);
     const id = Math.random().toString(36).substring(3);
     const file = e.target.files[0];
     const filePath = `upload/profile_${id}`;
@@ -104,13 +104,11 @@ export class WorkEnvironmentsComponent implements OnInit {
   }
 
   removeEnvironment(num:number){
-    console.log(num)
     this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/remove`,num).subscribe(
       (Response : any) => {
-        console.log(Response);
         this.showData();
       },(error) => {
-        console.log(error);
+        console.error(error);
       }
     )
   }
@@ -121,10 +119,8 @@ export class WorkEnvironmentsComponent implements OnInit {
     };
     this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/show`,data).subscribe(
       (Response : any) => {
-        console.log(Response);
         this.data = Response;
       },(error) => {
-        console.log(error);
         this.data = '';
       }
     )
@@ -149,25 +145,28 @@ export class WorkEnvironmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.token = jwt_decode(localStorage.getItem('token'));
-    
-    this.formSearch = this.fb.group({
-      search : ['', Validators.required]
-    })
+    if(localStorage.getItem('token')){
+      this.token = jwt_decode(localStorage.getItem('token'));
+      
+      this.formSearch = this.fb.group({
+        search : ['', Validators.required]
+      })
 
-    this.form = this.fb.group({
-      name : ['', Validators.required],
-    });
-
-
-    this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
-      (response: any) => {
-        this.showData();
-      },(error) => {
-        console.log(error);
-        this.auth.logout();
-        this.route.navigate(['/login'])
+      this.form = this.fb.group({
+        name : ['', Validators.required],
       });
+
+
+      this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
+        (response: any) => {
+          this.showData();
+        },(error) => {
+          this.auth.logout();
+          this.route.navigate(['/login'])
+        });
+    }else{
+      this.route.navigate(['/login']);
+    }
   }
 
   async onSubmit(){
@@ -180,12 +179,11 @@ export class WorkEnvironmentsComponent implements OnInit {
       }
       this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/create`, data).subscribe(
         (Response: any) => {
-          console.log(Response);
           this.form.reset();
           this.toastr.success('Entorno de trabajo creado con éxito')
           this.showData();
         },(error) => {
-          console.log(error);
+          console.error(error);
         }
       )
     }else{

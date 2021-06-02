@@ -4,7 +4,7 @@ from controllers.work_environment import CreateEnvironment, ShowEnvironment, Rem
 
 from controllers.authenticationController import AuthorizationControllers
 
-from controllers.deviceController import createdevice,getdevice,changestatusPending,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice, showDevicesInProgress, moreInfoDeviceProgress, myDashboardGet
+from controllers.deviceController import createdevice,getdevice,changestatusPending,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice, showDevicesInProgress, moreInfoDeviceProgress, myDashboardGet,getInfoRepair,saveInfoRepair,changeCheckStaus
 
 from controllers.clientController import createclient,searchclient,editclient,deleteclient
 
@@ -53,6 +53,9 @@ device = {
     "device_show_progress":"/api/v01/show/device/progress","device_show_progress_controllers": showDevicesInProgress.as_view("device_in_progress_api"),
     "device_more_info_progress":"/api/v01/show/device/progress/moreinfo","device_more_info_progress_controllers": moreInfoDeviceProgress.as_view("device_more_info_progress_api"),
     "device_my_dashboard_progress":"/api/v01/show/device/progress/my_dashboard","device_my_dashboard_controllers": myDashboardGet.as_view("device_my_dashboard_progress_api"),
+    "device_show_repair":"/api/v01/show/device/repair","device_repair_controllers": getInfoRepair.as_view("device_repair_api"),
+    "device_save_repair":"/api/v01/set/device/add","device_add_repair_controllers": saveInfoRepair.as_view("device_add_repair_api"),
+    "device_change_check":"/api/v01/check/device/status","device_staus_check_controllers": changeCheckStaus.as_view("device_Stats_repair_api"),
 }
 
 

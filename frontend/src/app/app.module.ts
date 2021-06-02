@@ -18,6 +18,7 @@ import { CodeclientComponent } from './codeclient/codeclient.component';
 import { WorkEnvironmentsComponent } from './work-environments/work-environments.component';
 import { ActivatedEmailComponent } from './activated-email/activated-email.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
+import { PopoverModule } from "ngx-smart-popover";
 
 
 import { AngularFireModule } from '@angular/fire';
@@ -90,6 +91,7 @@ const config = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    PopoverModule,
     DataTablesModule,
   ],
   providers: [],

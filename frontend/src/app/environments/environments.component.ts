@@ -123,56 +123,58 @@ export class EnvironmentsComponent implements OnInit {
      (Response : any) => {
        this.count = Response;
      },(error) => {
-       console.log(error);
+       console.error(error);
      }
    )
  }
   
 
   ngOnInit(): void {
-    this.token = jwt_decode(localStorage.getItem('token'));
-    this.routes.paramMap
-    .subscribe((params : ParamMap) => {
-    let id = + params.get('id');
-    this.id_environment = id;
-    });
+    if(localStorage.getItem('token')){
 
-    if(localStorage.getItem("token")){
-      this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
-        (response: any) => {
-          let data = ({
-            environment : this.id_environment,
-            id_user : this.token.id
-          });
-          this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/main`, data).subscribe(
-            (Response : any) => {
-              console.log(Response);
-              if(Response[0].state == 1){
-                this.date_environment = Response;
-                this.countDevices();
-                this.mydashboardv();
-              }else{
-                Swal.fire({
-                  icon: 'warning',
-                  title: 'Oops...',
-                  text: 'Estás suspendido de este entorno!',
-                })
-                this.route.navigate(['/environments']);
+      this.token = jwt_decode(localStorage.getItem('token'));
+      this.routes.paramMap
+      .subscribe((params : ParamMap) => {
+      let id = + params.get('id');
+      this.id_environment = id;
+      });
+
+      if(localStorage.getItem("token")){
+        this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
+          (response: any) => {
+            let data = ({
+              environment : this.id_environment,
+              id_user : this.token.id
+            });
+            this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/main`, data).subscribe(
+              (Response : any) => {
+                if(Response[0].state == 1){
+                  this.date_environment = Response;
+                  this.countDevices();
+                  this.mydashboardv();
+                }else{
+                  Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Estás suspendido de este entorno!',
+                  })
+                  this.route.navigate(['/environments']);
+                }
+                localStorage.setItem('environment',this.id_environment);
+              },(error) => {
+                this.toastr.warning("Usted no tiene acceso a este entono de trabajo");
+                this.route.navigate(['/environments'])
               }
-              localStorage.setItem('environment',this.id_environment);
-            },(error) => {
-              console.log(error);
-            }
-          )
-          console.log(response);
-        },(error) => {
-          console.log(error);
-          this.auth.logout();
-          this.route.navigate(['/login'])
-        });
+            )
+          },(error) => {
+            this.auth.logout();
+            this.route.navigate(['/login'])
+          });
+      }else{
+        this.route.navigate(['/login']);
+      }
     }else{
       this.route.navigate(['/login']);
     }
-
   }
 }

@@ -61,7 +61,7 @@ export class DevicesInProgressComponent implements OnInit {
       (Response : any) => {
         this.more = Response;
       },(error) => {
-        console.log(error);
+        console.error(error);
       }
     )
   }
@@ -71,11 +71,9 @@ export class DevicesInProgressComponent implements OnInit {
       status : 2,
       environment : this.id_environment
     })
-    console.log(data)
       this.client.postRequest(`${environment.BASE_API_REGISTER}/show/device/progress`,data).subscribe(
       (Response : any) => {
         if(Response){
-          console.log(Response);
           this.data = Response;
         }else{
           this.data = 0;
