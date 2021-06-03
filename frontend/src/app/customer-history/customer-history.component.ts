@@ -9,11 +9,13 @@ export class CustomerHistoryComponent implements OnInit {
 
   constructor() { }
 
+  boleano: boolean = false;
+
   public data = [
-    {name: 'Luis Eduardo', email: 'luisedt@gmail.com', website:'therichpost.com'},
-    {name: 'Mario', email: 'mario@gmail.com', website:'therichpost.com'},
-    {name: 'Jose Antonio', email: 'Joseantonio@gmail.com', website:'therichpost.com'},
-    {name: 'Carlos Manuel', email: 'Carlosmanuel@gmail.com', website:'therichpost.com'}];
+    {name: 'Luis Eduardo', apellido: 'Rodriguez', cedula: '100674823', email: 'luisedt@gmail.com'},
+    {name: 'Mario', apellido: 'Mendoza', cedula: '100853539', email: 'mario@gmail.com'},
+    {name: 'Jose Antonio', apellido: 'Suarez', cedula: '100630287', email: 'Joseantonio@gmail.com'},
+    {name: 'Carlos Manuel', apellido: 'Nuñez', cedula: '100735012', email: 'Carlosmanuel@gmail.com'}];
 
     title = 'angulardatatables';
     dtOptions: DataTables.Settings = {};

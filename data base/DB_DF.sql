@@ -1,4 +1,4 @@
-create database db_datafilter;
+create database db_datafilter; /*drop schema db_datafilter*/
 use db_datafilter;
 
 create table users
@@ -8,7 +8,7 @@ create table users
 	surname char(100),
 	email char(150) unique,
 	password text,
-	url_img text,
+	img text,
 	activated boolean,
 	code char(15),
 	recovery_date datetime
