@@ -3,15 +3,108 @@
   <thead>
     <tr>
       <th scope="col">Nombre</th>
-      <th scope="col">Email</th>
-      <th scope="col">D</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Cédula</th>
+      <th scope="col">Correo electrónico</th>
+      <th scope="col">Ver más</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let group of data">
       <td>{{group.name}}</td>
+      <td>{{group.apellido}}</td>
+      <td>{{group.cedula}}</td>
       <td>{{group.email}}</td>
-      <td>{{group.website}}</td>
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#info">a</button>
+        <button id="buton" type="button" class="btn btn-warning" data-toggle="modal" data-target="#editClient">b</button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Este modal es para ver la información de los dispositivos del cliente -->
+<div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Dispositivos del cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Escriba aquí
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Este modal es para editar los datos del cliente -->
+<div class="modal fade" id="editClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Información del cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-12 mb-4">
+                <label for="exampleFormControlFile1">Nombre del cliente</label>
+                <input class="form-control mt-2" type="text" [readOnly]="!boleano">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-4">
+                <label for="exampleFormControlFile1">Apellido del cliente</label>
+                <input class="form-control mt-2" type="text" [readOnly]="!boleano">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-4">
+                <label for="exampleFormControlFile1">Cédula del cliente</label>
+                <input class="form-control mt-2" type="text" readonly>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-4">
+                <label for="exampleFormControlFile1">Teléfono del cliente</label>
+                <input class="form-control mt-2" type="text" [readOnly]="!boleano">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-4">
+                <label for="exampleFormControlFile1">Correo electrónico del cliente</label>
+                <input class="form-control mt-2" type="text" [readOnly]="!boleano">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-4">
+                <label for="exampleFormControlFile1">Dirección del cliente</label>
+                <input class="form-control mt-2" type="text" [readOnly]="!boleano">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex mt-3 justify-content-end font-weight-bold">
+                <label class="mt-2 mr-1" for="exampleFormControlFile1">Editar datos</label>
+                <button class="mr-4 btn btn-link" (click)="boleano = !boleano"><img id="lapiz" src="https://cdn.pixabay.com/photo/2013/10/04/11/48/pencil-190586_960_720.png" alt="" width="30px"></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button *ngIf="boleano" type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
