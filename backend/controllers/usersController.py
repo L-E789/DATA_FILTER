@@ -81,6 +81,7 @@ class ModificationPassword(MethodView):
             if check:
                 return jsonify({"modifi":True}),200
             else:
+            
                 return jsonify({"modifi":False}),400
         else:
             return jsonify(), 400

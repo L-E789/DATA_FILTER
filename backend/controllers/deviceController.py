@@ -186,8 +186,40 @@ class changeCheckStaus(MethodView):
         elif(answer == "error3"):
             return jsonify({'status': "error3"}), 200
 
-        elif(answer == "error4"):
-            return jsonify({'status': "error4"}), 200
-
         else:
             return jsonify(), 400
+
+class ClientInfoDevice(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.id = content.get('id')
+        dev.enviroment = content.get('enviroment')
+        answer = dev.client_info_device()
+        if(answer):
+            return jsonify(answer), 200
+        else:
+            return jsonify(), 400
+
+class ShowFinished(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.status = content.get('status')
+        dev.enviroment = content.get('environment')
+        answer = dev.show_devices_finished()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400
+
+class removeDevice(MethodView):
+    def post(self):
+        dev = device()
+        content = request.get_json()
+        dev.status = content.get('status')
+        dev.id = content.get('id_device')
+        dev.enviroment = content.get('environment')
+        answer = dev.remove_sevice()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400

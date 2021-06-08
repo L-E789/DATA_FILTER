@@ -135,23 +135,42 @@ class device:
             return 'Ok'
 
     def check_repair(self):
+        now = datetime.now()
         cmm = conexion.search("select failure,diagnosis,solution from devices where (id = %s and environment = %s)", [self.id,self.enviroment])
         if(self.status == 3):
             if(cmm[0][0] != None and cmm[0][1] != None and cmm[0][2] != None):
                 if((len(cmm[0][0]) != 0) and (len(cmm[0][1]) != 0) and (len(cmm[0][2]) != 0)):
-                    cod = conexion.Add("update devices set status = %s where (id = %s and environment = %s)", [self.status,self.id,self.enviroment])
+                    cod = conexion.Add("update devices set status = %s,finish_date = %s where (id = %s and environment = %s)", [self.status,now,self.id,self.enviroment])
                     return "success"
                 else:
                     return 'error3'
             else:
                 return 'error3'
-                
-        elif(self.status == 4):
-            if(cmm[0][0] != None and cmm[0][1] != None):
-                if(len(cmm[0][0]) != 0 and len(cmm[0][1]) != 0):
-                    cod = conexion.Add("update devices set status = %s where (id = %s and environment = %s)", [self.status,self.id,self.enviroment])
-                    return "success"
-                else:
-                    return 'error4'
-            else:
-                return 'error4'
+    
+    def client_info_device(self):
+        data={}
+        data['info'] = []
+        consult = conexion.search("select d.failure, d.diagnosis, d.solution, d.process_start_date, d.finish_date, d.departure_date, u.name from devices d, users u where d.start_process = u.id and d.id = %s and d.environment = %s",[self.id, self.enviroment])
+        if(consult):
+            for i in consult:
+                data['info'].append({'failure':i[0],'diagnosis':i[1],'solution':i[2],'process_start_date':format(i[3]),'finish_date':format(i[4]),'departure_date':format(i[5]),'name':i[6]})
+            return data['info']
+        else:
+            return None
+    
+    def show_devices_finished(self):
+        data={}
+        data['finished'] = []
+        consult = conexion.search("select d.id, d.client, d.type, d.model, d.brand, d.finish_date, u.name from devices d, users u where d.start_process = u.id and d.environment = %s and d.status= %s",[self.enviroment,self.status])
+        if(consult):
+            for i in consult:
+                data['finished'].append({'id':i[0],'client':i[1],'type':i[2],'model':i[3],'brand':i[4],'finish_date':format(i[5]),'name':i[6]})
+            return data['finished']
+        else:
+            return None
+
+    def remove_sevice(self):
+        now = datetime.now()
+        cmm = conexion.Add("update devices set status = %s , departure_date = %s where (id = %s and environment = %s)", [self.status,now,self.id,self.enviroment])
+        if cmm:
+            return 'Ok'

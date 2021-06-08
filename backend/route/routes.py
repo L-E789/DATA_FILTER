@@ -4,9 +4,9 @@ from controllers.work_environment import CreateEnvironment, ShowEnvironment, Rem
 
 from controllers.authenticationController import AuthorizationControllers
 
-from controllers.deviceController import createdevice,getdevice,changestatusPending,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice, showDevicesInProgress, moreInfoDeviceProgress, myDashboardGet,getInfoRepair,saveInfoRepair,changeCheckStaus
+from controllers.deviceController import createdevice,getdevice,changestatusPending,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice, showDevicesInProgress, moreInfoDeviceProgress, myDashboardGet,getInfoRepair,saveInfoRepair,changeCheckStaus, ClientInfoDevice, ShowFinished, removeDevice
 
-from controllers.clientController import createclient,searchclient,editclient,deleteclient
+from controllers.clientController import createclient,searchclient,editclient,deleteclient,showClients,searchClient,showHistory, consultClient
 
 users = {
     "create_user":"/api/v01/register","create_user_controllers": Register.as_view("create_api"),
@@ -56,12 +56,19 @@ device = {
     "device_show_repair":"/api/v01/show/device/repair","device_repair_controllers": getInfoRepair.as_view("device_repair_api"),
     "device_save_repair":"/api/v01/set/device/add","device_add_repair_controllers": saveInfoRepair.as_view("device_add_repair_api"),
     "device_change_check":"/api/v01/check/device/status","device_staus_check_controllers": changeCheckStaus.as_view("device_Stats_repair_api"),
+    "client_info_device":"/api/v01/client/info/device","info_device_controllers": ClientInfoDevice.as_view("client_info_device_api"),
+    "show_finished_device":"/api/v01/show/device/finished","show_finished_controllers": ShowFinished.as_view("show_finished_api"),
+    "show_remove_finished_device":"/api/v01/device/remove","show_remove_finished_controllers": removeDevice.as_view("show_remove_finished_api"),
 }
 
 
 client = {
     "client_add":"/api/v01/create/client","client_add_controllers": createclient.as_view("client_add_api"),
-    "client_edit":"/api/v01/client","client_controllers": editclient.as_view("client_api"),
+    "client_edit":"/api/v01/edit/client","client_controllers": editclient.as_view("client_api"),
     "client_delete":"/api/v01/delete/client","client_delete_controllers": deleteclient.as_view("client_delete_api"),
     "client_search":"/api/v01/search/client","client_search_controllers": searchclient.as_view("client_search_api"),
+    "client_show":"/api/v01/show/client","client_show_controllers": showClients.as_view("client_show_api"),
+    "client_search":"/api/v01/search/client","client_search_controllers": searchClient.as_view("client_search_api"),
+    "client_history":"/api/v01/history/client","client_history_controllers": showHistory.as_view("client_history_api"),
+    "client_verfification":"/api/v01/verification/client","client_verfification_controllers": consultClient.as_view("client_verfification_api"),
 }

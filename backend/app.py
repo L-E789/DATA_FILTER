@@ -57,14 +57,22 @@ app.add_url_rule(device["device_more_info_progress"], view_func=device["device_m
 app.add_url_rule(device["device_my_dashboard_progress"], view_func=device["device_my_dashboard_controllers"])
 app.add_url_rule(device["device_show_repair"], view_func=device["device_repair_controllers"])
 app.add_url_rule(device["device_save_repair"], view_func=device["device_add_repair_controllers"])
-
 app.add_url_rule(device["device_change_check"], view_func=device["device_staus_check_controllers"])
+app.add_url_rule(device["client_info_device"], view_func=device["info_device_controllers"])
+app.add_url_rule(device["show_finished_device"], view_func=device["show_finished_controllers"])
+
+app.add_url_rule(device["show_remove_finished_device"], view_func=device["show_remove_finished_controllers"])
 
 #client
 app.add_url_rule(client["client_add"], view_func=client["client_add_controllers"])
 app.add_url_rule(client["client_edit"], view_func=client["client_controllers"])
 app.add_url_rule(client["client_delete"], view_func=client["client_delete_controllers"])
 app.add_url_rule(client["client_search"], view_func=client["client_search_controllers"])
+
+app.add_url_rule(client["client_show"], view_func=client["client_show_controllers"])
+app.add_url_rule(client["client_search"], view_func=client["client_search_controllers"])
+app.add_url_rule(client["client_history"], view_func=client["client_history_controllers"])
+app.add_url_rule(client["client_verfification"], view_func=client["client_verfification_controllers"])
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

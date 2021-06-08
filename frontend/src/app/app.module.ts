@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {DataTablesModule} from 'angular-datatables';
 
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "pdfmake/build/vfs_fonts";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -38,7 +41,9 @@ import { FinishedDivicesComponent } from './finished-divices/finished-divices.co
 import { DevicesInProgressComponent } from './devices-in-progress/devices-in-progress.component';
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { ConsultClientComponent } from './consult-client/consult-client.component';
+import { EnvironmentReportComponent } from './environment-report/environment-report.component';
 
+PdfMakeWrapper.setFonts(pdfFonts);
 
 const config = {
   apiKey: "AIzaSyB8uT6XO_IKVtKBXWoj_oEvhCyvdiev-RY",
@@ -77,6 +82,7 @@ const config = {
     DevicesInProgressComponent,
     MyDashboardComponent,
     ConsultClientComponent,
+    EnvironmentReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +98,7 @@ const config = {
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     PopoverModule,
-    DataTablesModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

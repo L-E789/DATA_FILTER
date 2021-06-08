@@ -95,7 +95,7 @@
         
         <div class="card">
           <ul class="list-group list-group-flush" *ngFor="let i of more">
-            <li class="list-group-item text-center" style="background:#617c94;"><b>Datos del propietario</b></li>
+            <li class="list-group-item text-center" style="background:#617c94; color: white;"><b>Datos del propietario</b></li>
             <li class="list-group-item">
               <br>
               <div class="container">
@@ -111,7 +111,7 @@
                   </div>
                 </div>
               </div> </li>
-            <li class="list-group-item text-center" style="background:#617c94;"><b>Datos del dispositivo</b>
+            <li class="list-group-item text-center" style="background:#617c94; color: white;"><b>Datos del dispositivo</b>
 
             </li>
             <li class="list-group-item">
@@ -129,7 +129,7 @@
               <hr>
               <b>Usuario que ingreso el dispositivo:</b> {{i.user}} , <b>Fecha de ingreso:</b> {{ i.admission_date | date : 'short' }}
             </li>
-            <li class="list-group-item text-center" style="background:#617c94;"><b>Detalles de la reparación</b>
+            <li class="list-group-item text-center" style="background:#617c94; color: white;"><b>Detalles de la reparación</b>
             <li class="list-group-item">
               <b>Falla:</b> {{i.failure}}
               <hr>

@@ -12,6 +12,7 @@ class users:
         self.password = ''
         self.activated = 0
         self.code = ''
+        self.env = 0
 
     def create_user(self):
         respuesta = conexion.Add("insert into users (name,surname,email,password,img,activated,code) values (%s,%s,%s,%s,%s,%s,%s);",[self.name,self.surname,self.email,self.password,"https://firebasestorage.googleapis.com/v0/b/datafilter-32b92.appspot.com/o/profile%2Fpngegg.png?alt=media&token=3f31a154-ef66-487c-abfd-962b3c349e88",0,self.code])
@@ -81,3 +82,10 @@ class users:
         update = conexion.Add('update users set password = %s where id = %s',[self.password,self.id])
         if update:
             return 'Ok'
+
+    """def report_general(self):
+        cmm1 = conexion.search(" select user,count(*) from devices where environment = %s group by user", [self.env])
+
+        cmm2 = conexion.search("select start_process,count(*) from devices where environment = %s group by start_process", [self.env])
+
+        cmm3 = conexion.search("")"""

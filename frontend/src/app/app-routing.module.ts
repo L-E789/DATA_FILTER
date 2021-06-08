@@ -14,6 +14,7 @@ import {AddUsersEnvironmentComponent} from './add-users-environment/add-users-en
 import {AboutUsComponent} from './about-us/about-us.component'
 import {EnvironmentsComponent} from './environments/environments.component'
 import {JoinEnvironmentComponent} from './join-environment/join-environment.component'
+import {EnvironmentReportComponent} from './environment-report/environment-report.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'environments/users/:id', component: AddUsersEnvironmentComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'environment/:id', component: EnvironmentsComponent},
-  {path: 'environment/join/:code',component:JoinEnvironmentComponent}
+  {path: 'environment/join/:code',component:JoinEnvironmentComponent},
+  {path: 'environments/report',component:EnvironmentReportComponent}
 
 ];
 

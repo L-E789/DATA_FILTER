@@ -34,9 +34,9 @@ export class MyDashboardComponent implements OnInit {
     this.token = jwt_decode(localStorage.getItem('token'));
     
     this.form = this.fb.group({
-      failure : ['', Validators.required],
-      diagnosis : ['', Validators.required],
-      solution : ['',  Validators.required]
+      failure : [''],
+      diagnosis : [''],
+      solution : ['']
     })
 
     this.routes.paramMap
@@ -140,10 +140,6 @@ export class MyDashboardComponent implements OnInit {
         }
         if(Response.status == 3){
           this.toastr.success('El dispositivo se paso a finalizado');
-        }else{
-          if(Response.status ==4){
-            this.toastr.success("El dispositivo se paso a finalizado");
-          }
         }
       },(error) => {
         console.error(error);
