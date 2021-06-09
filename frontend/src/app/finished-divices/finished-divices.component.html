@@ -3,7 +3,7 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand"></a>
   <div  class="form-inline" >
-    <input  class="form-control mr-sm-2" (keyup)="search($event.target.value)"  type="search" placeholder="Buscar por cedula" aria-label="Search">
+    <input  class="form-control mr-sm-2" (keyup)="search($event.target.value)"  type="number" placeholder="Buscar por cedula" aria-label="Search">
   </div>
 </nav>
 
@@ -26,28 +26,36 @@
                 <th>Opciones</th>
                 <th></th>
             </tr>
-            <ng-container *ngIf="data != 0">
-              <tr *ngFor="let i of data">
-                <td>{{i.client}}</td>
-                <td>{{i.type}}</td>
-                <td>{{i.model}}</td>
-                <td>{{i.brand}}</td>
-                <td>{{i.finish_date | date : 'short'}}</td>
-                <td style="color: red;">@{{i.name}}</td>
-                <td>
-                  <a class="btn btn-light btn-action mr-1 btn-modal" (click)="moreInfo(i.id)" class="btn" data-toggle="modal" data-target="#fsModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                    </svg>
-                  </a>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success" (click)="removeDevice(i.id)">Retirar</button>
-                </td>
-              </tr>
-            </ng-container>
+            <ng-container *ngIf="noresults != 1">
+              <ng-container *ngIf="data != 0">
+                <tr *ngFor="let i of data">
+                  <td>{{i.client}}</td>
+                  <td>{{i.type}}</td>
+                  <td>{{i.model}}</td>
+                  <td>{{i.brand}}</td>
+                  <td>{{i.finish_date | date : 'short'}}</td>
+                  <td style="color: red;">@{{i.name}}</td>
+                  <td>
+                    <a class="btn btn-light btn-action mr-1 btn-modal" (click)="moreInfo(i.id)" class="btn" data-toggle="modal" data-target="#fsModal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </a>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success" (click)="removeDevice(i.id)">Retirar</button>
+                  </td>
+                </tr>
+              </ng-container>
+          </ng-container>
           </tbody></table>
+        </div>
+        <div *ngIf="data == 0" class="alert alert-primary text-center" role="alert">
+          No hay dispositivos finalizados
+        </div>
+        <div *ngIf="noresults == 1" class="alert alert-primary text-center" role="alert">
+          No se encontraron resultados
         </div>
       </div>
     </div>

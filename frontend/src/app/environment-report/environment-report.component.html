@@ -1,29 +1,27 @@
 <app-navbar></app-navbar>
-
-<div class="container bootdey flex-grow-1 container-p-y">
-
+<div  class="container bootdey flex-grow-1 container-p-y" *ngIf="data != 0">
             <br>
-            <button class="btn btn-primary">Descargar</button>
+            <button class="btn btn-primary" (click)="generatepdf()">Descargar</button>
             <br><br>
-            <div class="card mb-4">
+            <div class="card mb-4" id="table">
               <div class="card-body">
-                <table class="table user-view-table m-0">
+                <table class="table user-view-table m-0" >
                   <tbody>
                     <tr>
                       <td>Nombre:</td>
-                      <td>Code Group S.A.S</td>
+                      <td>{{data.infoG[0].name}}</td>
                     </tr>
                     <tr>
                       <td>Fecha:</td>
-                      <td>01/23/2018</td>
+                      <td>{{data.infoG[0].creation_date}}</td>
                     </tr>
                     <tr>
                       <td>Colaboradores:</td>
-                      <td>80</td>
+                      <td>{{data.infoU[0].users}}</td>
                     </tr>
                     <tr>
                         <td>Clientes:</td>
-                        <td>80</td>
+                        <td>{{data.infoC[0].clients}}</td>
                       </tr>
                   </tbody>
                 </table>
@@ -39,16 +37,15 @@
                           <th>Dispositivos finalizados </th>
                           <th>Total de dispositivos</th>
                       </tr>
-                      <tr>
-                          <td class="text-center">10-06-2021</td>
-                          <td class="text-center">23</td>
-                          <td class="text-center">16</td>
-                          <td class="text-center">37</td>
-                          <td class="text-center">76</td>
+                      <tr *ngFor="let i of data.devices">
+                          <td class="text-center">{{i.date}}</td>
+                          <td class="text-center">{{i.pending}}</td>
+                          <td class="text-center">{{i.course}}</td>
+                          <td class="text-center">{{i.finished}}</td>
+                          <td class="text-center">{{i.pending + i.course + i.finished}}</td>
                       </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-
-          </div>
+ </div>

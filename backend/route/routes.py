@@ -1,4 +1,4 @@
-from controllers.usersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword, profileedis, ChangePassword, ModifyImg, ModifyName
+from controllers.usersController import Register,Login, ValidateAccount, SentRecoverPassword, RecoverPasssword, ModificationPassword, profileedis, ChangePassword, ModifyImg, ModifyName,reportgeneral
 
 from controllers.work_environment import CreateEnvironment, ShowEnvironment, RemoveEnvironment, SearchEnvironment, ManageUsers, ManageUsersRemove, JoinByCode, SearchManage, SendMailCollaborators, ChangeStatus, Main_bringEnvironmentData, Main_RegisterClient, Main_ConsultClient
 
@@ -7,6 +7,8 @@ from controllers.authenticationController import AuthorizationControllers
 from controllers.deviceController import createdevice,getdevice,changestatusPending,deletedevice, showpending, CountDevice, moreInfoDevice, editDevice, showDevicesInProgress, moreInfoDeviceProgress, myDashboardGet,getInfoRepair,saveInfoRepair,changeCheckStaus, ClientInfoDevice, ShowFinished, removeDevice
 
 from controllers.clientController import createclient,searchclient,editclient,deleteclient,showClients,searchClient,showHistory, consultClient
+
+from controllers.adminController import ContactUs
 
 users = {
     "create_user":"/api/v01/register","create_user_controllers": Register.as_view("create_api"),
@@ -20,6 +22,7 @@ users = {
     "profile_img":"/api/v01/edit_img","profile_img_controller": ModifyImg.as_view("Modify_img_api"),
     "profile_name":"/api/v01/edit_name","profile_name_controller": ModifyName.as_view("Modify_name_api"),
     "profile_change_password":"/api/v01/change_password","profile_change_password_controller": ChangePassword.as_view("profile_password_api"),
+    "report":"/api/v01/report/general","report_controller": reportgeneral.as_view("report_api"),
 }
 
 environment = {
@@ -71,4 +74,9 @@ client = {
     "client_search":"/api/v01/search/client","client_search_controllers": searchClient.as_view("client_search_api"),
     "client_history":"/api/v01/history/client","client_history_controllers": showHistory.as_view("client_history_api"),
     "client_verfification":"/api/v01/verification/client","client_verfification_controllers": consultClient.as_view("client_verfification_api"),
+}
+
+
+admin = {
+    "contact_us":"/api/v01/contact","contact_controllers": ContactUs.as_view("contact_api"),
 }

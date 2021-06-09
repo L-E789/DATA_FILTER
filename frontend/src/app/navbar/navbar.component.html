@@ -16,10 +16,10 @@
                 <li class="nav-item"></li>
                 <li class="nav-item"></li>
             </ul><span class="navbar-text actions">
-              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="/about-us" style="color: rgb(255,255,255);">¿Quiénes Somos?</a>
-              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="#" style="color: rgb(255,255,255);">Contáctenos</a>
-              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="/register" style="color: rgb(255,255,255);">Registro</a>
-              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" href="/login" style="color: rgb(255,255,255);">Iniciar sesión</a></span>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login"  [routerLink]="['/about-us']" style="color: rgb(255,255,255);">¿Quiénes Somos?</a>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" [routerLink]="['/contact_us']" style="color: rgb(255,255,255);">Contáctenos</a>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login"  [routerLink]="['/register']" style="color: rgb(255,255,255);">Registro</a>
+              <a *ngIf="!(auth.isLoggedIn() | async)" class="login" [routerLink]="['/login']" style="color: rgb(255,255,255);">Iniciar sesión</a></span>
               <div  *ngIf="auth.isLoggedIn() | async" class="login" style="color: rgb(255,255,255); margin-right: 15px;">
                 <a> {{auth.getNameUser()}} {{auth.getSurnameUser()}}</a>
               </div>

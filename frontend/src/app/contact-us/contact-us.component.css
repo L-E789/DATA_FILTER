@@ -1,0 +1,10 @@
+body{
+    overflow: hidden;
+    background: #191c22;
+    height: 550px;
+    color: white;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

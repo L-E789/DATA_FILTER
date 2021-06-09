@@ -17,6 +17,7 @@ app.add_url_rule(users["recover_email_user"], view_func=users["recover_email"])
 app.add_url_rule(users["recover_password_user"], view_func=users["recover_password"])
 app.add_url_rule(users["modification_password_user"], view_func=users["modification_password"])
 app.add_url_rule(users["authorization_user"], view_func=users["authorization_user_controller"])
+app.add_url_rule(users["report"], view_func=users["report_controller"])
 
     #-profile
 app.add_url_rule(users["editProfile_user"], view_func=users["editprofile_user_controller"])
@@ -73,6 +74,12 @@ app.add_url_rule(client["client_show"], view_func=client["client_show_controller
 app.add_url_rule(client["client_search"], view_func=client["client_search_controllers"])
 app.add_url_rule(client["client_history"], view_func=client["client_history_controllers"])
 app.add_url_rule(client["client_verfification"], view_func=client["client_verfification_controllers"])
+
+
+#admin
+
+app.add_url_rule(admin["contact_us"], view_func=admin["contact_controllers"])
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

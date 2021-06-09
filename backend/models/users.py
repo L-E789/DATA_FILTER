@@ -83,9 +83,42 @@ class users:
         if update:
             return 'Ok'
 
-    """def report_general(self):
-        cmm1 = conexion.search(" select user,count(*) from devices where environment = %s group by user", [self.env])
+    def reportG(self):
+        data = {}
+        data['infoG'] = []
+        data['infoU'] = []
+        data['infoC'] = []
+        data['devices'] = []
+        #info general
+        cmc = conexion.search("select name, creation_date from environments where id = %s", [self.id])
+        if(cmc):
+            for i in cmc:
+                data['infoG'].append({'name':i[0],'creation_date':format(i[1])})
+        else:
+            return None
+        #conteo 1
+        ccm = conexion.search("select count(id_user) from bridge where id_environments =%s", [self.id])
+        if(ccm):
+            for i in ccm:
+                data['infoU'].append({'users':i[0]})
+        else:
+            return None
+        #conteo 2
+        ccc = conexion.search("select count(enviroment) from clients where enviroment = %s", [self.id])
+        if(ccc):
+            for i in ccc:
+                data['infoC'].append({'clients':i[0]})
+        else:
+            return None
 
-        cmm2 = conexion.search("select start_process,count(*) from devices where environment = %s group by start_process", [self.env])
-
-        cmm3 = conexion.search("")"""
+        dt = '%Y %M'
+        cmm = conexion.search("SELECT DISTINCT DATE_FORMAT(admission_date, %s),SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END) AS 'penging',SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END) AS 'course',SUM(CASE WHEN status = 3 THEN 1 ELSE 0 END) AS 'finished'FROM devices where environment = %s ", [dt,self.id])
+        if(cmm[0][0] != None):
+            if(cmm):
+                for i in cmm:
+                    data['devices'].append({'date':format(i[0]),'pending':int(i[1]),'course':int(i[2]), 'finished':int(i[3])}) 
+                return data   
+            else:
+                return None
+        else:
+            return None

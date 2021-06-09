@@ -148,6 +148,17 @@ class ChangePassword(MethodView):
             return jsonify(), 200
         else:
             return jsonify(), 400
+
+
+class reportgeneral(MethodView):
+    def post(self):
+        Rp = users()
+        content = request.get_json()
+        Rp.id = content.get('id')
+        answer = Rp.reportG()
+        if(answer):
+            return jsonify(answer), 200
+        return jsonify(), 400
         
 
     

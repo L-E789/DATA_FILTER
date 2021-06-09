@@ -42,6 +42,8 @@ import { DevicesInProgressComponent } from './devices-in-progress/devices-in-pro
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { ConsultClientComponent } from './consult-client/consult-client.component';
 import { EnvironmentReportComponent } from './environment-report/environment-report.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -83,6 +85,8 @@ const config = {
     MyDashboardComponent,
     ConsultClientComponent,
     EnvironmentReportComponent,
+    ContactUsComponent,
+    LoginAdminComponent,
   ],
   imports: [
     BrowserModule,

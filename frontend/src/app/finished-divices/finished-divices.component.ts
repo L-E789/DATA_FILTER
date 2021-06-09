@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute , ParamMap } from '@angular/router';
 import { ClientService} from '../service/client.service';
+import { EnvironmentsComponent } from '../environments/environments.component'
 
 import Swal from 'sweetalert2';
 
@@ -16,11 +17,13 @@ export class FinishedDivicesComponent implements OnInit {
   id_environment : number;
   data : any;
   more: any;
+  noresults : number;
 
   constructor(
     private routes : ActivatedRoute,
     private client: ClientService,
     private toastr: ToastrService,
+    private env: EnvironmentsComponent
   ) { }
 
   ngOnInit(): void {
@@ -32,8 +35,28 @@ export class FinishedDivicesComponent implements OnInit {
     this.show()
   }
 
-  search(data : string){
-    console.log(data);
+  search(search:string){
+    if(this.data != 0){
+      this.noresults = null;
+      let searchArr : any[] = []
+      let tosearch = search.toLowerCase();
+      if (tosearch.length > 0){
+        for(let i = 0; i < this.data.length; i++){
+            let buscar = this.data[i];
+            let showdata = buscar.client.toLowerCase();
+            if(showdata.indexOf(tosearch) >= 0){
+              searchArr.push(buscar);
+            }
+        }
+        if(searchArr.length > 0 ){
+          this.data = searchArr;
+        }else{
+          this.noresults = 1;
+        }
+      }else{
+        this.show();
+      }
+    }
   }
   
   moreInfo(id : number){
@@ -74,12 +97,26 @@ export class FinishedDivicesComponent implements OnInit {
       status : 4,
       environment : this.id_environment
     });
-    this.client.postRequest(`${environment.BASE_API_REGISTER}/device/remove`,data).subscribe(
-      (Response : any) => {
-        console.log(Response);
-      },(error) => {
-        console.error(error);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡Estás a punto de retirar este dispositivo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.client.postRequest(`${environment.BASE_API_REGISTER}/device/remove`,data).subscribe(
+          (Response : any) => {
+            this.env.countDevices();
+            this.show();
+          },(error) => {
+            console.error(error);
+          }
+        )
       }
-    )
+    })
   }
 }

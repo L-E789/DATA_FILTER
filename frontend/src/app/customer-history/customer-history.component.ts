@@ -4,6 +4,7 @@ import { ActivatedRoute , ParamMap } from '@angular/router';
 import { Router } from '@angular/router';
 import {environment} from '../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EnvironmentsComponent } from '../environments/environments.component'
 import { DataTableDirective } from 'angular-datatables';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
@@ -31,7 +32,8 @@ export class CustomerHistoryComponent implements OnInit {
     private route: Router,
     private routes : ActivatedRoute,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private env: EnvironmentsComponent
   ) { 
     this.routes.paramMap
     .subscribe((params : ParamMap) => {
@@ -183,6 +185,7 @@ export class CustomerHistoryComponent implements OnInit {
           (Response : any) => {
             Swal.fire('El cliente fue eliminado', '', 'success');
             this.render();
+            this.env.countDevices();
           },(error) => {
             console.log(error);
           }

@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import { ActivatedRoute , ParamMap } from '@angular/router';
 import { ClientService} from '../service/client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EnvironmentsComponent } from '../environments/environments.component'
 
 import { ToastrService } from 'ngx-toastr';
 import jwt_decode from 'jwt-decode'
@@ -27,7 +28,8 @@ export class MyDashboardComponent implements OnInit {
     private fb: FormBuilder,
     private routes : ActivatedRoute,
     private client: ClientService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private env: EnvironmentsComponent
   ) { }
 
   ngOnInit(): void {
@@ -140,6 +142,8 @@ export class MyDashboardComponent implements OnInit {
         }
         if(Response.status == 3){
           this.toastr.success('El dispositivo se paso a finalizado');
+          this.env.countDevices();
+          this.show();
         }
       },(error) => {
         console.error(error);

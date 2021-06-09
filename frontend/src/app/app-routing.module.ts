@@ -15,6 +15,8 @@ import {AboutUsComponent} from './about-us/about-us.component'
 import {EnvironmentsComponent} from './environments/environments.component'
 import {JoinEnvironmentComponent} from './join-environment/join-environment.component'
 import {EnvironmentReportComponent} from './environment-report/environment-report.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -30,8 +32,9 @@ const routes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
   {path: 'environment/:id', component: EnvironmentsComponent},
   {path: 'environment/join/:code',component:JoinEnvironmentComponent},
-  {path: 'environments/report',component:EnvironmentReportComponent}
-
+  {path: 'environments/report/:id',component:EnvironmentReportComponent},
+  {path: 'contact_us',component: ContactUsComponent},
+  {path: '3RjZgfU&rZVRLC7fzTNf1IRgxRFPvQ5G1ekFXJZ9/Sd89AsYwD912',component: LoginAdminComponent},
 ];
 
 @NgModule({
