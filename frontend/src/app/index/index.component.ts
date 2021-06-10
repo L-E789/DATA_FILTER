@@ -22,7 +22,6 @@ export class IndexComponent implements OnInit {
       (response: any) => {
         this.route.navigate(['/environments']);
       },(error) => {
-        console.log(error);
         this.auth.logout()
         this.route.navigate(['/']);
       });

@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, GetDownloadURLPipe } from '@angular/fire/storage';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {environment} from '../../environments/environment';
 import { observable, Observable } from 'rxjs';
 import { ClientService} from '../service/client.service';
@@ -156,8 +156,14 @@ export class ProfileComponent implements OnInit {
       }
     )
   }
-  
 
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+  
+  
   ngOnInit(): void {
     this.form = this.fb.group({
       name : [''],
@@ -166,9 +172,11 @@ export class ProfileComponent implements OnInit {
     });
 
     this.formPassword = this.fb.group({
-      password : [''],
-      validatepassword: ['']
+      password : ['',Validators.compose([Validators.required,Validators.minLength(8), Validators.maxLength(15), this.noWhitespaceValidator])],
+      validatepassword: ['',Validators.compose([Validators.required,Validators.minLength(8), Validators.maxLength(15), this.noWhitespaceValidator])]
     })
+
+    
 
     if(localStorage.getItem('token')){
       this.token = jwt_decode(localStorage.getItem("token"));
@@ -185,4 +193,6 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  get password(){return this.formPassword.get('password')};
+  get validatepassword(){return this.formPassword.get('validatepassword')};
 }

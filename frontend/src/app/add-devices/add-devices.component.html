@@ -14,7 +14,7 @@
                                     <div class="checkout-login" *ngIf="!btnnext">
                                         <form [formGroup]='formConsult' (ngSubmit)="onSubmit() ">
                                             <div>
-                                                <input type="text" class="form-control" formControlName="consult"  placeholder="Numero de Identificacion">
+                                                <input type="text" class="form-control" formControlName="consult"  placeholder="Número de identificación">
                                             </div>
                                             <div  *ngIf="consult.invalid && (consult.dirty || consult.touched)">
                                                 <p style="color: red;"> ** EL campo no puede contener letras o caracteres especiales</p>
@@ -39,7 +39,7 @@
                 </div>
                 <div *ngIf="btnnext" class="panel checkout-step">
                     <div > 
-                        <h4 class="checkout-step-title"> <a  role="button" data-parent="#accordion"  > Ingreso de dispositivo</a> </h4>
+                        <h4 class="checkout-step-title"> <a  role="button" data-parent="#accordion"  > Datos del dispositivo</a> </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
                         <div class="checkout-step-body">

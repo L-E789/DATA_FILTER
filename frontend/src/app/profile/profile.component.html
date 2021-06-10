@@ -16,14 +16,34 @@
                       <span class="input-group-text" id="inputGroup-sizing-default">Nueva contraseña</span>
                     </div>
                     <input type="password" class="form-control" formControlName='password' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <small *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: red;"   fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                        </svg>
+                    </small>
+                    <small *ngIf="password.valid && (password.dirty || password.touched)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" style="color: green;" height="20" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                    </small>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-default">Repita la contraseña</span>
                     </div>
                     <input type="password" class="form-control" formControlName='validatepassword' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <small *ngIf="validatepassword.invalid && (validatepassword.dirty || validatepassword.touched)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: red;"   fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                        </svg>
+                    </small>
+                      <small *ngIf="validatepassword.valid && (validatepassword.dirty || validatepassword.touched)">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" style="color: green;" height="20" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                    </small>
                 </div>
-
+                <br>
                 <button type="submit" class="btn btn-primary">Cambiar</button>
             </form>
         </div>

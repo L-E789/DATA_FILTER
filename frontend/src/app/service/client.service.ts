@@ -17,8 +17,6 @@ export class ClientService {
       const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       config["headers"] = header;
     }
-    // console.log(config);
-
     return this.http.get(route, config);
   }
 

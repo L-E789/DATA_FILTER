@@ -38,6 +38,7 @@ export class CodeclientComponent implements OnInit {
       })
       this.client.postRequest(`${environment.BASE_API_REGISTER}/verification/client`, data).subscribe(
         (Response : any) => {
+          console.log(Response);
           this.data = Response;
         },(error) => {
           this.data = 0;

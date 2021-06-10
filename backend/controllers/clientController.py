@@ -102,6 +102,7 @@ class consultClient(MethodView):
         content = request.get_json()
         cl.identification = content.get('identification')
         answer = cl.consult_client()
+        print(answer)
         if(answer):
             return jsonify(answer), 200
         else:

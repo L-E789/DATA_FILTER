@@ -63,7 +63,7 @@
                     <tbody *ngFor="let i of data" >
                         <tr>
                             <td></td>
-                            <td><a href="#"><img src="{{i.img}}" width="45px" height="45px" class="avatar" alt="Avatar"> {{i.name}}</a></td>
+                            <td><a ><img src="{{i.img}}" width="45px" height="45px" class="avatar" alt="Avatar"> {{i.name}}</a></td>
                             <td>{{i.linking_date}}</td>                        
                             <td>
                                 <ng-container *ngIf=" i.v_admin == true; else elseTemplate1">

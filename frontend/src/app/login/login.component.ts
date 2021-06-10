@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       }
       this.client.postRequest(`${environment.BASE_API_REGISTER}/login`, data).subscribe(
         (response : any) => {
-          console.log(response);
           if (response.activated != 0){
             this.auth.login(response.token);
             this.auth.setNameUser(response.name);

@@ -1,40 +1,26 @@
 <app-navbar></app-navbar>
 
-<body>
-    <div class="container bootstrap snippets bootdey mt-3">
-        <section id="contact" class="gray-bg padding-top-bottom">
-            <div class="container bootstrap snippets bootdey">
-                <div class="row justify-content-md-center">
-                    <form id="Highlighted-form"  class="col-sm-6 col-sm-offset-3" [formGroup]='form' (ngSubmit)='save()'>
-                        
-                        <div class="form-group">
-                        <label class="control-label" for="contact-name">Nombre:</label>
-                        <div class="controls">
-                            <input id="contact-name"  formControlName="name" placeholder="Escriba su nombre" class="form-control requiredField Highlighted-label" data-new-placeholder="Your name" type="text" data-error-empty="Please enter your name">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        </div>
-                        
-                        <div class="form-group">
-                        <label class="control-label" for="contact-mail">Correo electrónico</label>
-                        <div class=" controls">
-                            <input id="contact-mail"  formControlName="email" placeholder="Escriba su correo" class="form-control requiredField Highlighted-label" data-new-placeholder="Your email" type="email" data-error-empty="Please enter your email" data-error-invalid="Invalid email address">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <label class="control-label" for="contact-message">Mensaje</label>
-                            <div class="controls">
-                                <textarea id="contact-message" formControlName="message" placeholder="Escriba su mensaje" class="form-control requiredField Highlighted-label" data-new-placeholder="Your message" rows="6" data-error-empty="Please enter your message"></textarea>
-                                <i class="fa fa-comment"></i>
-                            </div>
-                        </div>
-                        <p><button  type="submit" class="btn btn-info btn-block" ><i class="fa fa-location-arrow mr-2"></i>Enviar mensaje</button></p>
-                        <input type="hidden" name="submitted" id="submitted" value="true">	
-                    </form>
-                </div>	
-            </div>	
-        </section>
+<div class="container" id="info-container" ml>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-info">CONTACTA CON&nbsp;NOSOTROS<br></h2>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6" id="contact-box">
+            <p id="contact-text">Puedes contactarnos y darnos la oportunidad de conocer tus opiniones, compartir tus experiencias y recibir asesoría sobre tus beneficios, utilizando las opciones que hemos dispuesto para ti: </p>
+            <div class="info-box"><i class="bi bi-envelope-fill"></i><span class="text-uppercase text-info"> Email: </span><span>datafiltercg@gmail.com </span></div>
+            <!-- <div class="info-box"><i class="fa fa-phone-square my-info-icons"></i><span class="text-uppercase text-info">Celulares: </span><span>+57</span></div> -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 site-form">
+            <form id="my-form" [formGroup]='form' (ngSubmit)='save()'>
+                <div class="form-group"><label class="sr-only"  for="firstname"> Completo</label><input formControlName="name" class="border rounded-circle shadow form-control" type="text" id="firstname" name="firstname" placeholder="Nombre Completo" ></div>
+                <div class="form-group"><label class="sr-only"  for="email"></label><input formControlName="email"  class="shadow form-control" type="text" id="email" name="email"  placeholder="Correo"></div>
+                <div class="form-group"><label class="sr-only"  for="messages"></label><textarea formControlName="message" class="shadow form-control" name="messages"  placeholder="Comentario" rows="8"></textarea></div>
+                <button class="btn btn-light btn-lg shadow" id="form-btn" type="submit" style="background: rgb(152,152,152);">Enviar </button></form>
+        </div>
+        <div class="clearfix"></div>
     </div>
-</body>
+</div>
+
 <app-footer></app-footer>
+
+

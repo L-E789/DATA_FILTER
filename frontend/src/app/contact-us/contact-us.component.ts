@@ -38,7 +38,7 @@ export class ContactUsComponent implements OnInit {
       this.client.postRequest(`${environment.BASE_API_REGISTER}/contact`,data).subscribe(
         (Response : any) => {
           this.form.reset();
-          this.toastr.success("La informacion fue enviada");
+          this.toastr.success("La informacion fue enviada","Gracias");
         },(error) => {
           console.error(error);
         }

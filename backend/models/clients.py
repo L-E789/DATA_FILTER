@@ -97,7 +97,7 @@ class client:
         else:
             return None
 
-        cmm = conexion.search("select c.identification,d.type,d.brand,d.diagnosis,d.failure,d.solution,d.status from clients c , environments e ,devices d where  c.identification = %s and d.client = c.identification ", [self.identification])
+        cmm = conexion.search("select c.identification,d.type,d.brand,d.diagnosis,d.failure,d.solution,d.status from clients c , environments e ,devices d where  c.identification = %s and c.enviroment= e.id and d.client = c.identification ", [self.identification])
         if(cmm):
             for i in cmm:
                 data['consult'].append({'c_identification':i[0],'d_type':i[1],'d_brand':i[2],'d_diagnosis':i[3],'d_failure':i[4],'d_solution':i[5],'d_status':i[6]})

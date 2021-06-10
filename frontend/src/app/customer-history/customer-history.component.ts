@@ -72,7 +72,7 @@ export class CustomerHistoryComponent implements OnInit {
       language: {
         processing: "Procesando...",
         search: "Buscar:",
-        lengthMenu: "Mostrar _MENU_ &eacute;l&eacute;ments",
+        lengthMenu: 'Mostrar _MENU_ elementos',
         info: "Mostrando desde _START_ al _END_ de _TOTAL_ elementos",
         infoEmpty: "Mostrando ningún elemento.",
         infoFiltered: "(filtrado _MAX_ elementos total)",
