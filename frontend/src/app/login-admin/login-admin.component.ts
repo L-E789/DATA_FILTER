@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthadminService } from './../service/authadmin.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../service/client.service';
@@ -18,7 +20,9 @@ export class LoginAdminComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private client: ClientService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: Router,
+    private auth: AuthadminService
   ) { }
 
   ngOnInit(): void {
@@ -34,15 +38,17 @@ export class LoginAdminComponent implements OnInit {
         user : this.form.value.user,
         password : this.form.value.password
       });
-      this.client.postRequest(`${environment.BASE_API_REGISTER}`,data).subscribe(
+      this.client.postRequest(`${environment.BASE_API_REGISTER}/9PZ6XOLHEX`,data).subscribe(
         (Response : any) => {
-          console.log(Response);
+          this.form.reset();
+          this.auth.login(Response.token);
+          this.route.navigate(['/3RjZgfU&rZVRLC7fzTNf1IRgxRFPvQ5G1ekFXJZ9/Sd89AsYwD912/4dm1n']);
         },(error) => {
-          console.log(error);          
+          this.toastr.warning("Datos Incorrectos");
         }
       )
     }
   }
-  
+
 
 }

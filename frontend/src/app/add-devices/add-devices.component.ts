@@ -69,8 +69,12 @@ export class AddDevicesComponent implements OnInit {
       });
       this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/main/consultclient`,data).subscribe(
         (Response : any) => {
-          this.clientdata = Response;
-          this.btnnext = true;
+          if(Response.error == 400){
+            this.toastr.info('No se encuentra a ningún cliente con el documento ingresado');
+          }else{
+            this.clientdata = Response;
+            this.btnnext = true;
+          }
         },(error) => {
           this.toastr.info('No se encuentra a ningún cliente con el documento ingresado');
         }
@@ -104,7 +108,7 @@ export class AddDevicesComponent implements OnInit {
             }
           )
     }else{
-      console.error("Error no deseado")
+      this.toastr.warning("Todos los campos deben contener información");
     }
   }
 

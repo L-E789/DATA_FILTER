@@ -17,7 +17,7 @@ export class CodeclientComponent implements OnInit {
   data : any;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private route: Router,
     private client: ClientService,
     private toastr: ToastrService,
@@ -38,11 +38,14 @@ export class CodeclientComponent implements OnInit {
       })
       this.client.postRequest(`${environment.BASE_API_REGISTER}/verification/client`, data).subscribe(
         (Response : any) => {
-          console.log(Response);
-          this.data = Response;
+          if(Response.error == 400){
+            this.data = 0;
+            this.toastr.warning("Su documento de identidad no se encuentra registrado en nuestro sistema");
+          }else{
+            this.data = Response;
+          }
         },(error) => {
           this.data = 0;
-          this.toastr.warning("Su documento de identidad no se encuentra registrado en nuestro sistema");
         }
       )
     }else{

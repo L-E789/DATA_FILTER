@@ -35,9 +35,9 @@ export class PendingDevicesComponent implements OnInit {
     private env: EnvironmentsComponent
   ) { }
 
-  
 
-  
+
+
   start_process(id : number){
     let data = ({
       id : id,
@@ -71,7 +71,7 @@ export class PendingDevicesComponent implements OnInit {
         )
       }
     })
- 
+
   }
 
   edit(){
@@ -138,10 +138,10 @@ export class PendingDevicesComponent implements OnInit {
     })
     this.client.postRequest(`${environment.BASE_API_REGISTER}/device/pending`,data).subscribe(
       (Response : any) => {
-        if(Response){
-          this.data = Response;
-        }else{
+        if(Response.error == 400){
           this.data = 0;
+        }else{
+          this.data = Response;
         }
       },(error) => {
         this.data = 0;
@@ -149,7 +149,7 @@ export class PendingDevicesComponent implements OnInit {
     )
   }
 
-  
+
   moreInfo(id : number){
     let data = ({
       environment : this.id_environment,
@@ -163,7 +163,7 @@ export class PendingDevicesComponent implements OnInit {
       }
     )
   }
-  
+
 
   ngOnInit(): void {
     this.token = jwt_decode(localStorage.getItem('token'));

@@ -44,7 +44,6 @@ class deleteclient(MethodView):
     def post(self):
         cl = client()
         content = request.get_json()
-        print(content)
         cl.enviroment = int(content.get('enviroment'))
         cl.identification = content.get('identification')
         answer = cl.delete_client()
@@ -93,7 +92,7 @@ class showHistory(MethodView):
         if(answer):
             return jsonify(answer), 200
         else:
-            return jsonify(), 400
+            return jsonify({'error':400}), 200
 
 
 class consultClient(MethodView):
@@ -102,11 +101,10 @@ class consultClient(MethodView):
         content = request.get_json()
         cl.identification = content.get('identification')
         answer = cl.consult_client()
-        print(answer)
         if(answer):
             return jsonify(answer), 200
         else:
-            return jsonify(), 400
+            return jsonify({'error':400}), 200
     
 
 

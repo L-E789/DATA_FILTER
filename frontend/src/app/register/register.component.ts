@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   spinner:boolean = true;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private route: Router,
     private client: ClientService,
     private toastr: ToastrService) { }
@@ -28,9 +28,9 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.compose([Validators.required,Validators.minLength(3), Validators.maxLength(40), this.noWhitespaceValidator])],
       surname: ['', Validators.compose([Validators.required,Validators.minLength(3), Validators.maxLength(40), this.noWhitespaceValidator])],
-      email: ['', Validators.email],
-      password: ['', Validators.compose([Validators.required,Validators.minLength(8), Validators.maxLength(15), this.noWhitespaceValidator])],
-      validatepassword: ['', Validators.compose([Validators.required,Validators.minLength(8), Validators.maxLength(20), this.noWhitespaceValidator])],
+      email: ['', Validators.compose([Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"), Validators.email, this.noWhitespaceValidator])],
+      password: ['', Validators.compose([Validators.required,Validators.minLength(8), Validators.maxLength(40), this.noWhitespaceValidator])],
+      validatepassword: ['', Validators.compose([Validators.required,Validators.minLength(8), Validators.maxLength(40), this.noWhitespaceValidator])],
       checkbox : [false, Validators.requiredTrue]
     });
   }
@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
 
   async onSubmit(){
     if(this.checkbox.valid){
-    
+
       if (this.form.valid){
         if(this.form.value.password == this.form.value.validatepassword){
           this.spinner = false;
@@ -54,10 +54,8 @@ export class RegisterComponent implements OnInit {
             password: this.form.value.password,
             validatepassword: this.form.value.validatepassword
           };
-          console.log(data)
           this.client.postRequest(`${environment.BASE_API_REGISTER}/register`, data).subscribe(
             (response: any) =>{
-              console.log(response)
               this.toastr.success('Valide su correo electrónico para activar la cuenta');
               this.route.navigate(['/login'])
             },(error) =>{
@@ -82,6 +80,8 @@ export class RegisterComponent implements OnInit {
   get surname(){return this.form.get('surname')};
   get email(){return this.form.get('email')};
   get password(){return this.form.get('password')};
-  get validatepassword(){return this.form.get('validatepassword')};
+  get validatepassword() {return this.form.get('validatepassword')};
   get checkbox(){return this.form.get('checkbox')};
+
+
 }

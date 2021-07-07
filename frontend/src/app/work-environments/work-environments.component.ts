@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { observable, Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   templateUrl: './work-environments.component.html',
   styleUrls: ['./work-environments.component.css']
 })
-export class WorkEnvironmentsComponent implements OnInit {
+export class WorkEnvironmentsComponent implements OnInit{
 
   token;
   uploadPercent : Observable<number>;
@@ -45,7 +45,7 @@ export class WorkEnvironmentsComponent implements OnInit {
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     this.uploadPercent = task.percentageChanges();
-    
+
     task.snapshotChanges().pipe(finalize(()=> {
       this.urlImage = ref.getDownloadURL();
       ref.getDownloadURL().subscribe((data)=> this.url = data);
@@ -97,20 +97,39 @@ export class WorkEnvironmentsComponent implements OnInit {
             this.toastr.error('El código no es válido');
             this.joinEnvironment();
           }
-          
+
         )
       }
     });
   }
 
   removeEnvironment(num:number){
-    this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/remove`,num).subscribe(
-      (Response : any) => {
-        this.showData();
-      },(error) => {
-        console.error(error);
+    Swal.fire({
+      icon: 'warning',
+      text: '¡Está seguro de borrar este entorno, perderá todos los datos de sus clientes y dispositivos!',
+      showDenyButton: true,
+      confirmButtonText: `Si`,
+      denyButtonText: `Cancelar`,
+      allowOutsideClick : false
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/remove`,num).subscribe(
+          (Response : any) => {
+            this.showData();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'El entorno se eliminó correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },(error) => {
+            console.error(error);
+          }
+        )
       }
-    )
+    })
+
   }
 
   showData() {
@@ -147,7 +166,7 @@ export class WorkEnvironmentsComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.getItem('token')){
       this.token = jwt_decode(localStorage.getItem('token'));
-      
+
       this.formSearch = this.fb.group({
         search : ['', Validators.required]
       })
@@ -159,10 +178,15 @@ export class WorkEnvironmentsComponent implements OnInit {
 
       this.client.getRequest(`${environment.BASE_API_REGISTER}/authorization`,localStorage.getItem('token')).subscribe(
         (response: any) => {
-          this.showData();
+          if(response.status == 403){
+            this.auth.logout();
+            this.route.navigate(['/login']);
+          }else{
+            this.showData();
+          }
         },(error) => {
           this.auth.logout();
-          this.route.navigate(['/login'])
+          this.route.navigate(['/login']);
         });
     }else{
       this.route.navigate(['/login']);
@@ -173,7 +197,7 @@ export class WorkEnvironmentsComponent implements OnInit {
     if(this.form.valid){
       let data = {
         name : this.form.value.name,
-        img : this.url, 
+        img : this.url,
         key_code : this.generateCode(),
         created_by: this.token.id
       }

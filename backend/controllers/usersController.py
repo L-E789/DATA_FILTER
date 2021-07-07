@@ -158,7 +158,7 @@ class reportgeneral(MethodView):
         answer = Rp.reportG()
         if(answer):
             return jsonify(answer), 200
-        return jsonify(), 400
+        return jsonify({'error':400}), 200
         
 
     

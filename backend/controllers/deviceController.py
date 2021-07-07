@@ -29,7 +29,7 @@ class showpending(MethodView):
         if(answer):
             return jsonify(answer),200
         else:
-            return jsonify(),400 
+            return jsonify({'error':400}),200 
 
 
 class createdevice(MethodView):
@@ -117,7 +117,7 @@ class showDevicesInProgress(MethodView):
         if(answer):
             return jsonify(answer), 200
         else:
-            return jsonify(), 400
+            return jsonify({'error':400}), 200
 
 class moreInfoDeviceProgress(MethodView):
     def post(self):
@@ -141,7 +141,7 @@ class myDashboardGet(MethodView):
         answer = dev.get_data_my_dashboard()
         if(answer):
             return jsonify(answer), 200
-        return jsonify(), 400
+        return jsonify({'error':400}), 200
 
 
 class getInfoRepair(MethodView):
@@ -210,7 +210,7 @@ class ShowFinished(MethodView):
         answer = dev.show_devices_finished()
         if(answer):
             return jsonify(answer), 200
-        return jsonify(), 400
+        return jsonify({'error':400}), 200
 
 class removeDevice(MethodView):
     def post(self):

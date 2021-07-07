@@ -16,5 +16,5 @@ class AuthorizationControllers(MethodView):
                 data = jwt.decode(token[1], KEY_TOKEN_AUTH , algorithms=['HS256'])
                 return jsonify({"Status": "Autorizado por token", "emailextraido": data.get("email"), "nombre": data.get("nombre")}), 200
             except:
-                return jsonify({"Status": "TOKEN NO VALIDO"}), 403
-        return jsonify({"Status": "No ha enviado un token"}), 403
+                return jsonify({"status": 403}), 200
+        return jsonify({"status": 403}), 200

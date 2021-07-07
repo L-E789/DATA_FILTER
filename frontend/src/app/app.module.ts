@@ -44,6 +44,7 @@ import { ConsultClientComponent } from './consult-client/consult-client.componen
 import { EnvironmentReportComponent } from './environment-report/environment-report.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 
 PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -87,6 +88,7 @@ const config = {
     EnvironmentReportComponent,
     ContactUsComponent,
     LoginAdminComponent,
+    PanelAdminComponent,
   ],
   imports: [
     BrowserModule,

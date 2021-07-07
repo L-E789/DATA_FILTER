@@ -1,6 +1,6 @@
 from models import conexion
 from datetime import timedelta, date, datetime
-
+import datetime
 
 class device:
     def __init__(self):
@@ -32,7 +32,7 @@ class device:
         return None
 
     def add_device(self):
-        now = datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours= 5)
         cmm = conexion.Add("insert into devices (client,environment,user,type,model,brand,serial,accessories,conditions,work_to_do,status,admission_date) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", [self.client,self.enviroment,self.user,self.device,self.model,self.brand,self.serial,self.accessories,self.condition,self.work_to_do,1,now])
         if cmm:
             return 'Ok'
@@ -82,7 +82,7 @@ class device:
             return None
 
     def change_status(self):
-        now = datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours= 5)
         cmm = conexion.Add("update devices set status = %s, start_process = %s, process_start_date = %s  where id = %s and environment = %s", [self.status,self.user,now,self.id,self.enviroment])
         if cmm:
             return 'Ok'
@@ -110,7 +110,7 @@ class device:
     def get_data_my_dashboard(self):
         data = {}
         data['device'] = []
-        cmm = conexion.search('select id, type, model, brand, process_start_date from devices where user = %s and environment = %s and status = %s',[self.user,self.enviroment,self.status])
+        cmm = conexion.search('select id, type, model, brand, process_start_date from devices where start_process = %s and environment = %s and status = %s',[self.user,self.enviroment,self.status])
         if(cmm):
             for i in cmm:
                 data['device'].append({'id':i[0],'type':i[1],'model':i[2],'brand':i[3],'process_start_date':format(i[4])})
@@ -135,7 +135,7 @@ class device:
             return 'Ok'
 
     def check_repair(self):
-        now = datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours= 5)
         cmm = conexion.search("select failure,diagnosis,solution from devices where (id = %s and environment = %s)", [self.id,self.enviroment])
         if(self.status == 3):
             if(cmm[0][0] != None and cmm[0][1] != None and cmm[0][2] != None):
@@ -170,7 +170,7 @@ class device:
             return None
 
     def remove_sevice(self):
-        now = datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours= 5)
         cmm = conexion.Add("update devices set status = %s , departure_date = %s where (id = %s and environment = %s)", [self.status,now,self.id,self.enviroment])
         if cmm:
             return 'Ok'

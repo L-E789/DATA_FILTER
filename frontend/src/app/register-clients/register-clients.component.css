@@ -1,23 +1,23 @@
 body {
     background: #dcdcdc;
   }
-  
+
   .checkout-wrapper {
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #fafbfa;
   }
-  
+
   .checkout {
     background-color: #fff;
     border: 1px solid #eaefe9;
     font-size: 14px;
   }
-  
+
   .panel {
     margin-bottom: 0px;
   }
-  
+
   .checkout-step {
     border-top: 1px solid #f2f2f2;
     color: #666;
@@ -25,7 +25,7 @@ body {
     padding: 30px;
     position: relative;
   }
-  
+
   .checkout-step-number {
     border-radius: 50%;
     border: 1px solid #666;
@@ -37,7 +37,7 @@ body {
     text-align: center;
     width: 32px;
   }
-  
+
   .checkout-step-title {
     font-size: 18px;
     font-weight: 500;
@@ -45,40 +45,40 @@ body {
     display: inline-block;
     margin: 0px;
   }
-  
-  
-  
+
+
+
   .checout-address-step .form-group {
     margin-bottom: 18px;
     display: inline-block;
     width: 100%;
   }
-  
+
   .checkout-step-body {
     padding-left: 60px;
     padding-top: 30px;
   }
-  
+
   .checkout-step-active {
     display: block;
   }
-  
+
   .checkout-step-disabled {
     display: none;
   }
-  
-  
-  
+
+
+
   .login-phone {
     display: inline-block;
   }
-  
+
   .login-phone:after {
     content: '+91 - ';
     font-size: 14px;
     left: 36px;
   }
-  
+
   .login-phone:before {
     content: "";
     font-style: normal;
@@ -92,7 +92,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   .login-phone:after,
   .login-phone:before {
     position: absolute;
@@ -100,87 +100,87 @@ body {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  
+
   .login-phone .form-control {
     padding-left: 68px;
     font-size: 14px;
   }
-  
+
   .checkout-login .btn {
     height: 42px;
     line-height: 1.8;
   }
-  
+
   .otp-verifaction {
     margin-top: 30px;
   }
-  
+
   .checkout-sidebar {
     background-color: #fff;
     border: 1px solid #eaefe9;
     padding: 30px;
     margin-bottom: 30px;
   }
-  
+
   .checkout-sidebar-merchant-box {
     background-color: #fff;
     border: 1px solid #eaefe9;
     margin-bottom: 30px;
   }
-  
+
   .checkout-total {
     border-bottom: 1px solid #eaefe9;
     padding-bottom: 10px;
     margin-bottom: 10px;
   }
-  
+
   .checkout-invoice {
     display: inline-block;
     width: 100%;
   }
-  
+
   .checout-invoice-title {
     float: left;
     color: #30322f;
   }
-  
+
   .checout-invoice-price {
     float: right;
     color: #30322f;
   }
-  
+
   .checkout-charges {
     display: inline-block;
     width: 100%;
   }
-  
+
   .checout-charges-title {
     float: left;
   }
-  
+
   .checout-charges-price {
     float: right;
   }
-  
+
   .charges-free {
     color: #43b02a;
     font-weight: 600;
   }
-  
+
   .checkout-payable {
     display: inline-block;
     width: 100%;
     color: #333;
   }
-  
+
   .checkout-payable-title {
     float: left;
   }
-  
+
   .checkout-payable-price {
     float: right;
   }
-  
+
   .checkout-cart-merchant-box {
     padding: 20px;
     display: inline-block;
@@ -188,24 +188,24 @@ body {
     border-bottom: 1px solid #eaefe9;
     padding-bottom: 20px;
   }
-  
+
   .checkout-cart-merchant-name {
     color: #30322f;
     float: left;
   }
-  
+
   .checkout-cart-merchant-item {
     float: right;
     color: #30322f;
   }
-  
-  
-  
+
+
+
   .checkout-cart-products .checkout-charges {
     padding: 10px 20px;
     color: #333;
   }
-  
+
   .checkout-cart-item {
     border-bottom: 1px solid #eaefe9;
     box-sizing: border-box;
@@ -214,46 +214,46 @@ body {
     padding: 22px 20px;
     width: 100%;
   }
-  
-  
-  
+
+
+
   .checkout-item-count {
     float: left;
   }
-  
+
   .checkout-item-img {
     width: 60px;
     float: left;
   }
-  
+
   .checkout-item-name-box {
     float: left;
   }
-  
+
   .checkout-item-title {
     color: #30322f;
     font-size: 14px;
   }
-  
-  
-  
+
+
+
   .checkout-item-price {
     float: right;
     color: #30322f;
     font-size: 14px;
     font-weight: 600;
   }
-  
+
   .checkout-viewmore-btn {
     padding: 10px;
     text-align: center;
   }
-  
+
   .header-checkout-item {
     text-align: right;
     padding-top: 20px;
   }
-  
+
   .checkout-promise-item {
     background-repeat: no-repeat;
     background-size: 14px;
@@ -262,8 +262,16 @@ body {
     padding-left: 24px;
     color: #30322f;
   }
-  
+
   .checkout-promise-item i {
     padding-right: 10px;
     color: #43b02a;
   }
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

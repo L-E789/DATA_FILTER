@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div id="accordion" class="checkout">
                 <div class="panel checkout-step">
-                    <div> 
+                    <div>
                         <h4 class="checkout-step-title"> <a role="button"  data-parent="#accordion"  > Consultar cliente</a></h4>
                     </div>
                     <div id="collapseOne" >
@@ -14,7 +14,7 @@
                                     <div class="checkout-login" *ngIf="!btnnext">
                                         <form [formGroup]='formConsult' (ngSubmit)="onSubmit() ">
                                             <div>
-                                                <input type="text" class="form-control" formControlName="consult"  placeholder="Número de identificación">
+                                                <input type="number" class="form-control" formControlName="consult"  placeholder="Número de identificación">
                                             </div>
                                             <div  *ngIf="consult.invalid && (consult.dirty || consult.touched)">
                                                 <p style="color: red;"> ** EL campo no puede contener letras o caracteres especiales</p>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div *ngIf="btnnext" class="panel checkout-step">
-                    <div > 
+                    <div >
                         <h4 class="checkout-step-title"> <a  role="button" data-parent="#accordion"  > Datos del dispositivo</a> </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
@@ -46,7 +46,7 @@
                             <div class="checout-address-step">
                                 <div class="row">
                                     <form [formGroup]="formDevice" (ngSubmit)="OnSubmitDevice()">
-                                        
+
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label class="control-label" for="equipo">Equipo</label>

@@ -26,7 +26,7 @@ export class CustomerHistoryComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   form : FormGroup;
 
-  
+
   constructor(
     private client: ClientService,
     private route: Router,
@@ -34,7 +34,7 @@ export class CustomerHistoryComponent implements OnInit {
     private fb: FormBuilder,
     private toastr: ToastrService,
     private env: EnvironmentsComponent
-  ) { 
+  ) {
     this.routes.paramMap
     .subscribe((params : ParamMap) => {
     let id = + params.get('id');
@@ -48,7 +48,7 @@ export class CustomerHistoryComponent implements OnInit {
   history : any;
   infodeviceData : any;
 
-  
+
   ngOnInit(): void {
     this.dataTablesInit();
     this.form = this.fb.group({
@@ -60,12 +60,12 @@ export class CustomerHistoryComponent implements OnInit {
       'address' : ['']
     })
    }
-  
+
 
   dataTablesInit(){
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2,
+      pageLength: 10,
       responsive: true,
       // processing: true,
       // serverSide: true,
@@ -118,10 +118,8 @@ export class CustomerHistoryComponent implements OnInit {
       enviroment : this.id_environment,
       identification : id
     });
-    console.log(data);
     this.client.postRequest(`${environment.BASE_API_REGISTER}/search/client`,data).subscribe(
       (Response : any) => {
-        console.log(Response);
         this.form.setValue({
           'name': Response[0].name,
           'surname' : Response[0].surname,
@@ -134,7 +132,7 @@ export class CustomerHistoryComponent implements OnInit {
         console.error(error);
       }
     )
-  } 
+  }
 
   render(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -161,7 +159,7 @@ export class CustomerHistoryComponent implements OnInit {
             this.boleano=false;
             this.toastr.success('Cliente actualizado');
             this.render();
-          },(error) => {  
+          },(error) => {
             console.error(error);
           }
         )
@@ -201,7 +199,11 @@ export class CustomerHistoryComponent implements OnInit {
     });
     this.client.postRequest(`${environment.BASE_API_REGISTER}/history/client`, data).subscribe(
       (Response : any) => {
-        this.history = Response;
+        if(Response.error){
+          this.history = 0;
+        }else{
+          this.history = Response;
+        }
       },(error) => {
         this.history = 0;
       }
@@ -215,13 +217,12 @@ export class CustomerHistoryComponent implements OnInit {
     });
     this.client.postRequest(`${environment.BASE_API_REGISTER}/client/info/device`, data).subscribe(
       (Response : any) => {
-        console.log(Response);
         this.infodeviceData = Response;
       },(error) => {
         console.error(error);
       }
     )
-  
+
   }
 
 }

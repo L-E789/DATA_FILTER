@@ -27,10 +27,10 @@
             <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
           </svg>
         </button>
-        <popover-content #myPopover 
+        <popover-content #myPopover
                   title='Advertencia'
                   placement="left top"
-                  [animation]="true" 
+                  [animation]="true"
                   [closeOnClickOutside]="true" >
                   <p>Este proceso eliminara todos los datos del cliente, incluyendo los dispositivos</p>
         </popover-content>
@@ -55,7 +55,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">                       
+      <div class="modal-body">
         <table class="table">
           <thead class="thead-dark" >
             <tr >
@@ -78,8 +78,8 @@
               <td>
                  <div *ngIf="i.status == 1" style="color: orange;" > pendiente</div>
                  <div *ngIf="i.status == 2" style="color: rgb(0, 89, 255);" > En curso</div>
-                 <div *ngIf="i.status == 3" style="color: rgb(21, 255, 99);" > Finalizado</div> 
-                 <div *ngIf="i.status == 4" style="color: rgb(0, 94, 86);" > Fue reclamado</div> 
+                 <div *ngIf="i.status == 3" style="color: rgb(21, 255, 99);" > Finalizado</div>
+                 <div *ngIf="i.status == 4" style="color: rgb(0, 94, 86);" > Fue reclamado</div>
                 </td>
               <td>
                 <button *ngIf="i.status == 4" class="btn" type="button" (click)="InfoDevice(i.id)"  data-dismiss="modal" class="close"  data-toggle="modal" data-target="#staticBackdrop22">
@@ -90,7 +90,7 @@
                 </button>
               </td>
             </tr>
-            
+
           </tbody>
         </table>
         <div *ngIf="history == 0" class="alert alert-primary text-center" role="alert">
@@ -118,7 +118,7 @@
               <hr>
               <b>Fecha de inicio de proceso:</b> {{i.process_start_date | date: 'short'}}
               <hr>
-              <b>Fecha de finalización:</b> {{i.finish_date | date: 'short'}} 
+              <b>Fecha de finalización:</b> {{i.finish_date | date: 'short'}}
               <hr>
               <b>Fecha de retiro:</b> {{i.departure_date | date: 'short'}}
             <li class="list-group-item text-center" style="background:#617c94; color: white;"><b>Datos del dispositivo</b>
@@ -155,42 +155,38 @@
       </div>
       <div class="modal-body">
         <form [formGroup]='form'>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-12 mb-4">
-                <label for="exampleFormControlFile1">Nombre del cliente</label>
-                <input class="form-control mt-2" formControlName='name' type="text" [readOnly]="!boleano">
-              </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="exampleFormControlFile1">Nombre del cliente</label>
+              <input type="text" style="color: black;" formControlName='name' class="form-control" placeholder="Nombre"  [readOnly]="!boleano">
             </div>
-            <div class="row">
-              <div class="col-12 mb-4">
-                <label for="exampleFormControlFile1">Apellido del cliente</label>
-                <input class="form-control mt-2" formControlName='surname' type="text" [readOnly]="!boleano">
-              </div>
+            <div class="col">
+              <label for="exampleFormControlFile1">Apellido del cliente</label>
+              <input type="text" style="color: black;" formControlName='surname' class="form-control" placeholder="Apellido" [readOnly]="!boleano">
             </div>
-            <div class="row">
-              <div class="col-12 mb-4">
-                <label for="exampleFormControlFile1">Teléfono del cliente</label>
-                <input class="form-control mt-2" formControlName='phone' type="text" [readOnly]="!boleano">
-              </div>
+          </div>
+          <br>
+          <div class="form-row">
+            <div class="col">
+              <label for="exampleFormControlFile1">Teléfono del cliente</label>
+              <input type="text" style="color: black;" formControlName='phone' class="form-control" placeholder="Teléfono" [readOnly]="!boleano">
             </div>
-            <div class="row">
-              <div class="col-12 mb-4">
-                <label for="exampleFormControlFile1">Correo electrónico del cliente</label>
-                <input class="form-control mt-2" formControlName='email' type="text" [readOnly]="!boleano">
-              </div>
+            <div class="col">
+              <label for="exampleFormControlFile1">Correo electrónico del cliente</label>
+              <input type="text" style="color: black;" formControlName='email' class="form-control" placeholder="Correo" [readOnly]="!boleano">
             </div>
-            <div class="row">
-              <div class="col-12 mb-4">
-                <label for="exampleFormControlFile1">Dirección del cliente</label>
-                <input class="form-control mt-2" formControlName='address' type="text" [readOnly]="!boleano">
-              </div>
+          </div>
+          <br>
+          <div class="form-row">
+            <div class="col">
+              <label for="exampleFormControlFile1">Dirección del cliente</label>
+              <input type="text" style="color: black;" class="form-control" formControlName='address' placeholder="Dirección" [readOnly]="!boleano">
             </div>
-            <div class="row">
-              <div class="col-12 d-flex mt-3 justify-content-end font-weight-bold">
-                <label class="mt-2 mr-1" for="exampleFormControlFile1">Editar datos</label>
-                <button class="mr-4 btn btn-link" (click)="boleano = !boleano"><img id="lapiz" src="https://cdn.pixabay.com/photo/2013/10/04/11/48/pencil-190586_960_720.png" alt="" width="30px"></button>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex mt-3 justify-content-end font-weight-bold">
+              <label class="mt-2 mr-1" for="exampleFormControlFile1">Editar datos</label>
+              <button class="mr-4 btn btn-link" (click)="boleano = !boleano"><img id="lapiz" src="https://cdn.pixabay.com/photo/2013/10/04/11/48/pencil-190586_960_720.png" alt="" width="30px"></button>
             </div>
           </div>
         </form>

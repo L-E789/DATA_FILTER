@@ -1,3 +1,9 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .mh-100vh {
   min-height: 100vh;
 }

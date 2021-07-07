@@ -34,7 +34,7 @@ export class MyDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = jwt_decode(localStorage.getItem('token'));
-    
+
     this.form = this.fb.group({
       failure : [''],
       diagnosis : [''],
@@ -46,7 +46,7 @@ export class MyDashboardComponent implements OnInit {
     let id = + params.get('id');
     this.id_environment = id;
   });
-  this.show(); 
+  this.show();
   }
 
   show(){
@@ -57,10 +57,10 @@ export class MyDashboardComponent implements OnInit {
     });
     this.client.postRequest(`${environment.BASE_API_REGISTER}/show/device/progress/my_dashboard`,data).subscribe(
       (Response : any) => {
-        if(Response){
-          this.data = Response;
-        }else{
+        if(Response.error == 400){
           this.data = 0;
+        }else{
+          this.data = Response;
         }
       },(error) => {
         this.data = 0;
@@ -82,7 +82,7 @@ export class MyDashboardComponent implements OnInit {
     )
   }
 
-  
+
   bringData(id : number){
     let data = ({
       environment : this.id_environment,
@@ -113,8 +113,7 @@ export class MyDashboardComponent implements OnInit {
       });
       this.client.postRequest(`${environment.BASE_API_REGISTER}/set/device/add`, data).subscribe(
         (Response : any) => {
-          console.log(Response);
-          this.toastr.success("Los cambios fueron exitosos")
+          this.toastr.success("Los cambios fueron exitosos");
         },(error) => {
           console.error(error);
         }
@@ -124,14 +123,13 @@ export class MyDashboardComponent implements OnInit {
     }
   }
 
-  
+
   StatusChange(id: number, status: number){
     let data = ({
       environment : this.id_environment,
       id_device: id,
       status : status
     });
-    console.log(data);
     this.client.postRequest(`${environment.BASE_API_REGISTER}/check/device/status`, data).subscribe(
       (Response : any) => {
         if(Response.status == 'error3'){

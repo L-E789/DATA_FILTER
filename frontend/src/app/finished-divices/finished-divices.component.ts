@@ -58,7 +58,7 @@ export class FinishedDivicesComponent implements OnInit {
       }
     }
   }
-  
+
   moreInfo(id : number){
     let data = ({
       environment : this.id_environment,
@@ -80,10 +80,10 @@ export class FinishedDivicesComponent implements OnInit {
     })
     this.client.postRequest(`${environment.BASE_API_REGISTER}/show/device/finished`,data).subscribe(
       (Response : any) => {
-        if(Response){
-          this.data = Response;
-        }else{
+        if(Response.error == 400){
           this.data = 0;
+        }else{
+          this.data = Response;
         }
       },(error) => {
         this.data = 0;

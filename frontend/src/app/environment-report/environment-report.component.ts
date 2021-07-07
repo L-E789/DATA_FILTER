@@ -46,7 +46,12 @@ export class EnvironmentReportComponent implements OnInit {
     });
     this.client.postRequest(`${environment.BASE_API_REGISTER}/report/general`,data).subscribe(
       (Response : any) => {
-        this.data = Response;
+        if(Response.error == 400){
+          this.toastr.info("Lo sentimos, debido a la poca información no es posible generar un informe");
+          this.route.navigate(['/environments']);
+        }else{
+          this.data = Response;
+        }
       },(error) => {
         this.toastr.info("Lo sentimos, debido a la poca información no es posible generar un informe");
         this.route.navigate(['/environments']);

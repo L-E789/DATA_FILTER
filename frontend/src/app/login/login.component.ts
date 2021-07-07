@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   spinner : boolean = true;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private route: Router,
     private client: ClientService,
     private toastr: ToastrService,

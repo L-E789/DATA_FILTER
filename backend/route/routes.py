@@ -8,7 +8,7 @@ from controllers.deviceController import createdevice,getdevice,changestatusPend
 
 from controllers.clientController import createclient,searchclient,editclient,deleteclient,showClients,searchClient,showHistory, consultClient
 
-from controllers.adminController import ContactUs
+from controllers.adminController import ContactUs,ALogin,ViewCases,infoView, answer, enviromentsInfo,ShowUsers
 
 users = {
     "create_user":"/api/v01/register","create_user_controllers": Register.as_view("create_api"),
@@ -79,4 +79,10 @@ client = {
 
 admin = {
     "contact_us":"/api/v01/contact","contact_controllers": ContactUs.as_view("contact_api"),
+    "Admin_Login":"/api/v01/9PZ6XOLHEX","Alogin_controllers": ALogin.as_view("ALogin_api"),
+    "Admin_Linfov":"/api/v01/tMN8OoA3kq","AInfoV_controllers": ViewCases.as_view("AinfoV_api"),
+    "Admin_infouser":"/api/v01/IxYasOUTXH","infouser_controllers": infoView.as_view("infouser_api"),
+    "Admin_answer":"/api/v01/VD0uJM3lvi","answer_controllers": answer.as_view("answer_api"),
+    "enviroments_Info":"/api/v01/ejd9ev5adf","enviroments_Info_controllers": enviromentsInfo.as_view("enviroments_Info_api"),
+    "Show_Users":"/api/v01/32sl4vzvre","_ShowUsers_controllers": ShowUsers.as_view("Admin_Show_Users_api"),
 }

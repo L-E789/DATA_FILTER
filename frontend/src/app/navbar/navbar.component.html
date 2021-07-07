@@ -2,12 +2,14 @@
   <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background: rgb(52,58,64);">
     <div class="container">
       <ng-container *ngIf="auth.isLoggedIn() | async; else elseTemplate">
-        <a class="navbar-brand" [routerLink]="['/environments']" style="color: rgb(255,255,255);">DATA FILTER</a>
+        <img class="mr-2" src="https://firebasestorage.googleapis.com/v0/b/datafilter-32b92.appspot.com/o/video%2Fdt.png?alt=media&token=b7826440-f184-4df1-ac2c-835df17dae5d" width="30" height="30" >
+        <a class="navbar-brand" [routerLink]="['/environments']" style="color: rgb(255,255,255);"> DATA FILTER</a>
       </ng-container>
       <ng-template #elseTemplate>
+        <img class="mr-2" src="https://firebasestorage.googleapis.com/v0/b/datafilter-32b92.appspot.com/o/video%2Fdt.png?alt=media&token=b7826440-f184-4df1-ac2c-835df17dae5d" width="30" height="30" >
         <a class="navbar-brand" [routerLink]="['/']" style="color: rgb(255,255,255);">DATA FILTER</a>
       </ng-template>
-      
+
       <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="border-radius: 21px;">
         <span class="sr-only" >Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div

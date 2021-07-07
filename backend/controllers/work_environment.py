@@ -163,4 +163,4 @@ class Main_ConsultClient(MethodView):
         answer = main.main_client_consult(consult,id_user,env)
         if(answer):
             return jsonify(answer), 200
-        return jsonify(), 400
+        return jsonify({'error':400}), 200

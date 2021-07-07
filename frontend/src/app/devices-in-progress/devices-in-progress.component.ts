@@ -73,10 +73,10 @@ export class DevicesInProgressComponent implements OnInit {
     })
       this.client.postRequest(`${environment.BASE_API_REGISTER}/show/device/progress`,data).subscribe(
       (Response : any) => {
-        if(Response){
-          this.data = Response;
-        }else{
+        if(Response.error == 400){
           this.data = 0;
+        }else{
+          this.data = Response;
         }
       },(error) => {
         this.data = 0;

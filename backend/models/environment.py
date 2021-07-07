@@ -1,6 +1,7 @@
 from MySQLdb import connections
 from models import conexion
-from datetime import datetime
+from datetime import timedelta, date, datetime
+import datetime
 import random
 
 class Environment:
@@ -14,7 +15,7 @@ class Environment:
         self.state = 0
     
     def create(self):
-        now = datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours= 5)
         insert = conexion.Add("insert into environments (img,name,key_code,creation_date,created_by) values (%s,%s,%s,%s,%s)",[self.img,self.name,self.key_code,now,self.created_by])
         consult = conexion.search("select id from environments where key_code = %s",[self.key_code])
         insert2 = conexion.Add("insert into bridge (id_user,id_environments,v_admin,linking_date,state) values (%s,%s,%s,%s,%s)",[self.created_by,consult[0][0],1,now,1])
@@ -31,6 +32,7 @@ class Environment:
             return None
 
     def remove(self):
+        deletedevices = conexion.Add('delete from devices where environment = %s',[self.id])
         deleteClient = conexion.Add("delete from clients where enviroment = %s",[self.id])
         delete = conexion.Add("delete from bridge where id_environments = %s",[self.id])
         deleteEnv = conexion.Add("delete from environments where id = %s",[self.id])
@@ -64,7 +66,7 @@ class Environment:
         return consult
     
     def manage_user_join_by_Code(self):
-        now = datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours= 5)
         data = {}
         data['manage'] = []
         consult1 = conexion.search('select count(*) from bridge b, users u, environments e where b.id_user = u.id and b.id_environments = e.id and e.key_code = %s and b.id_user = %s',[self.key_code,self.id])

@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  BASE_API_REGISTER: 'http://localhost:5000/api/v01'
+  production: true,
+  BASE_API_REGISTER: 'https://codegroup.pythonanywhere.com/api/v01'
 };
 
 /*

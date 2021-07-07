@@ -17,6 +17,11 @@ import {JoinEnvironmentComponent} from './join-environment/join-environment.comp
 import {EnvironmentReportComponent} from './environment-report/environment-report.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { PanelAdminComponent } from './panel-admin/panel-admin.component';
+
+
+import { LUsersGuard } from './guards/l-users.guard';
+import { LAdminGuard } from './guards/l-admin.guard';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -26,15 +31,16 @@ const routes: Routes = [
   {path: 'recovery/:id', component: RecoverPasswordComponent},
   {path: 'recovery', component: RecoveryComponent},
   {path: 'consult', component: CodeclientComponent},
-  {path: 'environments', component: WorkEnvironmentsComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'environments/users/:id', component: AddUsersEnvironmentComponent},
+  {path: 'environments', component: WorkEnvironmentsComponent, canActivate:[LUsersGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate:[LUsersGuard]},
+  {path: 'environments/users/:id', component: AddUsersEnvironmentComponent, canActivate:[LUsersGuard]},
   {path: 'about-us', component: AboutUsComponent},
-  {path: 'environment/:id', component: EnvironmentsComponent},
-  {path: 'environment/join/:code',component:JoinEnvironmentComponent},
-  {path: 'environments/report/:id',component:EnvironmentReportComponent},
+  {path: 'environment/:id', component: EnvironmentsComponent, canActivate:[LUsersGuard]},
+  {path: 'environment/join/:code',component:JoinEnvironmentComponent, canActivate:[LUsersGuard]},
+  {path: 'environments/report/:id',component:EnvironmentReportComponent, canActivate:[LUsersGuard]},
   {path: 'contact_us',component: ContactUsComponent},
   {path: '3RjZgfU&rZVRLC7fzTNf1IRgxRFPvQ5G1ekFXJZ9/Sd89AsYwD912',component: LoginAdminComponent},
+  {path: '3RjZgfU&rZVRLC7fzTNf1IRgxRFPvQ5G1ekFXJZ9/Sd89AsYwD912/4dm1n',component: PanelAdminComponent, canActivate:[LAdminGuard]}
 ];
 
 @NgModule({

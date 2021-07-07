@@ -46,14 +46,15 @@ export class RegisterClientsComponent implements OnInit {
         address: this.form.value.address,
         environment : localStorage.getItem('environment')
       });
-      
+
       this.client.postRequest(`${environment.BASE_API_REGISTER}/environment/main/registerclient`, data).subscribe(
         (Response : any) => {
           console.log(Response);
           this.toastr.success('Se agregó el cliente con éxito');
           this.form.reset();
         },(error) => {
-          console.warn(error);
+          console.warn(error, 300);
+
         }
       )
     }else{

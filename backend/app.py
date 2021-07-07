@@ -79,6 +79,12 @@ app.add_url_rule(client["client_verfification"], view_func=client["client_verfif
 #admin
 
 app.add_url_rule(admin["contact_us"], view_func=admin["contact_controllers"])
+app.add_url_rule(admin["Admin_Login"], view_func=admin["Alogin_controllers"])
+app.add_url_rule(admin["Admin_Linfov"], view_func=admin["AInfoV_controllers"])
+app.add_url_rule(admin["Admin_infouser"], view_func=admin["infouser_controllers"])
+app.add_url_rule(admin["Admin_answer"], view_func=admin["answer_controllers"])
+app.add_url_rule(admin["enviroments_Info"], view_func=admin["enviroments_Info_controllers"])
+app.add_url_rule(admin["Show_Users"], view_func=admin["_ShowUsers_controllers"])
 
 
 if __name__ == "__main__":
